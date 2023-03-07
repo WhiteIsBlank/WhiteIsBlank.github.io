@@ -86,15 +86,21 @@
             <a href="javascript:void(0);" data-url="http://example.com/2023/03/07/%E9%80%86%E5%90%91/" data-id="clexp66se00005kl00c0o1shg" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
-
+    
     <div class="entry-content">
       
+      <!-- Table of Contents -->
+    <!--目录-侧边栏-->
+    
+    <!--目录-文章开头-->
+    
+    </br>   
         <h2 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">1.LOWORD：取得某个4字节变量(即32位的值)在内存中处于高位的两个字节,即一个word长的数据</span><br><span class="line">  HIWORD：取得某个4字节变量(即32位的值)在内存中处于低位的两个字节,即一个word长的数据</span><br><span class="line">  例如：0xCCDDEEFF</span><br><span class="line">	   HIWORD(0xCCDDEEFF)=oxCCDD</span><br><span class="line">	   LOWORD(0XCCDDEEFF)=0xEEFF</span><br><span class="line">2.strcpy:字符串复制函数</span><br><span class="line">  例如：strcpy(v5，&quot;123&quot;)</span><br><span class="line">  strcat:横向连接字符串</span><br><span class="line">  例如：combinedStr(数组)= strcat(s1, s2, ..., sN)</span><br><span class="line">       strcat(szKey, szPart1); </span><br><span class="line">  	   strcat(szKey, szPart2);</span><br><span class="line">  	   等同于szKey=strcat(szPart1,szPart2)</span><br><span class="line">  strcmp:对比两个字符串是否相等</span><br><span class="line">  例如：strcmp(str1,str2)</span><br><span class="line">  strncmp:比较s1和s2字符串的前n个字符</span><br><span class="line">  例如：strncmp(str1,str2，size)</span><br><span class="line">  memset:对数组进行初始化</span><br><span class="line">  例如：memset(str2,0,sizeof(str2))//str2初始化</span><br><span class="line">  sprintf:格式化并打印各种数据到buffer数组</span><br><span class="line">  例如：sprintf( buffer,    &quot;String:%s\n&quot;, haha )</span><br><span class="line">       buffer数组内容：String:haha</span><br><span class="line">  read():读取内存中的数据</span><br><span class="line">  例如：read(0,a1,1);//从a1中读取1个字节的内容</span><br><span class="line">3.__readfsqword(0x28u)：用于alarm函数,防止调试</span><br><span class="line">4.foke()函数：pid_t m;</span><br><span class="line">             m = foke();</span><br><span class="line">             在代码执行完此句后会有两个几乎一致的进程</span><br><span class="line">5.python中截取一个二进制的低八位</span><br><span class="line">  cs=0B1010101010100101 </span><br><span class="line">  cs=int(bin(cs)[-8:], 2) </span><br><span class="line">6.__readfsqword(0x28u)防调试</span><br><span class="line">7.malloc分配的内存大小，并且返回一个指针</span><br></pre></td></tr></table></figure>
 
 
       
     </div><!-- .entry-content -->
-
+    
     <footer class="entry-meta">
     <a href="/2023/03/07/%E9%80%86%E5%90%91/">
     <time datetime="2023-03-06T16:05:50.264Z" class="entry-date">
@@ -171,7 +177,7 @@
     <script>
       var now = new Date(); 
       function createtime() { 
-          var grt= new Date("08/06/2022 00:00:00");  // 此处修改为你的建站时间或者网站上线时间 
+          var grt= new Date("03/07/2023 00:00:00");  // 此处修改为你的建站时间或者网站上线时间 
           now.setTime(now.getTime()+250); 
           days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
           hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
@@ -179,7 +185,7 @@
           mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
           seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
           snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
-          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 "; 
           document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
       } 
       setInterval("createtime()",250);

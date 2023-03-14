@@ -15,13 +15,15 @@
   
   <title>Blank Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to my world">
-<meta property="og:type" content="website">
+  <meta name="description" content="12345title：脱壳（1）date：2023&#x2F;3&#x2F;15categories：-[迷宫问题]-[脱壳（1）]    脱壳（1）1.ESP脱壳定律步骤：1.将32位PE文件载入OD，64位PE文件载入x64dbg 2.使用F8单步一次，如果只有ESP寄存器发生变化，即可使用ESP定律（对于x64dbg，第二步前需要点击断点并且寻找与程序名相同的断点进入，并在断点处设置EIP） 3.在寄存器窗口跟">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Blank Blog">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/2023/03/12/UPX%E8%84%B1%E5%A3%B3/index.html">
 <meta property="og:site_name" content="Blank Blog">
-<meta property="og:description" content="Welcome to my world">
+<meta property="og:description" content="12345title：脱壳（1）date：2023&#x2F;3&#x2F;15categories：-[迷宫问题]-[脱壳（1）]    脱壳（1）1.ESP脱壳定律步骤：1.将32位PE文件载入OD，64位PE文件载入x64dbg 2.使用F8单步一次，如果只有ESP寄存器发生变化，即可使用ESP定律（对于x64dbg，第二步前需要点击断点并且寻找与程序名相同的断点进入，并在断点处设置EIP） 3.在寄存器窗口跟">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-12T14:56:19.976Z">
+<meta property="article:modified_time" content="2023-03-14T23:43:00.084Z">
 <meta property="article:author" content="Blank">
 <meta name="twitter:card" content="summary">
   
@@ -66,9 +68,7 @@
 </header>
 
       <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main">
-  
-    <article id="post-UPX脱壳" class="post-UPX脱壳 post type-post status-publish format-standard hentry">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-UPX脱壳" class="post-UPX脱壳 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -121,110 +121,20 @@
 </article>
 
 
-
-
-
-
-  
-    <article id="post-迷宫问题" class="post-迷宫问题 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://example.com/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" data-id="clf8w38pc0000wsl0evikh6sg" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
     
-    <div class="entry-content">
-      
-      <!-- Table of Contents -->
-    <!--目录-侧边栏-->
-    
-    <!--目录-文章开头-->
-    
-    </br>   
-        <h1 id="迷宫问题"><a href="#迷宫问题" class="headerlink" title="迷宫问题"></a>迷宫问题</h1><p>解决了几道迷宫问题后，对该类型问题的一些浅薄认识及自我总结。</p>
-<h2 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h2><p>1.在题目中会有一个大的循环，其中会包含四个小的分支结构。循环的末尾处也会有一个双分支结构用来判断迷宫是否到达出口点或是碰到墙壁（通常此处的判断条件会告诉我们迷宫的宽度)。</p>
-<p>2.特点1中的四个分支结构语句，用来判断方向（通常分支结构语句中会有两个整数，进行加一减一来改变方向）。</p>
-<p>3.会有数组用来存放地图，数组中会大量的出现*、#或者0、1等一系列具有代表性的显性信号。</p>
-<h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><p>1.寻找地图（结合迷宫数组和迷宫长度)</p>
-<p>2.找到迷宫的出口和入口，以及墙壁和通路。</p>
-<p>3.判断方向（结合while循环结尾处的判断条件和分支语句中整数加减1的情况）</p>
-<h2 id="迷宫问题："><a href="#迷宫问题：" class="headerlink" title="迷宫问题："></a>迷宫问题：</h2><h4 id="buu-maze"><a href="#buu-maze" class="headerlink" title="buu_maze"></a>buu_maze</h4><p>先用Die打开文件，发现是ELF64位文件。用IDA64打开。</p>
-<p>首先进行字符串查找，发现flag字符，打开该处的反汇编代码。总体观察函数，会发现结尾有一个分支语句，当asc_601060数组中的某一个值等于‘#’，就会出现”Congratulations!”。往上会有一个大的while循环，当v3的数值大于s1数组索引长度时，如果满足v5不为0则结束循环。然后前面有几个分支语句的判断会对v6赋值，之后v6赋值给v5。</p>
-<p>main函数在输入s1后，出现了一个if判断语句，当它没有判断成功时，程序才会往下继续执行。</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/223597000-780ff1a6-ad07-4666-a910-fb2840fe7242.png"></p>
-<p>由此处可以知道s1数组的长度为24，且s1数组的前五个字符为”nctf{“,然后数组*(byte_6010BF + 24)的值是‘}’;</p>
-<p>继续往下是一个大的while循环;</p>
-<p>判断v4的值，分别进行了4种不同运算。</p>
-<p>往下分析是一个if判断，如果成立就会直接跳转到LABEL_21，判断错误，退出程序。因此要使得其中函数的返回值为非零值</p>
-<p>分析sub_400690函数</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/223623635-a8440f29-ac33-40f7-89f7-47adbc39b8b0.png"></p>
-<p>返回的结果是result的值，其中的a1是数组asc_601060的地址，a2为v10[0]的值，a3为v9的值</p>
-<p>asc_601060数组（由此也可粗略的判断这是一道迷宫问题）：</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/223624529-a4258e63-5741-46d0-9739-6934801c833e.png"></p>
-<p>在sub_400690函数中，result的值是赋值等式的结果取十六进制数的最低位的值，即当result等于‘ ’或是‘#’时返回1，为‘*’时返回0。</p>
-<p>即‘#’为出口，‘ ’为通路，‘*’为墙。</p>
-<p>与此同时result的第一次赋值时是取asc_601060数组的初始地址，进行了两次的偏移，第一次是a2，第二次是8*a3。由此可以很容易的知道迷宫的长度为8，并且v10[0]为左右向，v9为上下向。</p>
-<p>即可得到迷宫：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  ******</span><br><span class="line">*   *  *</span><br><span class="line">*** * **</span><br><span class="line">**  * **</span><br><span class="line">*  *#  *</span><br><span class="line">** *** *</span><br><span class="line">**     *</span><br><span class="line">********</span><br></pre></td></tr></table></figure>
-
-<p>之后再对之前的四个分支语句进行逐一的分析。</p>
-<p>其中sub_400650和sub_400670，sub_400660和sub_400680函数内容相同</p>
-<p>sub_400650函数</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/223627248-d29c2c7a-b622-4336-a9b6-9d593eb1a164.png"></p>
-<p>对输入的数值进行减一的操作（均是对v10和v9相应地址的值进行了改变），当超过迷宫大小范围时则返回0</p>
-<p>sub_400660函数</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/223627604-41882521-8a1f-4423-94cf-2e2d56b1a37b.png"></p>
-<p>对输入的数值进行加一操作，当超过迷宫大小范围时则返回0</p>
-<p>结合之前对v10和v9移动的大致方向的判断，就可以得出当v4 == ‘O’(左)，v4 == ‘o’(右)，v4 == ‘.’(上)，v4 == ‘0’(下)</p>
-<p>得出flag为nctf{o0oo00O000oooo…OO}</p>
-<h4 id="不一样的flag"><a href="#不一样的flag" class="headerlink" title="不一样的flag"></a>不一样的flag</h4><p>先将程序拖入Die中，得知是以个32位的程序</p>
-<p>从打印的一些字符来看，很容易的得知是一道迷宫问题</p>
-<p>迷宫数组v3为：“*11110100001010000101111#”</p>
-<p>由while循环的最后两个分支可知，‘1’为墙，‘#’为出口。</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/223636154-5dd512ca-453d-46b0-ab76-93ae868fcf3a.png"></p>
-<p>其中v7数组的初始位置和v3数组的初始位置刚好相差41位，则可以直接将v7[5 * *(_DWORD <em>)&amp;v3[25] - 41 + v4]看做v3[5</em>v3[25] + v4]，由此可知v3初始位置为迷宫起点，v3[25]为上下向，v4为左右向。与此同时迷宫的长度为5</p>
-<p>可得到迷宫：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*1111</span><br><span class="line">01000</span><br><span class="line">01010</span><br><span class="line">00010</span><br><span class="line">1111#</span><br></pre></td></tr></table></figure>
-
-<p>最终得到flag为flag{222441144222}</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.当遇到题目中含有并未赋值的数组却又需要用，可能需要考略它的地址是否和其他变量的地址有一定联系。</p>
-<p>2.分析程序时尽可能的找到关键点（字符串等）。</p>
-<p>3.对于反汇编代码中的一些int型数据，可以考略转换为char类型。</p>
-<p>大多的迷宫问题，一般不仅仅只是专注于迷宫问题，其中还会伴随着ELF文件的动态调试（例如：通过动态态调试寻找迷宫图像）、对程序的脱壳等一系列的其他问题。这些问题都还有待我进一步的学习。</p>
-
-      
-    </div><!-- .entry-content -->
-    
-    <footer class="entry-meta">
-    <a href="/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">
-    <time datetime="2023-03-07T10:44:53.495Z" class="entry-date">
-        2023-03-07
-    </time>
-</a>
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
     
     
-    </footer>
-</article>
+        <span class="nav-next"><a href="/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" rel="next">迷宫问题 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
 
 
 
 
 
 
-  
-  
 
 </div></div>
         <div id="secondary" class="widget-area" role="complementary">

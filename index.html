@@ -68,7 +68,7 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
-    <article id="post-迷宫问题" class="post-迷宫问题 post type-post status-publish format-standard hentry">
+    <article id="post-UPX脱壳" class="post-UPX脱壳 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -76,14 +76,199 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题（1)</a>
+      <a class="article-title" href="/2023/03/18/UPX%E8%84%B1%E5%A3%B3/">脱壳（1）</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://example.com/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" data-id="clf8w38pc0000wsl0evikh6sg" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://example.com/2023/03/18/UPX%E8%84%B1%E5%A3%B3/" data-id="clfdyr9me000238l024w31afh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+    
+    <div class="entry-content">
+      
+      <!-- Table of Contents -->
+    <!--目录-侧边栏-->
+    
+    <!--目录-文章开头-->
+    
+    </br>   
+        <h1 id="脱壳（1）"><a href="#脱壳（1）" class="headerlink" title="脱壳（1）"></a>脱壳（1）</h1><h3 id="1-ESP脱壳定律（大多压缩壳和少数加密壳）"><a href="#1-ESP脱壳定律（大多压缩壳和少数加密壳）" class="headerlink" title="1.ESP脱壳定律（大多压缩壳和少数加密壳）"></a>1.ESP脱壳定律（大多压缩壳和少数加密壳）</h3><h6 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h6><p>1.将32位PE文件载入OD，64位PE文件载入x64dbg</p>
+<p>2.载入程序的第一条指令为pushad/pushfd，使用F8单步一次，如果只有ESP寄存器发生变化，即可使用ESP定律（如果程序载入时不是pushad/pushfd，则可以查看断点清单中是否有pushad/pushfd）</p>
+<p>3.右键ESP处，选择在寄存器窗口跟随，然后在相应的地址窗口处设置一个硬件访问的四字节断点</p>
+<p>4.F9再次运行</p>
+<p>5.再次F8运行进入OEP</p>
+<p>6.利用OD插件（OllyDump）和x64dbg插件（Scylla）进行脱壳</p>
+<h3 id="2-单步跟踪法（通用）"><a href="#2-单步跟踪法（通用）" class="headerlink" title="2.单步跟踪法（通用）"></a>2.单步跟踪法（通用）</h3><h6 id="步骤：-1"><a href="#步骤：-1" class="headerlink" title="步骤："></a>步骤：</h6><p>1.将32位PE文件载入OD，64位PE文件载入x64dbg</p>
+<p>2.程序用F8运行（上不跳转下跳转。对于call指令，程序调试进入地址附近的call指令F7进入，跳转地址距离当前调试地址较近的F7进入，其余都F8步过），程序调试开始的位置不一定是pushad/pushfd</p>
+<p>3.一边动态调试，一边观察汇编指令，如果出现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">push ebp</span><br><span class="line">mov ebp,esp</span><br></pre></td></tr></table></figure>
+
+<p>并且后面跟着一些指令带有程序的名称此处大概就是oep/如果遇到的是popad/popfd，在其下方可能会出现带有程序名的指令，并且伴有一个极大地跳转，那么跳转后的地址应该就是oep的地址。</p>
+<p>4.利用OD插件（OllyDump）和x64dbg插件（Scylla）进行脱壳</p>
+<h3 id="3-一步直达OEP（少数壳）"><a href="#3-一步直达OEP（少数壳）" class="headerlink" title="3.一步直达OEP（少数壳）"></a>3.一步直达OEP（少数壳）</h3><h6 id="步骤：-2"><a href="#步骤：-2" class="headerlink" title="步骤："></a>步骤：</h6><p>1.在OD/xdbg中查询Ctrl+F查询popad，不符合（符合：其下方可能会出现带有程序名的指令，并且伴有一个极大地跳转）则Ctrl+L匹配下一个</p>
+<p>2.直到出现有关程序（一般这些跳转处会出现程序名）的跳转</p>
+<p>3.F8跳转程序，进入OEP</p>
+<p>4.利用OD插件（OllyDump）和x64dbg插件（Scylla）进行脱壳</p>
+<h3 id="4-内存镜像法（大多压缩和加密壳）"><a href="#4-内存镜像法（大多压缩和加密壳）" class="headerlink" title="4.内存镜像法（大多压缩和加密壳）"></a>4.内存镜像法（大多压缩和加密壳）</h3><h6 id="步骤：-3"><a href="#步骤：-3" class="headerlink" title="步骤："></a>步骤：</h6><p>1.OD打开程序，点击选项—&gt;调试设置—&gt;异常（此处将所有的异常勾选上)</p>
+<p>2.Alt+M打开内存镜像，在程序的第一个.rsrc（资源）处F2下断点，再F9运行</p>
+<p>3.再次Alt+M，在刚才断点上方的.text处下断点，F9运行</p>
+<p>4.如果并未到达程序oep，上下翻动界面，查看是否有oep或者是popad，如果都没有继续F8执行，直到oep出现为止</p>
+<p>5.插件脱壳</p>
+<h3 id="5-最后一次异常法（加密壳）"><a href="#5-最后一次异常法（加密壳）" class="headerlink" title="5.最后一次异常法（加密壳）"></a>5.最后一次异常法（加密壳）</h3><h6 id="步骤：-4"><a href="#步骤：-4" class="headerlink" title="步骤："></a>步骤：</h6><p>1.OD载入程序之后，点击选项—&gt;调试设置—&gt;异常（此处将所有的异常勾选都去掉)，Ctrl+F2重载</p>
+<p>2.shift + F9让程序运行，记录按键次数，重载后再次按shift + F9，次数为记录次数减一</p>
+<p>3.在OD右下窗口中，会出现SE处理程序，在反汇编窗口按Ctrl+G跳转到这句话前面的地址，F2下一个断点，再次shift + F9运行，再取消该处的断点</p>
+<p>4.单步跟踪直到OEP</p>
+<p>5.插件脱壳</p>
+<h4 id="脱壳思路："><a href="#脱壳思路：" class="headerlink" title="脱壳思路："></a>脱壳思路：</h4><p>1.在程序pushad/pushfd处开始调试（ESP定律一定在此处开始）</p>
+<p>2.找到对应的popad/popfd（在这句指令后伴随着一个跨度极大地跳转指令）</p>
+<p>3.找到OEP</p>
+<h4 id="buu-HDCTF2019-maze（ESP定律）"><a href="#buu-HDCTF2019-maze（ESP定律）" class="headerlink" title="buu_[HDCTF2019]maze（ESP定律）"></a>buu_[HDCTF2019]maze（ESP定律）</h4><p><img src="https://user-images.githubusercontent.com/116374553/225170230-c22035f8-0400-4415-8b38-875ea1808d08.png"></p>
+<p>将程序放入Die中发现，程序是32位的PE文件，并且被UPX进行了加壳</p>
+<p>用OD打开程序，单步一次F8，发现只有ESP寄存器发生变化，即可使用ESP定律</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/225170506-5d63be20-2902-4333-ab05-9ec0260d145d.png"></p>
+<p>先右键点击寄存器窗口中的ESP，选择数据窗口中跟随，在数据窗口中下一个硬件访问的四字节断点。F9再次运行，进入下面图片中的位置</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/225171218-aefd3bfd-b080-4fd8-a24a-bc409dd1914a.png"></p>
+<p>F4运行到jmp处，F8跳转进入OEP</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/225171626-39560cd2-3585-4187-95e8-c18ce6d82750.png"></p>
+<p>利用OD插件OllyDump进行脱壳</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/225955353-b2a9f338-c172-49cc-b564-297301c6b36c.png"></p>
+<p>再次用IDA打开程序，发现脱壳成功</p>
+<p>在IDA中发现，main函数中存在花指令，导致程序无法进行反汇编</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/225172004-86e87728-de82-4544-940c-c0bd3ac58741.png"></p>
+<p>将call指令处的E8变为90，重新创建函数，即可除去花指令</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/225172447-4fceaa3b-6851-474e-9795-80f5f4aa2d3c.png"></p>
+<p>查看字符串发现一堆星号和空格，再结合main函数中一个大的循环，然后四个分支结构，可判断是一道迷宫问题。分析迷宫字符串，根据猜测可以得出，‘+’为入口，‘*’为墙，‘ ’为通路，‘F’为出口。最终根据+的四周必有一个地方为空格和空格周围也一定有空格的原则绘出地图</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">*******+**</span><br><span class="line">******* **</span><br><span class="line">****    **</span><br><span class="line">**   *****</span><br><span class="line">** **F****</span><br><span class="line">**    ****</span><br><span class="line">**********</span><br></pre></td></tr></table></figure>
+
+<p>由于最终的if判断处asc_408078为5即字符v5中一定出现了5个d，同样v5中一定出现了4个s，再根据自主定义的方向，利用自动走迷宫程序（在  迷宫问题——迷宫问题（2）中），最终分析得出‘a’为左，‘d’为右，‘s’为下，‘w’为上</p>
+<p>得到flag{ssaaasaassdddw}</p>
+<h4 id="buu-新年快乐（单步跟踪法）"><a href="#buu-新年快乐（单步跟踪法）" class="headerlink" title="buu_新年快乐（单步跟踪法）"></a>buu_新年快乐（单步跟踪法）</h4><p>用Die发现，程序为32位PE文件，UPX加壳</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226079452-f2be6f2b-c703-4d1d-ad3d-e6ebea709016.png"></p>
+<p>利用od打开，发现程序的入口处并不是pushad，则考虑单步跟踪，由于入口点就是一个call指令，则用F7进入call指令，之后依旧遵循不向上跳转的原则，对于call指令，遇到距离调试位置近的可以F7进入，其余均F8跳过。之后程序突然出现了一个跳转指令，它的跳转地址前带上了程序的名称，可以考虑上下查看一下周围的汇编指令，在跳转指令的上方发现popad，并且该条跳转指令的上一条指令是一个大的跳转，这里跳转后的地址应该就是程序oep。记下该条指令的地址0x40E493，然后F8进入发现是一堆重复的指令</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226078298-ee2b85f3-90b0-4dba-9d2e-05b2c00a8909.png"></p>
+<p>之后我们Ctr+G回到之前跳转指令的位置，F2下一个断点，再F9运行，之后F8一直运行，直到指令地址再次跳转为0x4开头，可以上下翻动汇编界面，可以发现之前的0x401280地址处的汇编指令已经出现</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226078583-4f247564-dd65-4ff5-9fb9-3b6e07e089e2.png"></p>
+<p>在此处进行脱壳</p>
+<p>再次用Die打开脱壳后的程序，发现脱壳成功</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226079454-93ce01b1-c5dc-4b99-90b2-7c232c9d5b9d.png"></p>
+<p>用IDA打开程序，查看字符串，发现flag字符，点击进入，了解到该字符出现在函数sub_401C10处，点击进入该函数，并且F5进行返汇编</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226080234-ace2f1f2-4842-48a3-8e82-62e2452210c7.png"></p>
+<p>发现输入字符串是在和之前的Str2对比</p>
+<p>则可知输入的字符应该是”HappyNewYear!”</p>
+<p>则flag为flag{HappyNewYear!}</p>
+<h4 id="新年快乐（内存镜像法）"><a href="#新年快乐（内存镜像法）" class="headerlink" title="新年快乐（内存镜像法）"></a>新年快乐（内存镜像法）</h4><p>先点击选项—&gt;调试设置—&gt;异常</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226089528-9094429c-ad9c-44cb-ad01-275ef8d44a70.png"></p>
+<p>Alt+M进入内存镜像，在第一个资源处，下断点</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226089562-8560eff8-ae80-41f0-8ac2-63b65e91475e.png"></p>
+<p>F9运行</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226089594-c8a28950-306e-4703-99e8-395102ff21a2.png"></p>
+<p>再次Alt+M，在.text处下断点</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226089578-70228f73-c102-4133-bec3-a2f9463977ee.png"></p>
+<p>再次F9运行</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226089630-92d9ab0c-278f-4a47-a751-206215b24b6a.png"></p>
+<p>发现还未到达oep位置，继续F8直到指令的地址变为004开头，再次观察</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226089664-0290e403-4354-4edb-87be-249e77856c3b.png"></p>
+<p>重复之前单步跟踪到这儿之后的操作即可找到oep。</p>
+
+      
+    </div><!-- .entry-content -->
+    
+    <footer class="entry-meta">
+    <a href="/2023/03/18/UPX%E8%84%B1%E5%A3%B3/">
+    <time datetime="2023-03-17T16:00:00.000Z" class="entry-date">
+        2023-03-18
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a>
+  </div>
+
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-迷宫问题（2）" class="post-迷宫问题（2） post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2023/03/18/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98%EF%BC%882%EF%BC%89/">迷宫问题（2)</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://example.com/2023/03/18/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98%EF%BC%882%EF%BC%89/" data-id="clfdyr9mg000338l05k3jfd11" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+    
+    <div class="entry-content">
+      
+      <!-- Table of Contents -->
+    <!--目录-侧边栏-->
+    
+    <!--目录-文章开头-->
+    
+    </br>   
+        <h1 id="迷宫问题（2）"><a href="#迷宫问题（2）" class="headerlink" title="迷宫问题（2）"></a>迷宫问题（2）</h1><h3 id="——C语言自动走迷宫"><a href="#——C语言自动走迷宫" class="headerlink" title="——C语言自动走迷宫"></a><em><strong>——C语言自动走迷宫</strong></em></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y,<span class="type">int</span> step)</span>;<span class="comment">//DFS算法</span></span><br><span class="line"><span class="type">char</span> dir[<span class="number">4</span>] = &#123; <span class="string">&#x27;s&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;w&#x27;</span>,<span class="string">&#x27;d&#x27;</span> &#125;;<span class="comment">//下，左，上，右（定义方向）</span></span><br><span class="line"><span class="type">char</span> t = <span class="string">&#x27; &#x27;</span>;<span class="comment">//通路</span></span><br><span class="line"><span class="type">char</span> q = <span class="string">&#x27;*&#x27;</span>;<span class="comment">//墙</span></span><br><span class="line"><span class="comment">//以上部分需要根据迷宫内容进行更改</span></span><br><span class="line"><span class="type">int</span> end_x, end_y;<span class="comment">//迷宫的终点</span></span><br><span class="line"><span class="type">int</span> N_x, N_y;<span class="comment">//地图的行和列</span></span><br><span class="line"><span class="type">char</span> maze[<span class="number">100</span>][<span class="number">100</span>];<span class="comment">//定义地图</span></span><br><span class="line"><span class="type">int</span> v[<span class="number">100</span>][<span class="number">100</span>] = &#123;<span class="number">0</span>&#125;;<span class="comment">//判断是否走过该地址，0为未经过，1为经过</span></span><br><span class="line"><span class="type">char</span> flag[<span class="number">100</span>];<span class="comment">//获取迷宫路径</span></span><br><span class="line"><span class="type">char</span> ch = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line"><span class="type">int</span> dy[<span class="number">4</span>] = &#123; <span class="number">0</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span> &#125;;</span><br><span class="line"><span class="type">int</span> dx[<span class="number">4</span>] = &#123; <span class="number">1</span>,<span class="number">0</span>,<span class="number">-1</span>,<span class="number">0</span> &#125;;<span class="comment">//用于坐标移动</span></span><br><span class="line"><span class="type">int</span> k = <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> x, y, step = <span class="number">0</span>;<span class="comment">//step步数</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;输入迷宫的行数和列数：&quot;</span>);</span><br><span class="line">	scanf_s(<span class="string">&quot;%d%d&quot;</span>, &amp;N_x, &amp;N_y);</span><br><span class="line">	getchar();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;输入迷宫地图：&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; N_x; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; N_y; j++)</span><br><span class="line">			scanf_s(<span class="string">&quot;%c&quot;</span>, &amp;maze[i][j]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;输入迷宫的起点坐标：&quot;</span>);</span><br><span class="line">	scanf_s(<span class="string">&quot;%d%d&quot;</span>, &amp;x, &amp;y);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;输入迷宫的终点坐标：&quot;</span>);</span><br><span class="line">	scanf_s(<span class="string">&quot;%d%d&quot;</span>, &amp;end_x, &amp;end_y);</span><br><span class="line">	dfs(x, y, step);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> step)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (k == <span class="number">1</span>)<span class="comment">//以保证第一次开始运算时没有将ch的初值赋给flag</span></span><br><span class="line">		flag[step - <span class="number">1</span>] = ch;</span><br><span class="line">	<span class="keyword">if</span> ((x == end_x &amp;&amp; y == end_y))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;flag&#123;%s&#125;\n&quot;</span>, flag);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (x &lt; <span class="number">0</span> || x &gt; N_x || y &lt; <span class="number">0</span> || y &gt; N_y)<span class="comment">//判断有没有出地图</span></span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">3</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (maze[x + dx[i]][y + dy[i]] == t &amp;&amp; v[x + dx[i]][y + dy[i]] == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			k = <span class="number">1</span>;</span><br><span class="line">			ch = dir[i];</span><br><span class="line">			v[x + dx[i]][y + dy[i]] = <span class="number">1</span>;</span><br><span class="line">			dfs(x + dx[i], y + dy[i], step + <span class="number">1</span>);</span><br><span class="line">			step -= <span class="number">1</span>;<span class="comment">//回溯时还原之前的值</span></span><br><span class="line">			v[x + dx[i]][y + dy[i]] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div><!-- .entry-content -->
+    
+    <footer class="entry-meta">
+    <a href="/2023/03/18/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98%EF%BC%882%EF%BC%89/">
+    <time datetime="2023-03-17T16:00:00.000Z" class="entry-date">
+        2023-03-18
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a>
+  </div>
+
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-迷宫问题（1）" class="post-迷宫问题（1） post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98%EF%BC%881%EF%BC%89/">迷宫问题（1)</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://example.com/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98%EF%BC%881%EF%BC%89/" data-id="clfdyr9m5000038l0hfvx2oc8" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
     
@@ -150,7 +335,7 @@
     </div><!-- .entry-content -->
     
     <footer class="entry-meta">
-    <a href="/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">
+    <a href="/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98%EF%BC%881%EF%BC%89/">
     <time datetime="2023-03-06T16:00:00.000Z" class="entry-date">
         2023-03-07
     </time>
@@ -189,7 +374,7 @@
   <aside class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">2</span></li></ul>
     </div>
   </aside>
 
@@ -201,7 +386,15 @@
       <ul>
         
           <li>
-            <a href="/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题（1)</a>
+            <a href="/2023/03/18/UPX%E8%84%B1%E5%A3%B3/">脱壳（1）</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/18/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98%EF%BC%882%EF%BC%89/">迷宫问题（2)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98%EF%BC%881%EF%BC%89/">迷宫问题（1)</a>
           </li>
         
       </ul>

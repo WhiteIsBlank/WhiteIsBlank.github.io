@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227718708-be2af14e-4174-4276-bb0b-4bfbd6cc023b.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227718709-720ff66e-1a1f-430a-a3b4-e854f6316031.png">
 <meta property="article:published_time" content="2023-03-24T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-25T15:19:53.329Z">
+<meta property="article:modified_time" content="2023-03-25T15:25:13.581Z">
 <meta property="article:author" content="Blank">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/116374553/227700054-8dbe6227-d6ef-4ff3-84cd-c67c5946cde9.jpeg">
@@ -192,7 +192,7 @@
 
 <p>最终输出：ctf2020{d9-dE6-20c}</p>
 <p>则flag为：flag{d9-dE6-20c}</p>
-<h5 id="easy-maze"><a href="#easy-maze" class="headerlink" title="_easy_maze"></a>_easy_maze</h5><p>将程序拖入Die发现是一个64位ELF文件，用IDA64打开，查看main函数。</p>
+<h5 id="攻防世界-easy-maze"><a href="#攻防世界-easy-maze" class="headerlink" title="攻防世界_easy_maze"></a>攻防世界_easy_maze</h5><p>将程序拖入Die发现是一个64位ELF文件，用IDA64打开，查看main函数。</p>
 <p><img src="https://user-images.githubusercontent.com/116374553/227716456-2bfd5f9f-30d3-4d29-b813-2ff247c4042b.png"></p>
 <p>程序中Step_0函数是给v6数组中未赋值的内容进行赋值的，Step_1是用赋值之后的v6去给v5进行赋值，最终得到迷宫的地图，再将地图传入Step_2</p>
 <p>当分析到Step_1函数的时候发现，在函数中有个getAStart函数</p>

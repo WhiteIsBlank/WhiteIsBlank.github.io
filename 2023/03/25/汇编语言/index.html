@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="Welcome to my world" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>汇编语言（1） | Blank Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="汇编语言（1）学习笔记基础知识1.存储单元（1Byte）：存储器被划分为若干存储单元，由0开始编号 2.CPU对存储器读写：①存储单元的地址（地址信息） ​                                      ②器件的选择，读或写命令（控制信息） ​                                      ③读或写的数据（数据信息）  地址总线：CPU通过地">
+<meta property="og:type" content="article">
+<meta property="og:title" content="汇编语言（1）">
+<meta property="og:url" content="http://example.com/2023/03/25/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/index.html">
+<meta property="og:site_name" content="Blank Blog">
+<meta property="og:description" content="汇编语言（1）学习笔记基础知识1.存储单元（1Byte）：存储器被划分为若干存储单元，由0开始编号 2.CPU对存储器读写：①存储单元的地址（地址信息） ​                                      ②器件的选择，读或写命令（控制信息） ​                                      ③读或写的数据（数据信息）  地址总线：CPU通过地">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227700054-8dbe6227-d6ef-4ff3-84cd-c67c5946cde9.jpeg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227700856-2f37a3bf-d81d-4512-abc6-c50461fee746.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227703751-bff5879f-7538-4ec1-b052-5932f31fd6dc.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227724581-4a468204-32b6-4509-b19f-78b0c92fe23a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227724560-a1fde403-e9b0-4997-8e53-d9e055ce0cff.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227707380-d9d5219e-dc95-48ce-9ae3-37a44db6aba4.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227716456-2bfd5f9f-30d3-4d29-b813-2ff247c4042b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227717022-89cb9036-190d-4eaf-b7ab-190f8068a8c4.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227717024-1a56b044-140e-45f4-b703-a6dc3f21678c.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227717029-f2484a83-3c51-4e6e-aa3c-6d02b61bf1f3.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227716458-f2ebee57-442b-42e3-a739-ca5cba482f31.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227717296-a5f741d3-e528-47c9-b2a4-6dd24b5e0153.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227718708-be2af14e-4174-4276-bb0b-4bfbd6cc023b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227718709-720ff66e-1a1f-430a-a3b4-e854f6316031.png">
+<meta property="article:published_time" content="2023-03-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-25T15:19:53.329Z">
+<meta property="article:author" content="Blank">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/116374553/227700054-8dbe6227-d6ef-4ff3-84cd-c67c5946cde9.jpeg">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Blank Blog" rel="home">Blank Blog</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-汇编语言" class="post-汇编语言 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      汇编语言（1）
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://example.com/2023/03/25/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" data-id="clfo4bbmj0001x4l0gi8s9f89" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+    
+    <div class="entry-content">
+      
+      <!-- Table of Contents -->
+    <!--目录-侧边栏-->
+    
+    <!--目录-文章开头-->
+    
+    </br>   
+        <h1 id="汇编语言（1）"><a href="#汇编语言（1）" class="headerlink" title="汇编语言（1）"></a>汇编语言（1）</h1><h2 id="学习笔记"><a href="#学习笔记" class="headerlink" title="学习笔记"></a>学习笔记</h2><h4 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h4><p><em><strong>1</strong></em>.<strong>存储单元</strong>（1Byte）：存储器被划分为若干存储单元，由0开始编号</p>
+<p><strong>2</strong>.<strong>CPU对存储器读写</strong>：①存储单元的地址（地址信息）</p>
+<p>​                                      ②器件的选择，读或写命令（控制信息）</p>
+<p>​                                      ③读或写的数据（数据信息）</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/227700054-8dbe6227-d6ef-4ff3-84cd-c67c5946cde9.jpeg"></p>
+<p>地址总线：CPU通过地址总线来指定存储器单元</p>
+<p>​                   N根地址线，则地址总线宽度为N，最多可以寻找2的N次方个内存单元</p>
+<p>数据总线：CPU和外界的数据传送速度</p>
+<p>控制总线：CPU提供对外部器件的多少种控制（对外部器件的控制能力）</p>
+<h3 id="寄存器（8086-16位结构CPU）"><a href="#寄存器（8086-16位结构CPU）" class="headerlink" title="寄存器（8086 16位结构CPU）"></a>寄存器（8086 16位结构CPU）</h3><p><em><strong>1</strong></em>.<strong>通用寄存器</strong>(16位)：AX、BX、CX、DX</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/227700856-2f37a3bf-d81d-4512-abc6-c50461fee746.jpg"></p>
+<p>AX低八位构成AL，高八位构成AH。(AL和AH均可独立使用)</p>
+<p>补充：32位寄存器eax的低16位即是ax，64位寄存器rax的低32即是eax</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">|63..32|31..16|15-8|7-0|</span><br><span class="line">               |AH.|AL.|</span><br><span class="line">               |AX.....|</span><br><span class="line">       |EAX............|</span><br><span class="line">|RAX...................|</span><br></pre></td></tr></table></figure>
+
+<p>在单独的使用al和ah时，它们将是两个毫不相干的寄存器，当要存入al中的值大于al中能存储的内容的时候，将会丢弃高位值但并不会存储到ah中</p>
+<p><em><strong>2</strong></em>.<strong>物理地址</strong> = 段地址 * 16 + 偏移地址 （由两个16位地址合成一个20位的物理地址）</p>
+<p>​                    = 基础地址 + 偏移地址</p>
+<p><em><strong>3</strong></em>.<strong>CS</strong>（段寄存器）<strong>和IP</strong>：</p>
+<p>CS为代码段寄存器，IP为指令指针寄存器 </p>
+<p> 补充：cs和ip或cs和eip一起构成了下一条即将执行的指令的完整地址</p>
+<p>任意时刻CPU将CS:IP指向的内容当做指令执行（若将CS、IP中内容分别设为M、N，则指向地址16*CS+IP)</p>
+<p>在读取一条指令之后，IP的值会自增（以便CPU读取下一条指令）</p>
+<p>8086CPU在加电启动或复位后CS = FFFFH,IP = 0000H</p>
+<p><em><strong>4</strong></em>.<strong>修改CS和IP</strong>（mov指令不能用来设置CS和IP的值）：</p>
+<p>方式：jmp 指令</p>
+<p>​        ①同时修改CS、IP：jmp 段地址：偏移地址</p>
+<p>​        ②修改IP：jmp 某一合法寄存器（相当于将寄存器的值赋给了IP） </p>
+<p><em><strong>5</strong></em>.<strong>段和代码段</strong>：</p>
+<p>段：根据需要将一组内存单元定义为一个段。内存并未分段，段的划分来自CPU。由于求取内存单元物理地址的方式，使得可以用分段的方式来管理内存。</p>
+<p>代码段：用来存放程序执行代码的一块内存区域。</p>
+<p><em><strong>6</strong></em>.<strong>内存中字的存储</strong>：</p>
+<p>CPU中用16位寄存器来存储一个字。高八位存放高位字节，低八位存放低位字节</p>
+<img src="https://user-images.githubusercontent.com/116374553/227703751-bff5879f-7538-4ec1-b052-5932f31fd6dc.jpg" style="zoom: 20%;" />
+
+<p>字单元：存放一个字型数据（16位）的内存单元</p>
+<p><em><strong>7</strong></em>.<strong>DS和[address]</strong>:</p>
+<p>例子：将1000:0的数据读取到al中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov bx,1000H</span><br><span class="line">mov ds,bx  /*将段地址放入ds*/</span><br><span class="line">mov al,[0] /*mov 寄存器名，内存单元地址*/</span><br></pre></td></tr></table></figure>
+
+<p>“[….]”表示一个内存单元，“[….]”中括号中的内容表示内存单元的偏移地址</p>
+<p>注意：80886CPU不支持将数据直接送入段寄存器</p>
+<p>区别ds和cs：cs为代码段寄存器</p>
+<p>​                        ds为数据段寄存器</p>
+<p><em><strong>8</strong></em>.<strong>mov、add、sub指令</strong>：</p>
+<p>mov：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mov 寄存器，数据</span><br><span class="line">mov 寄存器，寄存器</span><br><span class="line">mov 寄存器，内存单元  /*将ds:[...]中的值传入寄存器中*/</span><br><span class="line">mov 内存单元，寄存器  /*将寄存器中的值传入ds:[...]中*/</span><br><span class="line">mov 段寄存器，寄存器  /*将数据传递给段寄存器*/</span><br><span class="line">mov 寄存器，段寄存器  /*从段寄存器向寄存器传递数据*/</span><br><span class="line">mov 内存单元，段寄存器/*从段寄存器向内存单元传送数据*/</span><br><span class="line">/*例如：</span><br><span class="line">mov ax,1000H</span><br><span class="line">mov ds,ax</span><br><span class="line">mov [0],cs</span><br><span class="line">*/</span><br><span class="line">mov 段寄存器，内存单元</span><br><span class="line">/*例如：</span><br><span class="line">mov ax,1000H</span><br><span class="line">mov ds,ax</span><br><span class="line">mov ds,[0]</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+<p>add:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">add 寄存器，数据</span><br><span class="line">add 寄存器，寄存器</span><br><span class="line">add 寄存器，内存单元</span><br><span class="line">add 内存单元，寄存器</span><br></pre></td></tr></table></figure>
+
+<p>sub：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sub 寄存器 数据</span><br><span class="line">sub 寄存器，寄存器</span><br><span class="line">sub 寄存器，内存单元</span><br><span class="line">sub 内存单元，寄存器</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>9</strong></em>.<strong>数据段</strong>：指用来存放程序中已初始化的全局变量的一块内存区域。数据段属于静态内存分配。</p>
+<p>用ds存放数据段地址</p>
+<p><em><strong>10</strong></em>.<strong>栈</strong>：访问方式：栈顶的元素最后入栈，出栈的时候最先取出（这种规则称为：LIFO)</p>
+<p>入栈：将一个新的元素放到栈顶</p>
+<p>出栈：从栈顶取出一个元素</p>
+<p><em><strong>11</strong></em>.<strong>CPU提供的栈机制</strong>：入栈（push)和出栈（pop)操作均以字为单位进行</p>
+<p>SS段寄存器：栈顶的段地址</p>
+<p>SP寄存器：偏移地址</p>
+<p>任意时刻SS:SP指向栈顶元素</p>
+<p>入栈的时候执行一次push指令，SP -= 2（入栈由高地址向低地址增长）</p>
+<img src="https://user-images.githubusercontent.com/116374553/227724581-4a468204-32b6-4509-b19f-78b0c92fe23a.png" style="zoom:50%;" />
+
+<p>出栈的时候执行一次pop指令，  SP += 2</p>
+<img src="https://user-images.githubusercontent.com/116374553/227724560-a1fde403-e9b0-4997-8e53-d9e055ce0cff.png" style="zoom:50%;" />
+
+<p><em><strong>12</strong></em>.<strong>栈顶超界</strong>：覆盖其他地址的内容</p>
+<p><em><strong>13</strong></em>.<strong>push、pop指令</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">push 寄存器</span><br><span class="line">pop 寄存器</span><br><span class="line"></span><br><span class="line">push 段寄存器</span><br><span class="line">pop 段寄存器</span><br><span class="line"></span><br><span class="line">push 内存单元</span><br><span class="line">pop 内存单元</span><br></pre></td></tr></table></figure>
+
+<p><strong>14</strong>.<strong>栈段</strong>：采用栈方式工作的一段内存</p>
+<h3 id="逆向练习："><a href="#逆向练习：" class="headerlink" title="逆向练习："></a>逆向练习：</h3><h5 id="buu-WUSTCTF2020-level1"><a href="#buu-WUSTCTF2020-level1" class="headerlink" title="buu_[WUSTCTF2020]level1"></a>buu_[WUSTCTF2020]level1</h5><p>打开题目文件，其中有一个名为output的txt文本文件，和level1名字的文件</p>
+<p>用Die打开文件，发现它是一个64位的ELF文件，用IDA64打开，查看main函数</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/227707380-d9d5219e-dc95-48ce-9ae3-37a44db6aba4.png"></p>
+<p>main函数大概就是，以只读的形式打开一个名为flag的文件，然后将其中的内容存储到ptr数组中，然后对其内容进行加密，最终输出内容。for循环一共进行了19次，打开output文件，发现其中刚好是19个数字，可想而知这是程序的打印值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ptr = [<span class="string">&#x27;198&#x27;</span>, <span class="string">&#x27;232&#x27;</span>, <span class="string">&#x27;816&#x27;</span>, <span class="string">&#x27;200&#x27;</span>, <span class="string">&#x27;1536&#x27;</span>, <span class="string">&#x27;300&#x27;</span>, <span class="string">&#x27;6144&#x27;</span>, <span class="string">&#x27;984&#x27;</span>, <span class="string">&#x27;51200&#x27;</span>, <span class="string">&#x27;570&#x27;</span>, <span class="string">&#x27;92160&#x27;</span>, <span class="string">&#x27;1200&#x27;</span>, <span class="string">&#x27;565248&#x27;</span>, <span class="string">&#x27;756&#x27;</span>, <span class="string">&#x27;1474560&#x27;</span>, <span class="string">&#x27;800&#x27;</span>, <span class="string">&#x27;6291456&#x27;</span>, <span class="string">&#x27;1782&#x27;</span>, <span class="string">&#x27;65536000&#x27;</span>,<span class="string">&#x27;0&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">20</span>):</span><br><span class="line">    <span class="keyword">if</span> i &amp; <span class="number">1</span> != <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">chr</span>(<span class="built_in">int</span>(ptr[i - <span class="number">1</span>]) &gt;&gt; i)),end = <span class="string">&quot;&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">chr</span>(<span class="built_in">int</span>(<span class="built_in">int</span>(ptr[i - <span class="number">1</span>])/i))),end = <span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>最终输出：ctf2020{d9-dE6-20c}</p>
+<p>则flag为：flag{d9-dE6-20c}</p>
+<h5 id="easy-maze"><a href="#easy-maze" class="headerlink" title="_easy_maze"></a>_easy_maze</h5><p>将程序拖入Die发现是一个64位ELF文件，用IDA64打开，查看main函数。</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/227716456-2bfd5f9f-30d3-4d29-b813-2ff247c4042b.png"></p>
+<p>程序中Step_0函数是给v6数组中未赋值的内容进行赋值的，Step_1是用赋值之后的v6去给v5进行赋值，最终得到迷宫的地图，再将地图传入Step_2</p>
+<p>当分析到Step_1函数的时候发现，在函数中有个getAStart函数</p>
+<img src="https://user-images.githubusercontent.com/116374553/227717022-89cb9036-190d-4eaf-b7ab-190f8068a8c4.png" style="zoom: 33%;" />
+
+<p>进入该函数后又有一个getA函数</p>
+<img src="https://user-images.githubusercontent.com/116374553/227717024-1a56b044-140e-45f4-b703-a6dc3f21678c.png" style="zoom: 33%;" />
+
+<p>进入getA函数后就会一直循环的进入同一个getA函数，导致无法分析程序</p>
+<img src="https://user-images.githubusercontent.com/116374553/227717029-f2484a83-3c51-4e6e-aa3c-6d02b61bf1f3.png" style="zoom:33%;" />
+
+<p>于是只能通过动态调试的方法来得到地图，此处使用IDA远程动态调试linux的文件</p>
+<p>在Step_1函数处下一个断点，F9运行，进入动态调试界面后，单步F8步过函数，直接到v3，将鼠标箭头放置到v5数组处，即可看见v5数组已经被赋值了，记下赋值的内容</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/227716458-f2ebee57-442b-42e3-a739-ca5cba482f31.png"></p>
+<p>进入Step_2函数，其中出现了(*a1)[7 * v10 + v9] == 1</p>
+<p>由此可以看出，v10应该为迷宫的上下向，v9为左右向，并且迷宫每七个字符为一行（7列），由于v10和v9均为0，则迷宫的起点为（0,0）。while循环仅在a1数组取值为1的时候执行，可以知道1为通路，0为墙。在函数的末尾处有一个双分支的判断语句当v10 == 6 &amp;&amp; v9 == 6时，则走迷宫成功，可以得知终点为（6,6）。接着分析方向，由于v9为左右向，那么++v9就为右，—v9为左，v10同理，得出方向‘d’右，‘s’下，‘w’上，’a‘左。</p>
+<img src="https://user-images.githubusercontent.com/116374553/227717296-a5f741d3-e528-47c9-b2a4-6dd24b5e0153.png" style="zoom: 50%;" />
+
+<p>迷宫图像：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1001111</span><br><span class="line">1011001</span><br><span class="line">1110111</span><br><span class="line">0001100</span><br><span class="line">1111000</span><br><span class="line">1000111</span><br><span class="line">1111101</span><br></pre></td></tr></table></figure>
+
+<p>可知迷宫的行数也为7</p>
+<p>将以上的条件代入自动走迷宫脚本</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/227718708-be2af14e-4174-4276-bb0b-4bfbd6cc023b.png"></p>
+<p>得到路径ssddwdwdddssaasasaaassddddwdds</p>
+<p>在Step_2处下断点，再次对程序进行动态调试，并且在终端中输入得到的结果，用F8步过函数，即可得到flag</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/227718709-720ff66e-1a1f-430a-a3b4-e854f6316031.png"></p>
+<p>最终得到flag为UNCTF{ssddwdwdddssaasasaaassddddwdds}</p>
+<p>总结：①在程序陷入无限循环导致无法自主得出一部分内容的时候，可以选择动态调试，跳过某一过程直接获取数值</p>
+<p>​            ②对于得到一大堆数据内容（没有任何的符号），但又需要将其变为数组的时候，可以考略利用python，input循环输入（直接将数据复制粘贴到输入框中），再打印将其变为元组即可。</p>
+<p>​            ③对于linux中的ELF文件动态调试除了使用IDA，还可以直接在linux中利用gdb进行调试（需要进一步学习）</p>
+
+      
+    </div><!-- .entry-content -->
+    
+    <footer class="entry-meta">
+    <a href="/2023/03/25/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">
+    <time datetime="2023-03-24T16:00:00.000Z" class="entry-date">
+        2023-03-25
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a>
+  </div>
+
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2023/03/25/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95%EF%BC%88linux%EF%BC%89/" rel="prev"><span class="meta-nav">←</span> IDA远程动态调试（linux）</a></span>
+    
+    
+        <span class="nav-next"><a href="/2023/03/18/UPX%E8%84%B1%E5%A3%B3/" rel="next">脱壳（1） <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2023/03/25/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95%EF%BC%88linux%EF%BC%89/">IDA远程动态调试（linux）</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/25/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言（1）</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/18/UPX%E8%84%B1%E5%A3%B3/">脱壳（1）</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/18/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98%EF%BC%882%EF%BC%89/">迷宫问题（2)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98%EF%BC%881%EF%BC%89/">迷宫问题（1)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2023 Blank
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+
+<script src="../../source/js/top.js" type="text/javascript"></script>
+<!--返回顶部开始-->
+
+<div id="full" style="width:0px; height:0px; position:fixed; right:8%; bottom:100px; z-index:100; text-align:center; background-color:transparent; cursor:pointer;">
+  <a href="#" onclick="goTop();return false;">
+    <img src="/css/images/top.png" border=0 alt="返回顶部">
+  </a>
+</div>
+<!--返回顶部结束-->
+
+<!--底部添加运行时间-->
+
+<div class="run_time" style=" text-align:center;">
+    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("03/07/2023 00:00:00");  // 此处修改为你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+      setInterval("createtime()",250);
+    </script>
+    </br>
+    </br>
+    <!--添加不蒜子统计-->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"> </script>
+    <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+    </span>
+    <span id="busuanzi_container_site_uv">
+        ฅʕ•͡-•ʔ 访问人数：<span id="busuanzi_value_site_uv"></span>人
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+    </span> 
+    <span id="busuanzi_container_site_pv">
+        👀访问量：<span id="busuanzi_value_site_pv"></span>次
+    </span>
+    </br>
+    </br>
+</div>
+<script src="../../source/js/top.js" type="text/javascript"></script>
+<!--返回顶部开始-->
+<div id="full" style="width:0px; height:0px; position:fixed; right:8%; bottom:100px; z-index:100; text-align:center; background-color:transparent; cursor:pointer;">
+  <a href="#" onclick="goTop();return false;">
+    <img src="/css/images/top.png" border=0 alt="返回顶部">
+  </a>
+</div>
+<!--返回顶部结束-->
+
+  
+
+
+
+
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

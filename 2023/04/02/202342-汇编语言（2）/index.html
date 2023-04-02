@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="Welcome to my world" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>汇编语言（2） | Blank Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="汇编语言（2）学习笔记汇编程序标号：指代一个地址 段结束：段名  ends   伪指令（编译器执行) 程序结束： end 程序返回：mov ax,4c00H   汇编语言（CPU执行） ​                    int 21H [bx]和loop指令1.描述性符号“（）”，使用描述性符号来表示寄存器和内存单元中的内容 ​        括号中的内容：①寄存器名②段寄存器名③内存单元">
+<meta property="og:type" content="article">
+<meta property="og:title" content="汇编语言（2）">
+<meta property="og:url" content="http://example.com/2023/04/02/202342-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%882%EF%BC%89/index.html">
+<meta property="og:site_name" content="Blank Blog">
+<meta property="og:description" content="汇编语言（2）学习笔记汇编程序标号：指代一个地址 段结束：段名  ends   伪指令（编译器执行) 程序结束： end 程序返回：mov ax,4c00H   汇编语言（CPU执行） ​                    int 21H [bx]和loop指令1.描述性符号“（）”，使用描述性符号来表示寄存器和内存单元中的内容 ​        括号中的内容：①寄存器名②段寄存器名③内存单元">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/229342861-17881430-94c8-4e60-8493-7767f97b8ab0.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/229342929-e9a853f8-16e1-4107-8b38-c7bda7d7e0e7.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/229344185-fb981276-8c3b-43a2-a9bc-a33efaee71d0.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/229344597-d758a07c-5fd2-4023-a514-fb7a3d457de6.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/229344666-aee6dff5-c058-4f29-966c-9463374d6ef9.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/229344880-64e17f13-e10a-4ace-af1e-dc27b8cb4a4d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/229345324-304169a6-89cc-4e87-a4ff-fce99f1be57b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/229345708-66c79a8b-7e20-452e-aec0-712d2e0d16fa.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/229345587-291dc657-f64d-444b-b13e-d0358dda5661.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/229345996-48803661-15b2-4947-8dd5-eef0ccc9c502.png">
+<meta property="article:published_time" content="2023-04-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-04-02T10:06:41.735Z">
+<meta property="article:author" content="Blank">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/116374553/229342861-17881430-94c8-4e60-8493-7767f97b8ab0.png">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Blank Blog" rel="home">Blank Blog</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-202342-汇编语言（2）" class="post-202342-汇编语言（2） post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      汇编语言（2）
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://example.com/2023/04/02/202342-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%882%EF%BC%89/" data-id="clfz8nzdi000008l0326e6k74" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+    
+    <div class="entry-content">
+      
+      <!-- Table of Contents -->
+    <!--目录-侧边栏-->
+    
+    <!--目录-文章开头-->
+    
+    </br>   
+        <h1 id="汇编语言（2）"><a href="#汇编语言（2）" class="headerlink" title="汇编语言（2）"></a>汇编语言（2）</h1><h2 id="学习笔记"><a href="#学习笔记" class="headerlink" title="学习笔记"></a>学习笔记</h2><h4 id="汇编程序"><a href="#汇编程序" class="headerlink" title="汇编程序"></a>汇编程序</h4><p>标号：指代一个地址</p>
+<p>段结束：段名  ends   伪指令（编译器执行)</p>
+<p>程序结束： end</p>
+<p>程序返回：mov ax,4c00H   汇编语言（CPU执行）</p>
+<p>​                    int 21H</p>
+<h4 id="bx-和loop指令"><a href="#bx-和loop指令" class="headerlink" title="[bx]和loop指令"></a>[bx]和loop指令</h4><p><em><strong>1.<em><strong>描述性符号“（）”，使用描述性符号来表示寄存器和内存单元中的</strong></em>内容</strong></em></p>
+<p>​        括号中的内容：①寄存器名②段寄存器名③内存单元的物理地址（一个20位数据）</p>
+<p>​        （X）表示的数据类型有两种：①字（2）（ds、ax….) ②字节（1）（al、bl….)</p>
+<p>***2.***约定符号idata常量：mov ds,idata 非法指令（ds并不接收直接的传值）</p>
+<p><em><strong>3.</strong></em>[bx]偏移地址为bx中存放的内容，段地址在ds中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov ax,[bx]</span><br></pre></td></tr></table></figure>
+
+<p>bx中存放的数据作为偏移地址EA，段地址SA默认在ds中，将SA：EA处的数据送入ax</p>
+<p>***4.***inc</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov bx,1</span><br><span class="line">inc bx</span><br><span class="line">#执行结果bx = 2</span><br></pre></td></tr></table></figure>
+
+<p>***5.***Loop指令</p>
+<p>两步操作：①（cx) = (cx) - 1</p>
+<p>​                    ②判断cx中的值，不为0则转至标号处执行程序，如果为0则向下执行</p>
+<p>loop实现循环功能，cx存放循环次数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#loop指令实现2^12</span><br><span class="line">assume cs:code</span><br><span class="line">code segment</span><br><span class="line">	mov ax,2</span><br><span class="line">	</span><br><span class="line">	mov cx,11</span><br><span class="line">s:	add ax,ax</span><br><span class="line">    loop s</span><br><span class="line"></span><br><span class="line">mov ax,4c00h</span><br><span class="line">int 21h       #程序返回</span><br><span class="line">codes ends    #段结束</span><br><span class="line">end           #程序结束</span><br></pre></td></tr></table></figure>
+
+<p>***6.***汇编源程序中，数据不能够以字母开头，所以需要在前面加个0</p>
+<p>***7.***Debug和编译器masm差异：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#debug：</span><br><span class="line">mov ax,2000</span><br><span class="line">mov ds,ax</span><br><span class="line">mov al,[0]</span><br><span class="line">#在debug中mov al,[0]指令会被当做，将ds:[0]中的数据存入al寄存器中</span><br><span class="line">#意味着debug将，[0]作为了一个内存单元</span><br><span class="line">#masm：</span><br><span class="line">mov ax,2000h</span><br><span class="line">mov ds,ax</span><br><span class="line">mov al,[0]</span><br><span class="line">#在masm编译器中，会将最后一句指令当做，将0存入寄存器al中</span><br><span class="line">#意味着masm将，&#x27;[0]&#x27;变为了&#x27;0&#x27;——&gt;&#x27;[idata]&#x27;&lt;==&gt;&#x27;idata&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>汇编原程序中指令含义</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov al,[0] #mov al,0</span><br><span class="line">mov al,ds:[0] #(al) = ((ds)*16 + 0)</span><br><span class="line">mov al,[bx] #(al) = ((ds)*16+(bx))</span><br><span class="line">mov al,ds:[bx] #同上一句</span><br></pre></td></tr></table></figure>
+
+<p>***8.***段前缀</p>
+<p>用于显示的指明内存单元的段地址：“ds:”、“cs:”、“ss:”、“es:”</p>
+<p>***9.***一段安全的空间</p>
+<p>①需要直接向一段内存中写入内容</p>
+<p>②这段内存空间不应存放系统挥着其他程序的数据或代码，否则写入操作很可能引发错误</p>
+<p>③DOS方式下，一般情况，0:200~0:2ff空间中没有系统或其他程序的数据或代码</p>
+<p>④如果需要直接向一段内存中写入内容时，就使用0:200~0:2ff空间</p>
+<h4 id="逆向练习："><a href="#逆向练习：" class="headerlink" title="逆向练习："></a>逆向练习：</h4><h6 id="ctfshow-easy-pyc"><a href="#ctfshow-easy-pyc" class="headerlink" title="ctfshow_easy_pyc"></a>ctfshow_easy_pyc</h6><p>题目给的是一个pyc的文件，那么需要用uncompyle6来进行反编译</p>
+<p>在存放uncompyle6的文件目录下，打开命令提示符窗口输入指令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uncompyle6 -o ez_re.py ez_re.pyc</span><br></pre></td></tr></table></figure>
+
+<p>反编译的程序和uncompyle6在同一文件目录下可以如上输入指令，如果不是，则需写明pyc文件的绝对路径和生成py文件的绝对路径</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/229342861-17881430-94c8-4e60-8493-7767f97b8ab0.png"></p>
+<p>此时即反编译成功</p>
+<p>打开新生成的py文件</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/229342929-e9a853f8-16e1-4107-8b38-c7bda7d7e0e7.png"></p>
+<p>大概知道flag通过一系列的加密最终输出了code</p>
+<p>由后往前去解密，第一个for循环，是通过自身和后一个数异或后来进行加密的。那么根据两次xor等于没有xor的原理，我们可以编写代码对code进行第一次的解密，往上是第一次对flag进行加密后赋给了code这个元组，所以可以编写脚本进行解密</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">code = [<span class="number">0x16</span>, <span class="number">0x1d</span>, <span class="number">0x1e</span>, <span class="number">0x1a</span>, <span class="number">0x18</span>, <span class="number">0x9</span>, <span class="number">0xff</span>, <span class="number">0xd0</span>, <span class="number">0x2c</span>, <span class="number">0x03</span>, </span><br><span class="line"><span class="number">0x02</span>, <span class="number">0x14</span>, <span class="number">0x38</span>, <span class="number">0x6d</span>, <span class="number">0x01</span>, <span class="number">0x43</span>, <span class="number">0x44</span>, <span class="number">0xbd</span>, <span class="number">0xf7</span>, <span class="number">0x2a</span>, <span class="number">0xd</span>, </span><br><span class="line"><span class="number">0xda</span>, <span class="number">0xf9</span>, <span class="number">0x1c</span>, <span class="number">0x26</span>, <span class="number">0x35</span>, <span class="number">0x27</span>, <span class="number">0xda</span>, <span class="number">0xd4</span>, <span class="number">0xd1</span>, <span class="number">0x0b</span>, </span><br><span class="line"><span class="number">0xc7</span>, <span class="number">0xc7</span>, <span class="number">0x1a</span>, <span class="number">0x90</span>, <span class="number">0x44</span>, <span class="number">0xa1</span>]</span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">33</span>,-<span class="number">1</span>,-<span class="number">1</span>):</span><br><span class="line">    code[i] ^= code[i+<span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> m <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">37</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">126</span>):</span><br><span class="line">        <span class="keyword">if</span> code[m] == ((j + m) % <span class="number">114514</span> + <span class="number">114514</span>) % <span class="number">114514</span>:</span><br><span class="line">            flag += <span class="built_in">chr</span>(j)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://user-images.githubusercontent.com/116374553/229344185-fb981276-8c3b-43a2-a9bc-a33efaee71d0.png"></p>
+<p>最终flag为ctfshow{Just_F00l‘s_D@y_R3_Ch3ck-in!}</p>
+<h6 id="攻防世界-toddler-regs"><a href="#攻防世界-toddler-regs" class="headerlink" title="攻防世界_toddler_regs"></a>攻防世界_toddler_regs</h6><p>用IDA64打开程序，同时加载它给出的pdb文件，用F12查看字符串，发现flag字符进入</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/229344597-d758a07c-5fd2-4023-a514-fb7a3d457de6.png"></p>
+<p>发现其中还缺失了两个部分</p>
+<p>于是进入主线程序stage_wrapper</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/229344666-aee6dff5-c058-4f29-966c-9463374d6ef9.png"></p>
+<p>task1是让我们，将第一个输入函数的参数为23，它给了一个getchar来接收我们输入的数据，但是其实并没有什么用处，它函数j_stage_1的参数值是已经给定的，需要使用x64dbg来修改输入函数的值，才能够使得函数进行下一步，task2会直接执行j_stage_2_fake，无论我们输入任何数值似乎都没有用处，它会直接判断错误</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/229344880-64e17f13-e10a-4ace-af1e-dc27b8cb4a4d.png"></p>
+<p>但是在stage_2_fake函数的有一句输出指令中会有一个j_stage_2_real,进入这里就会直接task2执行成功，于是需要在主程序中找到一个地方直接用jmp指令跳转到函数j_stage_2_real</p>
+<p>随后查看程序中的字符，其实还有一个task3，但是这里没有被ida成功识别为一个函数。但是我们先忽略这里，去到x64dbg中修改之前要修改的内容。</p>
+<p>找到主程序的位置，修改task1要求的参数</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/229345324-304169a6-89cc-4e87-a4ff-fce99f1be57b.png"></p>
+<p>将此处的20修改为17</p>
+<p>然后通过字符串的搜索，寻找到正确的task2 checking的地址，</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/229345708-66c79a8b-7e20-452e-aec0-712d2e0d16fa.png"></p>
+<p>记下此处的地址</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/229345587-291dc657-f64d-444b-b13e-d0358dda5661.png"></p>
+<p>在进入该条指令后，程序就会跳转到错误的task2 checking中，于是修改这条call指令，将该处指令修改为</p>
+<p>call 0x0000000140011E60，修改完之后它会自动它会自动变为call &lt;toddler_regs.stage_2_real&gt;，则说明我们改动得正确。修补文件，生成新的exe文件，再次ida打开</p>
+<p>回到主程序</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/229345996-48803661-15b2-4947-8dd5-eef0ccc9c502.png"></p>
+<p>这个时候task1后的函数输入的参数变为了规定的23，task2任务要进入的函数也变为了stage_2_real，同时task3也出现在了函数中，观察task3，似乎就是告诉了我们在哪里去读取我们的flag，没有对flag进行变动，于是，我们进入stage_2_real，并在return语句处下一个断点，然后ida动态调试我们的文件，在返汇编界面直接，将鼠标移到flag处，即可查看flag的最终内容。</p>
+<p>题目最终得到的flag为flag{Xp0int_1s_n1c3_but_Xp0intJNU_is_we1rd}</p>
+
+      
+    </div><!-- .entry-content -->
+    
+    <footer class="entry-meta">
+    <a href="/2023/04/02/202342-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%882%EF%BC%89/">
+    <time datetime="2023-04-01T16:00:00.000Z" class="entry-date">
+        2023-04-02
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a>
+  </div>
+
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2023/03/25/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95%EF%BC%88linux%EF%BC%89/" rel="next">IDA远程动态调试（linux） <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2023/04/02/202342-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%882%EF%BC%89/">汇编语言（2）</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/25/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95%EF%BC%88linux%EF%BC%89/">IDA远程动态调试（linux）</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/25/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言（1）</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/18/UPX%E8%84%B1%E5%A3%B3/">脱壳（1）</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/18/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98%EF%BC%882%EF%BC%89/">迷宫问题（2)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2023 Blank
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+
+<script src="../../source/js/top.js" type="text/javascript"></script>
+<!--返回顶部开始-->
+
+<div id="full" style="width:0px; height:0px; position:fixed; right:8%; bottom:100px; z-index:100; text-align:center; background-color:transparent; cursor:pointer;">
+  <a href="#" onclick="goTop();return false;">
+    <img src="/css/images/top.png" border=0 alt="返回顶部">
+  </a>
+</div>
+<!--返回顶部结束-->
+
+<!--底部添加运行时间-->
+
+<div class="run_time" style=" text-align:center;">
+    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("03/07/2023 00:00:00");  // 此处修改为你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+      setInterval("createtime()",250);
+    </script>
+    </br>
+    </br>
+    <!--添加不蒜子统计-->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"> </script>
+    <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+    </span>
+    <span id="busuanzi_container_site_uv">
+        ฅʕ•͡-•ʔ 访问人数：<span id="busuanzi_value_site_uv"></span>人
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+    </span> 
+    <span id="busuanzi_container_site_pv">
+        👀访问量：<span id="busuanzi_value_site_pv"></span>次
+    </span>
+    </br>
+    </br>
+</div>
+<script src="../../source/js/top.js" type="text/javascript"></script>
+<!--返回顶部开始-->
+<div id="full" style="width:0px; height:0px; position:fixed; right:8%; bottom:100px; z-index:100; text-align:center; background-color:transparent; cursor:pointer;">
+  <a href="#" onclick="goTop();return false;">
+    <img src="/css/images/top.png" border=0 alt="返回顶部">
+  </a>
+</div>
+<!--返回顶部结束-->
+
+  
+
+
+
+
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

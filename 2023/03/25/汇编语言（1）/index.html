@@ -13,14 +13,14 @@
   
   
   
-  <title>汇编语言（1） | Blank Blog</title>
+  <title>汇编语言 | Blank Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="汇编语言（1）学习笔记基础知识1.存储单元（1Byte）：存储器被划分为若干存储单元，由0开始编号 2.CPU对存储器读写：①存储单元的地址（地址信息） ​                                      ②器件的选择，读或写命令（控制信息） ​                                      ③读或写的数据（数据信息）  地址总线：CPU通过地">
+  <meta name="description" content="汇编语言学习笔记基础知识1.存储单元（1Byte）：存储器被划分为若干存储单元，由0开始编号 2.CPU对存储器读写：①存储单元的地址（地址信息） ​                                      ②器件的选择，读或写命令（控制信息） ​                                      ③读或写的数据（数据信息）  地址总线：CPU通过地址总线">
 <meta property="og:type" content="article">
-<meta property="og:title" content="汇编语言（1）">
+<meta property="og:title" content="汇编语言">
 <meta property="og:url" content="http://example.com/2023/03/25/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%881%EF%BC%89/index.html">
 <meta property="og:site_name" content="Blank Blog">
-<meta property="og:description" content="汇编语言（1）学习笔记基础知识1.存储单元（1Byte）：存储器被划分为若干存储单元，由0开始编号 2.CPU对存储器读写：①存储单元的地址（地址信息） ​                                      ②器件的选择，读或写命令（控制信息） ​                                      ③读或写的数据（数据信息）  地址总线：CPU通过地">
+<meta property="og:description" content="汇编语言学习笔记基础知识1.存储单元（1Byte）：存储器被划分为若干存储单元，由0开始编号 2.CPU对存储器读写：①存储单元的地址（地址信息） ​                                      ②器件的选择，读或写命令（控制信息） ​                                      ③读或写的数据（数据信息）  地址总线：CPU通过地址总线">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227700054-8dbe6227-d6ef-4ff3-84cd-c67c5946cde9.jpeg">
 <meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227700856-2f37a3bf-d81d-4512-abc6-c50461fee746.jpg">
@@ -28,16 +28,8 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227724581-4a468204-32b6-4509-b19f-78b0c92fe23a.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227724560-a1fde403-e9b0-4997-8e53-d9e055ce0cff.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227707380-d9d5219e-dc95-48ce-9ae3-37a44db6aba4.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227716456-2bfd5f9f-30d3-4d29-b813-2ff247c4042b.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227717022-89cb9036-190d-4eaf-b7ab-190f8068a8c4.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227717024-1a56b044-140e-45f4-b703-a6dc3f21678c.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227717029-f2484a83-3c51-4e6e-aa3c-6d02b61bf1f3.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227716458-f2ebee57-442b-42e3-a739-ca5cba482f31.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227717296-a5f741d3-e528-47c9-b2a4-6dd24b5e0153.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227718708-be2af14e-4174-4276-bb0b-4bfbd6cc023b.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/227718709-720ff66e-1a1f-430a-a3b4-e854f6316031.png">
 <meta property="article:published_time" content="2023-03-24T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-25T15:25:13.581Z">
+<meta property="article:modified_time" content="2023-04-09T08:11:18.393Z">
 <meta property="article:author" content="Blank">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/116374553/227700054-8dbe6227-d6ef-4ff3-84cd-c67c5946cde9.jpeg">
@@ -91,7 +83,7 @@
         
   
     <h1 class="entry-title article-title">
-      汇编语言（1）
+      汇编语言
     </h1>
   
 
@@ -110,7 +102,7 @@
     <!--目录-文章开头-->
     
     </br>   
-        <h1 id="汇编语言（1）"><a href="#汇编语言（1）" class="headerlink" title="汇编语言（1）"></a>汇编语言（1）</h1><h2 id="学习笔记"><a href="#学习笔记" class="headerlink" title="学习笔记"></a>学习笔记</h2><h4 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h4><p><em><strong>1</strong></em>.<strong>存储单元</strong>（1Byte）：存储器被划分为若干存储单元，由0开始编号</p>
+        <h1 id="汇编语言"><a href="#汇编语言" class="headerlink" title="汇编语言"></a>汇编语言</h1><h2 id="学习笔记"><a href="#学习笔记" class="headerlink" title="学习笔记"></a>学习笔记</h2><h4 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h4><p><em><strong>1</strong></em>.<strong>存储单元</strong>（1Byte）：存储器被划分为若干存储单元，由0开始编号</p>
 <p><strong>2</strong>.<strong>CPU对存储器读写</strong>：①存储单元的地址（地址信息）</p>
 <p>​                                      ②器件的选择，读或写命令（控制信息）</p>
 <p>​                                      ③读或写的数据（数据信息）</p>
@@ -192,38 +184,6 @@
 
 <p>最终输出：ctf2020{d9-dE6-20c}</p>
 <p>则flag为：flag{d9-dE6-20c}</p>
-<h5 id="攻防世界-easy-maze"><a href="#攻防世界-easy-maze" class="headerlink" title="攻防世界_easy_maze"></a>攻防世界_easy_maze</h5><p>将程序拖入Die发现是一个64位ELF文件，用IDA64打开，查看main函数。</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/227716456-2bfd5f9f-30d3-4d29-b813-2ff247c4042b.png"></p>
-<p>程序中Step_0函数是给v6数组中未赋值的内容进行赋值的，Step_1是用赋值之后的v6去给v5进行赋值，最终得到迷宫的地图，再将地图传入Step_2</p>
-<p>当分析到Step_1函数的时候发现，在函数中有个getAStart函数</p>
-<img src="https://user-images.githubusercontent.com/116374553/227717022-89cb9036-190d-4eaf-b7ab-190f8068a8c4.png" style="zoom: 33%;" />
-
-<p>进入该函数后又有一个getA函数</p>
-<img src="https://user-images.githubusercontent.com/116374553/227717024-1a56b044-140e-45f4-b703-a6dc3f21678c.png" style="zoom: 33%;" />
-
-<p>进入getA函数后就会一直循环的进入同一个getA函数，导致无法分析程序</p>
-<img src="https://user-images.githubusercontent.com/116374553/227717029-f2484a83-3c51-4e6e-aa3c-6d02b61bf1f3.png" style="zoom:33%;" />
-
-<p>于是只能通过动态调试的方法来得到地图，此处使用IDA远程动态调试linux的文件</p>
-<p>在Step_1函数处下一个断点，F9运行，进入动态调试界面后，单步F8步过函数，直接到v3，将鼠标箭头放置到v5数组处，即可看见v5数组已经被赋值了，记下赋值的内容</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/227716458-f2ebee57-442b-42e3-a739-ca5cba482f31.png"></p>
-<p>进入Step_2函数，其中出现了(*a1)[7 * v10 + v9] == 1</p>
-<p>由此可以看出，v10应该为迷宫的上下向，v9为左右向，并且迷宫每七个字符为一行（7列），由于v10和v9均为0，则迷宫的起点为（0,0）。while循环仅在a1数组取值为1的时候执行，可以知道1为通路，0为墙。在函数的末尾处有一个双分支的判断语句当v10 == 6 &amp;&amp; v9 == 6时，则走迷宫成功，可以得知终点为（6,6）。接着分析方向，由于v9为左右向，那么++v9就为右，—v9为左，v10同理，得出方向‘d’右，‘s’下，‘w’上，’a‘左。</p>
-<img src="https://user-images.githubusercontent.com/116374553/227717296-a5f741d3-e528-47c9-b2a4-6dd24b5e0153.png" style="zoom: 50%;" />
-
-<p>迷宫图像：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1001111</span><br><span class="line">1011001</span><br><span class="line">1110111</span><br><span class="line">0001100</span><br><span class="line">1111000</span><br><span class="line">1000111</span><br><span class="line">1111101</span><br></pre></td></tr></table></figure>
-
-<p>可知迷宫的行数也为7</p>
-<p>将以上的条件代入自动走迷宫脚本</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/227718708-be2af14e-4174-4276-bb0b-4bfbd6cc023b.png"></p>
-<p>得到路径ssddwdwdddssaasasaaassddddwdds</p>
-<p>在Step_2处下断点，再次对程序进行动态调试，并且在终端中输入得到的结果，用F8步过函数，即可得到flag</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/227718709-720ff66e-1a1f-430a-a3b4-e854f6316031.png"></p>
-<p>最终得到flag为UNCTF{ssddwdwdddssaasasaaassddddwdds}</p>
-<p>总结：①在程序陷入无限循环导致无法自主得出一部分内容的时候，可以选择动态调试，跳过某一过程直接获取数值</p>
-<p>​            ②对于得到一大堆数据内容（没有任何的符号），但又需要将其变为数组的时候，可以考略利用python，input循环输入（直接将数据复制粘贴到输入框中），再打印将其变为元组即可。</p>
-<p>​            ③对于linux中的ELF文件动态调试除了使用IDA，还可以直接在linux中利用gdb进行调试（需要进一步学习）</p>
 
       
     </div><!-- .entry-content -->
@@ -252,7 +212,7 @@
         <span class="nav-previous"><a href="/2023/03/25/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95%EF%BC%88linux%EF%BC%89/" rel="prev"><span class="meta-nav">←</span> IDA远程动态调试（linux）</a></span>
     
     
-        <span class="nav-next"><a href="/2023/03/18/UPX%E8%84%B1%E5%A3%B3/" rel="next">脱壳（1） <span class="meta-nav">→</span></a></span>
+        <span class="nav-next"><a href="/2023/03/18/UPX%E8%84%B1%E5%A3%B3/" rel="next">脱壳 <span class="meta-nav">→</span></a></span>
     
 </nav><!-- .nav-single -->
 
@@ -278,7 +238,7 @@
   <aside class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">3</span></li></ul>
     </div>
   </aside>
 
@@ -290,23 +250,23 @@
       <ul>
         
           <li>
+            <a href="/2023/04/09/%E8%84%B1%E5%A3%B3%E9%A2%98%E7%9B%AE/">脱壳题目</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/09/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE/">迷宫问题相关题目</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/09/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a>
+          </li>
+        
+          <li>
             <a href="/2023/04/02/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%882%EF%BC%89/">汇编语言（2）</a>
           </li>
         
           <li>
             <a href="/2023/03/25/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95%EF%BC%88linux%EF%BC%89/">IDA远程动态调试（linux）</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/25/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%881%EF%BC%89/">汇编语言（1）</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/18/UPX%E8%84%B1%E5%A3%B3/">脱壳（1）</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/18/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98%EF%BC%882%EF%BC%89/">迷宫问题（2)</a>
           </li>
         
       </ul>

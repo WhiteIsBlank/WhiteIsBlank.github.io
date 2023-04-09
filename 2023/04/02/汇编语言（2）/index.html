@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/116374553/229345587-291dc657-f64d-444b-b13e-d0358dda5661.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/116374553/229345996-48803661-15b2-4947-8dd5-eef0ccc9c502.png">
 <meta property="article:published_time" content="2023-04-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-04-02T10:06:41.735Z">
+<meta property="article:modified_time" content="2023-04-09T08:15:53.911Z">
 <meta property="article:author" content="Blank">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/116374553/229342861-17881430-94c8-4e60-8493-7767f97b8ab0.png">
@@ -114,30 +114,30 @@
 <h4 id="bx-和loop指令"><a href="#bx-和loop指令" class="headerlink" title="[bx]和loop指令"></a>[bx]和loop指令</h4><p><em><strong>1.<em><strong>描述性符号“（）”，使用描述性符号来表示寄存器和内存单元中的</strong></em>内容</strong></em></p>
 <p>​        括号中的内容：①寄存器名②段寄存器名③内存单元的物理地址（一个20位数据）</p>
 <p>​        （X）表示的数据类型有两种：①字（2）（ds、ax….) ②字节（1）（al、bl….)</p>
-<p>***2.***约定符号idata常量：mov ds,idata 非法指令（ds并不接收直接的传值）</p>
-<p><em><strong>3.</strong></em>[bx]偏移地址为bx中存放的内容，段地址在ds中</p>
+<p><em><strong>2</strong></em>.约定符号idata常量：mov ds,idata 非法指令（ds并不接收直接的传值）</p>
+<p><em><strong>3</strong></em>.[bx]偏移地址为bx中存放的内容，段地址在ds中</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov ax,[bx]</span><br></pre></td></tr></table></figure>
 
 <p>bx中存放的数据作为偏移地址EA，段地址SA默认在ds中，将SA：EA处的数据送入ax</p>
-<p>***4.***inc</p>
+<p><em><strong>4</strong></em>.inc</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov bx,1</span><br><span class="line">inc bx</span><br><span class="line">#执行结果bx = 2</span><br></pre></td></tr></table></figure>
 
-<p>***5.***Loop指令</p>
+<p><em><strong>5</strong></em>.Loop指令</p>
 <p>两步操作：①（cx) = (cx) - 1</p>
 <p>​                    ②判断cx中的值，不为0则转至标号处执行程序，如果为0则向下执行</p>
 <p>loop实现循环功能，cx存放循环次数</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#loop指令实现2^12</span><br><span class="line">assume cs:code</span><br><span class="line">code segment</span><br><span class="line">	mov ax,2</span><br><span class="line">	</span><br><span class="line">	mov cx,11</span><br><span class="line">s:	add ax,ax</span><br><span class="line">    loop s</span><br><span class="line"></span><br><span class="line">mov ax,4c00h</span><br><span class="line">int 21h       #程序返回</span><br><span class="line">codes ends    #段结束</span><br><span class="line">end           #程序结束</span><br></pre></td></tr></table></figure>
 
-<p>***6.***汇编源程序中，数据不能够以字母开头，所以需要在前面加个0</p>
-<p>***7.***Debug和编译器masm差异：</p>
+<p><em><strong>6</strong></em>.汇编源程序中，数据不能够以字母开头，所以需要在前面加个0</p>
+<p><em><strong>7</strong></em>.Debug和编译器masm差异：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#debug：</span><br><span class="line">mov ax,2000</span><br><span class="line">mov ds,ax</span><br><span class="line">mov al,[0]</span><br><span class="line">#在debug中mov al,[0]指令会被当做，将ds:[0]中的数据存入al寄存器中</span><br><span class="line">#意味着debug将，[0]作为了一个内存单元</span><br><span class="line">#masm：</span><br><span class="line">mov ax,2000h</span><br><span class="line">mov ds,ax</span><br><span class="line">mov al,[0]</span><br><span class="line">#在masm编译器中，会将最后一句指令当做，将0存入寄存器al中</span><br><span class="line">#意味着masm将，&#x27;[0]&#x27;变为了&#x27;0&#x27;——&gt;&#x27;[idata]&#x27;&lt;==&gt;&#x27;idata&#x27;</span><br></pre></td></tr></table></figure>
 
 <p>汇编原程序中指令含义</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov al,[0] #mov al,0</span><br><span class="line">mov al,ds:[0] #(al) = ((ds)*16 + 0)</span><br><span class="line">mov al,[bx] #(al) = ((ds)*16+(bx))</span><br><span class="line">mov al,ds:[bx] #同上一句</span><br></pre></td></tr></table></figure>
 
-<p>***8.***段前缀</p>
+<p><em><strong>8</strong></em>.段前缀</p>
 <p>用于显示的指明内存单元的段地址：“ds:”、“cs:”、“ss:”、“es:”</p>
-<p>***9.***一段安全的空间</p>
+<p><em><strong>9</strong></em>.一段安全的空间</p>
 <p>①需要直接向一段内存中写入内容</p>
 <p>②这段内存空间不应存放系统挥着其他程序的数据或代码，否则写入操作很可能引发错误</p>
 <p>③DOS方式下，一般情况，0:200~0:2ff空间中没有系统或其他程序的数据或代码</p>

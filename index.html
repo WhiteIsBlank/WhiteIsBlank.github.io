@@ -179,6 +179,136 @@
 
 
   
+    <article id="post-Python" class="post-Python post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2023/04/20/Python/">Python逆向</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://example.com/2023/04/20/Python/" data-id="clgp2yxpf0000ksl07o2wbc9d" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+    
+    <div class="entry-content">
+      
+      <!-- Table of Contents -->
+    <!--目录-侧边栏-->
+    
+    <!--目录-文章开头-->
+    
+    </br>   
+        <h1 id="Python逆向"><a href="#Python逆向" class="headerlink" title="Python逆向"></a>Python逆向</h1><h3 id="Python基础使用"><a href="#Python基础使用" class="headerlink" title="Python基础使用"></a>Python基础使用</h3><p>1.pip升级：在相应的python文件夹下，有python.exe的目录下cmd运行以下指令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python.exe -m pip install --upgrade pip</span><br></pre></td></tr></table></figure>
+
+<p>2.pip降级：在相应的python文件夹下，有python.exe的目录下cmd运行以下指令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install pip==指定版本号</span><br></pre></td></tr></table></figure>
+
+<p>3.电脑python版本修改：电脑的python环境是由，环境变量中PATH变量下置顶的那一个python版本决定的，如果想要切换python的版本，可以选择直接修改环境变量中PATH变量下置顶的版本即可。</p>
+<p>注意：有的时候可能会失灵，多试几次就行了。如果在终端中查看python环境切换正确，那么就是真的切换正确了。cmd中切换正确就不一定了</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44244190/article/details/128116010">https://blog.csdn.net/weixin_44244190/article/details/128116010</a></p>
+<h3 id="Pyinstaller打包"><a href="#Pyinstaller打包" class="headerlink" title="Pyinstaller打包"></a>Pyinstaller打包</h3><p>使用PyInstaller Extractor工具进行解包</p>
+<p>在有pyinstxtractor.py的目录下cmd进入命令提示符窗口，同时将需要解包的文件复制到该目录下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python pyinstxtractor.py xxx.exe</span><br></pre></td></tr></table></figure>
+
+<p>运行该指令后会得到一个文件夹，里面包含主程序所引用的所有库以及代码的pyc文件</p>
+<p><strong>注意事项</strong>：需要在与exe文件相同的python环境去解包我们的exe文件（在解包之后可以通过查看目录下的pythonx.dll文件了解python版本环境），否者解包后的xxx.exe_extracted文件夹会是空的。</p>
+<p>此时可能需要<strong>切换电脑的python版本</strong>，方法入上文所示</p>
+<h4 id="识别被pyinstaller打包的python"><a href="#识别被pyinstaller打包的python" class="headerlink" title="识别被pyinstaller打包的python"></a>识别被pyinstaller打包的python</h4><ul>
+<li>未被抹去掉特征的python：在.rdata段会出现<ul>
+<li>“<em><strong>PyInstaller</strong></em>: FormatMessageW failed.”</li>
+<li>“Installing <em><strong>PYZ</strong></em>: Could not get sys.path”</li>
+</ul>
+</li>
+</ul>
+<h3 id="pyc"><a href="#pyc" class="headerlink" title=".pyc"></a>.pyc</h3><ol>
+<li><p>uncompyle6反编译</p>
+<p>版本存在一定的限制，3.9以上的python版本是无法使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uncompyle6 -o xxx.py xxx.pyc</span><br></pre></td></tr></table></figure></li>
+<li><p>pycdc工具（3.9以上）</p>
+<p>必须在终端中使用才可以（pycdc文件和需要反编译的文件在同一个目录下）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./pycdc xxx.pyc</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>​      参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_63585949/article/details/127080253">https://blog.csdn.net/qq_63585949/article/details/127080253</a></p>
+<p>   3.在线网站</p>
+<p>​      <a target="_blank" rel="noopener" href="https://tool.lu/pyc/">https://tool.lu/pyc/</a></p>
+<h3 id="pyinstaller-—-gt-pyc-—-gt-源文件"><a href="#pyinstaller-—-gt-pyc-—-gt-源文件" class="headerlink" title="pyinstaller —&gt; .pyc —&gt; 源文件"></a>pyinstaller —&gt; .pyc —&gt; 源文件</h3><h4 id="exe-——-gt-pyc"><a href="#exe-——-gt-pyc" class="headerlink" title=".exe ——&gt; .pyc"></a>.exe ——&gt; .pyc</h4><p>​                              ——<strong>pyc文件修复</strong></p>
+<p>如果电脑安装的python版本和需解包文件的python版本不同，需要我们利用.exe_extracted文件夹中的main.py(可能会是其他的名称)和struct.py对main.pyc文件进行修改</p>
+<img src="https://user-images.githubusercontent.com/116374553/232314331-197c379c-6eaf-47bc-bb82-32573774cc26.png" style="zoom: 50%;" />
+
+<p><strong>补充小知识</strong>：python文件打包成exe文件过程中，会抹去pyc文件前的部分信息，所以在反编译之前需要检查并添加则部分信息</p>
+<p>但是依我目前解包的文件来看，似乎我们的主函数反编译并没有太大问题，只是会影响注释的内容</p>
+<p><em><strong>就拿buu_login的解包后的文件来看</strong>：</em></p>
+<p><strong>我</strong>：</p>
+<p>利用winhex分别打开</p>
+<img src="https://user-images.githubusercontent.com/116374553/232316178-0feacf33-c441-476b-9d75-15a8b71207e8.png" style="zoom:50%;" />
+
+<img src="https://user-images.githubusercontent.com/116374553/232316236-65f6dc88-1b12-4639-8063-8b30851120aa.png" style="zoom:50%;" />
+
+<p>当我将main.pyc红框中的数据修改得和struct.pyc中一样的时候，反编译之后发现其实只有注释发生了变化（magic number占据四字节的内容，但是需要补齐其他的一些部分，以0补齐即可）</p>
+<img src="https://user-images.githubusercontent.com/116374553/232315961-52f57892-30e0-48ed-9601-5acae8c77352.png" style="zoom: 100%;" />
+
+<p><strong>其他人</strong>：参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46296905/article/details/116266390">https://blog.csdn.net/m0_46296905/article/details/116266390</a></p>
+<img src="https://user-images.githubusercontent.com/116374553/232316731-50c3e5e3-dacd-4736-9186-b602bfff5d39.png" style="zoom: 67%;" />
+
+<img src="https://user-images.githubusercontent.com/116374553/232317353-1b76dccc-a18a-4a63-b79d-f075cd94c0bb.png" style="zoom:67%;" />
+
+<p>修改后的login.pyc</p>
+<img src="https://user-images.githubusercontent.com/116374553/232317776-eef60c17-56c9-4b8c-8473-864c1fcb3e03.png" style="zoom:67%;" />
+
+<p>如果是在这种情况之下，当我们直接反编译login.pyc文件会出现以下的文字</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/232320756-ac6e1836-892d-4205-84cb-b3de3bc1e600.png"></p>
+<p>所以就需要我们还原magic number(与python版本有关)，方法就是上图所示</p>
+<p>其中还有一点就是向<strong>winhex中插入数据</strong>：</p>
+<p>我们赋制struct中我们想要插入login.pyc的内容，也可以我们自己编写相应的内容在记事本中，然后粘贴到我们想要插入的起始位置</p>
+<p>详细参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/destiny1507/article/details/101352748?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161968055116780264099891%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=161968055116780264099891&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-4-101352748.pc_search_result_cache&amp;utm_term=winhex%E5%A6%82%E4%BD%95%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE">https://blog.csdn.net/destiny1507/article/details/101352748?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161968055116780264099891%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=161968055116780264099891&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-4-101352748.pc_search_result_cache&amp;utm_term=winhex%E5%A6%82%E4%BD%95%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE</a></p>
+<h4 id="pyc-—-gt-源文件"><a href="#pyc-—-gt-源文件" class="headerlink" title=".pyc —&gt; 源文件"></a>.pyc —&gt; 源文件</h4><h5 id="1-无Key参数的逆向"><a href="#1-无Key参数的逆向" class="headerlink" title="1.无Key参数的逆向"></a>1.无Key参数的逆向</h5><p>直接用Extractor工具解包，再反编译即可</p>
+<h5 id="2-有Key参数的逆向"><a href="#2-有Key参数的逆向" class="headerlink" title="2.有Key参数的逆向"></a>2.有Key参数的逆向</h5><p>pyinstaller打包原理，将py编译成pyc，然后部分压缩为pyz，然后程序再调用pyc和pyz</p>
+<p>此类文件解包后生成的是被加密的pyc文件，使用的是AES加密算法，密钥会被被存放在“pyimod00_crypto_key.pyc”文件中。</p>
+<p>在生成的xxx.exe_extracted文件夹中含有Base_Library.zip里面都是库文件的pyc</p>
+<p><strong>解密脚本</strong>（将我们需要的加密pyc给解密就可以了）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tinyaes</span><br><span class="line"><span class="keyword">import</span> zlib</span><br><span class="line"> </span><br><span class="line">CRYPT_BLOCK_SIZE = <span class="number">16</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 从crypt_key.pyc获取key，也可自行反编译获取</span></span><br><span class="line">key = <span class="built_in">bytes</span>(<span class="string">&#x27;xxxxxxxx&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>) <span class="comment">#——&gt;xxxxx为key</span></span><br><span class="line">inf = <span class="built_in">open</span>(<span class="string">&#x27;xxx.pyc.encrypted&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="comment"># 打开加密文件</span></span><br><span class="line">outf = <span class="built_in">open</span>(<span class="string">&#x27;xxx.pyc&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="comment"># 输出文件</span></span><br><span class="line"><span class="comment">#可能会打开和输出失败，请写入绝对路径</span></span><br><span class="line"><span class="comment"># 按加密块大小进行读取</span></span><br><span class="line">iv = inf.read(CRYPT_BLOCK_SIZE)</span><br><span class="line">cipher = tinyaes.AES(key, iv) </span><br><span class="line"><span class="comment"># 解密</span></span><br><span class="line">plaintext = zlib.decompress(cipher.CTR_xcrypt_buffer(inf.read()))</span><br><span class="line"><span class="comment"># 补pyc头(最后自己补也行)，补齐magic number</span></span><br><span class="line">outf.write(<span class="string">b&#x27;\x6F\x0D\x0D\x0A\x00\x00\x00\x00\x70\x79\x69\x30\x10\x01\x00\x00&#x27;</span>)</span><br><span class="line"><span class="comment"># 写入解密数据</span></span><br><span class="line">outf.write(plaintext)</span><br><span class="line">inf.close()</span><br><span class="line">outf.close()</span><br></pre></td></tr></table></figure>
+
+<h3 id="Python字节码"><a href="#Python字节码" class="headerlink" title="Python字节码"></a>Python字节码</h3><h4 id="pyc——-gt-字节码"><a href="#pyc——-gt-字节码" class="headerlink" title="pyc——&gt;字节码"></a>pyc——&gt;字节码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> dis</span><br><span class="line"><span class="keyword">import</span> marshal</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;xxx.pyc&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:<span class="comment">#如果直接填写pyc文件名称无法运行，就填写pyc文件的绝对路径(绝对路径不能过长，否者会打开文件失败)</span></span><br><span class="line">    f.seek(<span class="number">16</span>)</span><br><span class="line">    dis.dis(marshal.load(f))</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：运行这段代码的时候，需要pyc的python环境和软件的python环境一致，否者会失败</p>
+<h4 id="字节码"><a href="#字节码" class="headerlink" title="字节码"></a>字节码</h4><h5 id="字节码-1"><a href="#字节码-1" class="headerlink" title="字节码"></a>字节码</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">实例：    5          0      LOAD_FAST       0(a)</span><br><span class="line">含义：源码行号|指令在函数中的偏移|操作指令|操作数|实际参数值</span><br></pre></td></tr></table></figure>
+
+<h5 id="指令符号"><a href="#指令符号" class="headerlink" title="指令符号"></a>指令符号</h5><p>参考：官方文档：<a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.8/library/dis.html">https://docs.python.org/zh-cn/3.8/library/dis.html</a></p>
+
+      
+    </div><!-- .entry-content -->
+    
+    <footer class="entry-meta">
+    <a href="/2023/04/20/Python/">
+    <time datetime="2023-04-19T16:00:00.000Z" class="entry-date">
+        2023-04-20
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/python%E9%80%86%E5%90%91/">python逆向</a>
+  </div>
+
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-PE文件结构" class="post-PE文件结构 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -1046,71 +1176,12 @@
 
 
   
-    <article id="post-迷宫问题" class="post-迷宫问题 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
   
-    <h1 class="entry-title">
-      <a class="article-title" href="/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://example.com/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" data-id="clg94md4k0005p0l0ck4gffpk" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-    
-    <div class="entry-content">
-      
-      <!-- Table of Contents -->
-    <!--目录-侧边栏-->
-    
-    <!--目录-文章开头-->
-    
-    </br>   
-        <h1 id="迷宫问题"><a href="#迷宫问题" class="headerlink" title="迷宫问题"></a>迷宫问题</h1><p>解决了几道迷宫问题后，对该类型问题的一些浅薄认识及自我总结。</p>
-<h2 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h2><p>1.在题目中会有一个大的循环，其中会包含四个小的分支结构。循环的末尾处也会有一个双分支结构用来判断迷宫是否到达出口点或是碰到墙壁（通常此处的判断条件会告诉我们迷宫的宽度)。</p>
-<p>2.特点1中的四个分支结构语句，用来判断方向（通常分支结构语句中会有两个整数，进行加一减一来改变方向）。</p>
-<p>3.会有数组用来存放地图，数组中会大量的出现*、#或者0、1等一系列具有代表性的显性信号。</p>
-<h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><p>1.寻找地图（结合迷宫数组和迷宫长度)</p>
-<p>2.找到迷宫的出口和入口，以及墙壁和通路。</p>
-<p>3.判断方向（结合while循环结尾处的判断条件和分支语句中整数加减1的情况）</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.当遇到题目中含有并未赋值的数组却又需要用，可能需要考略它的地址是否和其他变量的地址有一定联系。</p>
-<p>2.分析程序时尽可能的找到关键点（字符串等）。</p>
-<p>3.对于反汇编代码中的一些int型数据，可以考略转换为char类型。</p>
-<p>大多的迷宫问题，一般不仅仅只是专注于迷宫问题，其中还会伴随着ELF文件的动态调试（例如：通过动态态调试寻找迷宫图像）、对程序的脱壳等一系列的其他问题。这些问题都还有待我进一步的学习。</p>
-<p>相关题目在另一篇博客中</p>
-
-      
-    </div><!-- .entry-content -->
-    
-    <footer class="entry-meta">
-    <a href="/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">
-    <time datetime="2023-03-06T16:00:00.000Z" class="entry-date">
-        2023-03-07
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a>
-  </div>
-
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
+    <nav id="pagination">
+      <nav id="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      </nav>
+    </nav>
   
 
 </div></div>
@@ -1129,7 +1200,7 @@
   <aside class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/">python逆向</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">3</span></li></ul>
     </div>
   </aside>
 
@@ -1145,6 +1216,10 @@
           </li>
         
           <li>
+            <a href="/2023/04/20/Python/">Python逆向</a>
+          </li>
+        
+          <li>
             <a href="/2023/04/16/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a>
           </li>
         
@@ -1154,10 +1229,6 @@
         
           <li>
             <a href="/2023/04/09/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE/">迷宫问题相关题目</a>
-          </li>
-        
-          <li>
-            <a href="/2023/04/02/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%882%EF%BC%89/">汇编语言（2）</a>
           </li>
         
       </ul>

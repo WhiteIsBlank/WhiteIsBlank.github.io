@@ -13,12 +13,12 @@
   
   
   
-  <title>Category: 汇编语言 | Blank Blog</title>
+  <title>Blank Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Welcome to my world">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Blank Blog">
-<meta property="og:url" content="http://example.com/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/index.html">
+<meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="Blank Blog">
 <meta property="og:description" content="Welcome to my world">
 <meta property="og:locale" content="zh_CN">
@@ -68,73 +68,77 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="post type-post status-publish format-standard hentry archive-type-post">
-  <header class="entry-header">
-      
+    <article id="post-迷宫问题" class="post-迷宫问题 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
   
     <h1 class="entry-title">
-      <a class="archive-article-title" href="/2023/04/02/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%882%EF%BC%89/">汇编语言（2）</a>
+      <a class="article-title" href="/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a>
     </h1>
   
 
-  </header>
-  <footer class="entry-meta">
-    <a href="/2023/04/02/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%882%EF%BC%89/">
-    <time datetime="2023-04-01T16:00:00.000Z" class="entry-date">
-        2023-04-02
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://example.com/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" data-id="clg94md4k0005p0l0ck4gffpk" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+    
+    <div class="entry-content">
+      
+      <!-- Table of Contents -->
+    <!--目录-侧边栏-->
+    
+    <!--目录-文章开头-->
+    
+    </br>   
+        <h1 id="迷宫问题"><a href="#迷宫问题" class="headerlink" title="迷宫问题"></a>迷宫问题</h1><p>解决了几道迷宫问题后，对该类型问题的一些浅薄认识及自我总结。</p>
+<h2 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h2><p>1.在题目中会有一个大的循环，其中会包含四个小的分支结构。循环的末尾处也会有一个双分支结构用来判断迷宫是否到达出口点或是碰到墙壁（通常此处的判断条件会告诉我们迷宫的宽度)。</p>
+<p>2.特点1中的四个分支结构语句，用来判断方向（通常分支结构语句中会有两个整数，进行加一减一来改变方向）。</p>
+<p>3.会有数组用来存放地图，数组中会大量的出现*、#或者0、1等一系列具有代表性的显性信号。</p>
+<h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><p>1.寻找地图（结合迷宫数组和迷宫长度)</p>
+<p>2.找到迷宫的出口和入口，以及墙壁和通路。</p>
+<p>3.判断方向（结合while循环结尾处的判断条件和分支语句中整数加减1的情况）</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.当遇到题目中含有并未赋值的数组却又需要用，可能需要考略它的地址是否和其他变量的地址有一定联系。</p>
+<p>2.分析程序时尽可能的找到关键点（字符串等）。</p>
+<p>3.对于反汇编代码中的一些int型数据，可以考略转换为char类型。</p>
+<p>大多的迷宫问题，一般不仅仅只是专注于迷宫问题，其中还会伴随着ELF文件的动态调试（例如：通过动态态调试寻找迷宫图像）、对程序的脱壳等一系列的其他问题。这些问题都还有待我进一步的学习。</p>
+<p>相关题目在另一篇博客中</p>
+
+      
+    </div><!-- .entry-content -->
+    
+    <footer class="entry-meta">
+    <a href="/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">
+    <time datetime="2023-03-06T16:00:00.000Z" class="entry-date">
+        2023-03-07
     </time>
 </a>
     
   <span class="article-delim">&#8226;</span>
   <div class="article-category">
-  <a class="article-category-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a>
+  <a class="article-category-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a>
   </div>
 
     
     </footer>
 </article>
-  
-    
-    
-    <article class="post type-post status-publish format-standard hentry archive-type-post">
-  <header class="entry-header">
-      
-  
-    <h1 class="entry-title">
-      <a class="archive-article-title" href="/2023/03/25/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%881%EF%BC%89/">汇编语言</a>
-    </h1>
-  
 
-  </header>
-  <footer class="entry-meta">
-    <a href="/2023/03/25/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%881%EF%BC%89/">
-    <time datetime="2023-03-24T16:00:00.000Z" class="entry-date">
-        2023-03-25
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a>
-  </div>
 
-    
-    </footer>
-</article>
+
+
+
+
   
   
-    </div></section>
+    <nav id="pagination">
+      <nav id="page-nav">
+        <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      </nav>
+    </nav>
   
 
 </div></div>

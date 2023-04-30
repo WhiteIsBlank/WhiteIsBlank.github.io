@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="Welcome to my world" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>PE文件结构 | Blank Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="PE文件结构Ⅰ.含义任何一个在Windows上运行的可执行文件都要遵循一定的格式，这个格式就是PE文件的结构。比如：exe、dll、部分sys PE文件在16进制工具内存中打开时，都是以4D 5A开头的，作为可执行文件的一个标记（MZ） 以WPS为例，运行WPS在winhex中以内存的形式打开WPS  ①PE文件分节分节含义在内存和硬盘中pe文件被分为了一节一节的存放，节间空隙以0来填充 PE结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PE文件结构">
+<meta property="og:url" content="http://example.com/2023/04/30/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="Blank Blog">
+<meta property="og:description" content="PE文件结构Ⅰ.含义任何一个在Windows上运行的可执行文件都要遵循一定的格式，这个格式就是PE文件的结构。比如：exe、dll、部分sys PE文件在16进制工具内存中打开时，都是以4D 5A开头的，作为可执行文件的一个标记（MZ） 以WPS为例，运行WPS在winhex中以内存的形式打开WPS  ①PE文件分节分节含义在内存和硬盘中pe文件被分为了一节一节的存放，节间空隙以0来填充 PE结构">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/230752170-8a91623d-c080-497e-a8f2-cfb22ac89ce1.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/230732307-6db32ddb-fc75-49fd-b3d1-97f5133d6ed7.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/230750819-4bff2c1a-fb04-4694-86be-1e92a420be24.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/230751229-c53d1692-7780-4771-a88e-6a07b231026b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/230751953-02de5621-8e35-4a3a-ba56-d0b00fd2dc80.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/230752214-03d33392-2206-4ae3-85b2-93ddc4b6fe7c.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/230752930-64b41565-ecea-42f5-a8fb-5495b629ee54.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/230756605-29cb568f-a7ae-4ee3-9e79-bceb09c4e934.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/230757079-317f17c0-c18c-4ab0-823a-50640adb939b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/230759788-677dfd48-b69d-4eef-abf8-3dffdc28102a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/232229404-9b41444e-1cca-499b-829b-4ecc5a70ac6b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/232231029-38afd01d-0c42-4737-ad18-6bcc6a0e33ad.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/232231154-3dfc22d2-7daa-4e2b-8565-80ce98109393.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/232231796-c40a06c5-e31b-4437-9385-45913aa715d5.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/232238119-2f3c79ee-10b6-45a1-abcb-52df62526b2b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234433867-6b5950ed-8cf4-4f09-9621-bbf3833999e2.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234622569-dfa6e7a5-0344-400a-aa04-adf931579d59.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234621943-f59dca17-0ada-4656-925e-6f542b8bb7de.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234439394-6075ceb6-12f2-4355-8344-bb19d4bb5b63.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234441719-8eb69102-db55-4161-babd-26bea268c30a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234442340-9542e174-bfd9-4c16-bc98-676873067ab9.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234443202-214c83c9-5d6b-44be-b1a2-046320210816.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234475466-f619e567-2827-4a06-80fb-21e10890b02d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234625644-1f6df591-5bd9-47f6-874c-caea19abcda6.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234627090-53900013-28bd-4a54-9333-31da01a40541.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234630622-445e36df-adec-45dc-853a-add9569d3969.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234633620-92ea411d-57ab-48c3-8670-fb9f7d30d42d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234634266-9cb0421f-9b03-4bce-b882-2d15d84f1e6e.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234639802-d10db288-cbad-4295-aadd-f3d2f326af60.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234640243-411c5fb3-888c-444f-8947-b67efac2da8e.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234640925-7588306e-1349-42e2-b38b-a46ab24e5269.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234641315-168e0f3b-937c-4fde-82cc-d872b9a87802.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234641613-0c78e699-9f8c-48d4-8214-7f2407472ec9.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234641740-50ebd33c-dfd6-44ec-b165-5c481f80d790.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/116374553/235347608-18d37579-e134-42eb-b635-3f8176e51983.png">
+<meta property="article:published_time" content="2023-04-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-04-30T10:13:32.640Z">
+<meta property="article:author" content="Blank">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/116374553/230752170-8a91623d-c080-497e-a8f2-cfb22ac89ce1.png">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Blank Blog" rel="home">Blank Blog</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-PE文件结构" class="post-PE文件结构 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      PE文件结构
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://example.com/2023/04/30/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" data-id="clg94md4e0001p0l0gmzl97bi" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+    
+    <div class="entry-content">
+      
+      <!-- Table of Contents -->
+    <!--目录-侧边栏-->
+    
+    <!--目录-文章开头-->
+    
+    </br>   
+        <h1 id="PE文件结构"><a href="#PE文件结构" class="headerlink" title="PE文件结构"></a>PE文件结构</h1><h2 id="Ⅰ-含义"><a href="#Ⅰ-含义" class="headerlink" title="Ⅰ.含义"></a>Ⅰ.含义</h2><p>任何一个在Windows上运行的可执行文件都要遵循一定的格式，这个格式就是PE文件的结构。比如：exe、dll、部分sys</p>
+<p>PE文件在16进制工具内存中打开时，都是以4D 5A开头的，作为可执行文件的一个标记（MZ）</p>
+<p>以WPS为例，运行WPS在winhex中以内存的形式打开WPS</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/230752170-8a91623d-c080-497e-a8f2-cfb22ac89ce1.png"></p>
+<h3 id="①PE文件分节"><a href="#①PE文件分节" class="headerlink" title="①PE文件分节"></a>①PE文件分节</h3><h6 id="分节含义"><a href="#分节含义" class="headerlink" title="分节含义"></a>分节含义</h6><p>在内存和硬盘中pe文件被分为了一节一节的存放，节间空隙以0来填充</p>
+<h6 id="PE结构是分节的原因"><a href="#PE结构是分节的原因" class="headerlink" title="PE结构是分节的原因"></a>PE结构是分节的原因</h6><ol>
+<li>节省硬盘空间（<strong>老的编译器</strong>）</li>
+</ol>
+<img src="https://user-images.githubusercontent.com/116374553/230732307-6db32ddb-fc75-49fd-b3d1-97f5133d6ed7.png" style="zoom: 67%;" />
+
+<ul>
+<li>硬盘对齐：200h</li>
+<li>内存对齐：1000h</li>
+</ul>
+<p>​                                          ——硬盘对齐为了增加读写的速度</p>
+<p>由前两点即可得知，当exe在内存中加载时会有一个拉伸的效果</p>
+<p>即pe文件存在这两种不同的形态：磁盘文件和内存映像</p>
+<p><strong>新的编译器（新的硬盘）</strong></p>
+<p>对齐一致，减小了运算量</p>
+<img src="https://user-images.githubusercontent.com/116374553/230750819-4bff2c1a-fb04-4694-86be-1e92a420be24.png" style="zoom:67%;" />
+
+<p>2.节省硬盘空间</p>
+<p>由于<strong>多开</strong>的原因</p>
+<img src="https://user-images.githubusercontent.com/116374553/230751229-c53d1692-7780-4771-a88e-6a07b231026b.png" style="zoom: 67%;" />
+
+<h3 id="②PE磁盘文件与内存映像的结构图"><a href="#②PE磁盘文件与内存映像的结构图" class="headerlink" title="②PE磁盘文件与内存映像的结构图"></a>②PE磁盘文件与内存映像的结构图</h3><img src="https://user-images.githubusercontent.com/116374553/230751953-02de5621-8e35-4a3a-ba56-d0b00fd2dc80.png" style="zoom: 67%;" />
+
+<h3 id="③PE文件结构图"><a href="#③PE文件结构图" class="headerlink" title="③PE文件结构图"></a>③PE文件结构图</h3><p><img src="https://user-images.githubusercontent.com/116374553/230752214-03d33392-2206-4ae3-85b2-93ddc4b6fe7c.jpg"></p>
+<h2 id="Ⅱ-PE文件头解析"><a href="#Ⅱ-PE文件头解析" class="headerlink" title="Ⅱ.PE文件头解析"></a>Ⅱ.PE文件头解析</h2><h3 id="①DOS头-MZ文件头和DOS-Stub"><a href="#①DOS头-MZ文件头和DOS-Stub" class="headerlink" title="①DOS头(MZ文件头和DOS Stub)"></a>①DOS头(MZ文件头和DOS Stub)</h3><p>​        ——&gt;40(确定大小)</p>
+<p>​        ——16位系统中使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">0x00 WORD e_magic;                *//5A4D  判断PE文件的标识符（MZ）                  </span><br><span class="line">0x04 WORD e_cp;                   //0090</span><br><span class="line">0x06 WORD e_crlc;                 //0003</span><br><span class="line">0x08 WORD e_cparhdr;              //0000</span><br><span class="line">0x0a WORD e_minalloc;             //0004</span><br><span class="line">0x0c WORD e_maxalloc;             //0000</span><br><span class="line">0x0e WORD e_ss;                   //FFFF</span><br><span class="line">0x10 WORD e_sp;                   //0000</span><br><span class="line">0x12 WORD e_csum;                 //00B8</span><br><span class="line">0x14 WORD e_ip;                   //0000</span><br><span class="line">0x16 WORD e_cs;                   //0000</span><br><span class="line">0x18 WORD e_lfarlc;               //0040</span><br><span class="line">0x1a WORD e_ovno;                 //0000 </span><br><span class="line">0x1c WORD e_res[4];               //0000 * 4</span><br><span class="line">0x24 WORD e_oemid;                //0000</span><br><span class="line">0x26 WORD e_oeminfo;              //0000</span><br><span class="line">0x28 WORD e_res2[10];             //0000*10</span><br><span class="line">0x3c DWORD e_lfanew;              *//000000E8(不尽相同)  pe文件的偏移量(从起始位置开始算)，寻找pe头的位置</span><br></pre></td></tr></table></figure>
+
+<p><strong>重点</strong>：e_magic/e_lfanew</p>
+<h3 id="②NT头"><a href="#②NT头" class="headerlink" title="②NT头"></a>②NT头</h3><p>NT头——&gt;标准PE头/<strong>可选PE头</strong></p>
+<p>通过e_lfanew即可找到PE头</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/230752930-64b41565-ecea-42f5-a8fb-5495b629ee54.png"></p>
+<p>在DOS头和PE头之间的数据为垃圾数据（由编译器决定）</p>
+<h5 id="●NT头"><a href="#●NT头" class="headerlink" title="●NT头"></a>●<strong>NT头</strong></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0x00 DWORD Signature;                          //00005045 PE的标记</span><br><span class="line">0x04 _IMAGE_FILE_HEADER FileHeader;            //标准PE头</span><br><span class="line">0x18 _IMAGE_OPTIONAL_HEADRE Optional Header;   //可选PE头</span><br></pre></td></tr></table></figure>
+
+<h5 id="●标准PE头"><a href="#●标准PE头" class="headerlink" title="●标准PE头"></a>●标准PE头</h5><p> ——&gt;20(确定大小)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">0x00 WORD Machine;           **//014C 程序运行的CPU型号:0x0任何处理器/0x14C Intel 386及后续处理器</span><br><span class="line">0x02 WORD NumberOfSections;  **//0005 文件中存在的节的总数，除了头，还有几节数据，如果要新增节或者合并节就要修改这个值</span><br><span class="line">0x04 DWORD TimeDateStamp;   *//535883B8 时间日期戳(文件创建的时间)，和操作系统无关，编译器填写</span><br><span class="line">0x08 DWORD PointerToSymbolTable;            </span><br><span class="line">0x0c DWORD NumberOfSymbols;                 </span><br><span class="line">0x10 WORD SizeOfOptionalHeader;  **//00E0 可选PE头的大小，32位PE文件默认E0h 64位PE文件默认为F0h  大小可以自定义</span><br><span class="line">0x12 WORD Characteristics;       *//0102 pe文件属性 每一位含义不同 </span><br></pre></td></tr></table></figure>
+
+<h6 id="NumberOfSections"><a href="#NumberOfSections" class="headerlink" title="NumberOfSections"></a>NumberOfSections</h6><p>——除了头还有几节数据</p>
+<img src="https://user-images.githubusercontent.com/116374553/230756605-29cb568f-a7ae-4ee3-9e79-bceb09c4e934.png" style="zoom:50%;" />
+
+<h6 id="Characteristics"><a href="#Characteristics" class="headerlink" title="Characteristics"></a>Characteristics</h6><p>将WORD的数据拆成一个二进制数，代表勾选的内容</p>
+<p>例如现在我打开的程序Characteristics为0102，即：0000 0001 0000 0010（1即设置标志勾选的内容）</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/230757079-317f17c0-c18c-4ab0-823a-50640adb939b.png"></p>
+<p><strong>重点</strong>：Machine / NumberOfSections / TimeDateStamp / SizeOfOptionalHeader / Characteristics</p>
+<p>特别是带“**”</p>
+<h5 id="●可选PE头-大小不确定32-64位不同"><a href="#●可选PE头-大小不确定32-64位不同" class="headerlink" title="●可选PE头(大小不确定32/64位不同)"></a>●可选PE头(大小不确定32/64位不同)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">0x00 WORD Magic; **//说明文件类型：010B-&gt;32位下的PE文件 020B-&gt;64位下的PE文件</span><br><span class="line">0x02 BYTE MajorLinkerVersion;</span><br><span class="line">0x03 BYTE MinorLinkerVersion;</span><br><span class="line">0x04 DWORD SizeOfCode; *//代码大小/所有代码节的和，必须是FileAlignment的整数倍 编译器填的 没用</span><br><span class="line">0x08 DWORD SizeOfInitializedData; *//已初始化数据大小的和，必须是 FileAlignment的整数倍 编译器填的 没用</span><br><span class="line">0x0c DWORD SizeOfUninitializedData; *//未初始化数据大小的和，必须是 FileAlignment的整数倍 编译器填的 没用 </span><br><span class="line">0x10 DWORD AddressOfEntryPoint; **//程序入口（OEP)</span><br><span class="line">0x14 DWORD BaseOfCode; *//代码开始的基址，编译器填的 没用</span><br><span class="line">0x18 DWORD BaseOfData; *//数据开始的基址，编译器填的 没用</span><br><span class="line">0x1c DWORD ImageBase; **//内存镜像基址</span><br><span class="line">0x20 DWORD SectionAlignment; **//内存对齐，区段对齐</span><br><span class="line">0x24 DWORD FileAlignment; **//文件对齐</span><br><span class="line">0x28 WORD MajorOperatingSystemVersion;</span><br><span class="line">0x2a WORD MinorOperatingSystemVersion;</span><br><span class="line">0x2c WORD MajorImageVersion;</span><br><span class="line">0x2e WORD MinorImageVersion;</span><br><span class="line">0x30 WORD MajorSubsystemVersion;</span><br><span class="line">0x32 WORD MinorSubsystemVersion;</span><br><span class="line">0x34 DWORD Win32VersionValue;</span><br><span class="line">0x38 DWORD SizeOfImage ; **//镜像大小/内存中整个PE文件的映射的尺寸，可以比实际的值大，但必须是SectionAlignment的整数倍（拉伸之后的大小）</span><br><span class="line">0x3c DWORD SizeOfHeaders; **// 所有头+节表，按照‘文件对齐 FileAlignment’后的大小（即如果现在加起来为1800h，要求1000h对齐，则认为大小为2000h），否则加载会出错</span><br><span class="line">0x40 DWORD CheckSum; *//校验和，一些系统文件有要求，用来判断文件是否被修改</span><br><span class="line">0x44 WORD Subsystem;</span><br><span class="line">0x46 WORD DllCharacteristics;</span><br><span class="line">0x48 DWORD SizeOfStackReserve; *//初始化时保留的堆栈（栈）大小</span><br><span class="line">0x4c DWORD SizeOfStackCommit; *//初始化时实际提交的大小</span><br><span class="line">0x50 DWORD SizeOfHeapReserve; *//初始化时保留的堆大小</span><br><span class="line">0x54 DWORD SizeOfHeapCommit; *//初始化时实际提交的大小</span><br><span class="line">0x58 DWORD LoaderFlags;</span><br><span class="line">0x5c DWORD NumberOfRvaAndSizes; *//目录项数目，RVA数目和大小</span><br><span class="line">0x60 _IMAGE_DATA_DIRECTORY DataDirectory[16]; 16个结构体，每个结构体是8个字节</span><br></pre></td></tr></table></figure>
+
+<p>程序在内存中真正的地址：内存镜像基地址+OEP</p>
+<p>​                                   原因：ImageBase的地址可能被抢占，为了保证被抢占了之后依旧可以运行</p>
+<h6 id="CheckSum"><a href="#CheckSum" class="headerlink" title="CheckSum"></a>CheckSum</h6><p>用于检查PE文件的完整性,一般exe文件可以使其值为0，在一些内核模式驱动文件及DLL文件中,该值必须是存在且正确的</p>
+<p>校验值的计算很简单:<br>将PE文件两个两个数据进行累加，如果存不下就自然溢出（剩多少就存多少），将计算结果与CheckSum进行比较,不相等则说明文件被修改过或不完整</p>
+<p><strong>重点</strong>：带‘**’就是</p>
+<p>一个exe不是一个PE文件，而是由多个PE文件构成的</p>
+<p>一个exe有一个虚拟的独立的4G空间</p>
+<h3 id="③PE加载过程"><a href="#③PE加载过程" class="headerlink" title="③PE加载过程"></a>③PE加载过程</h3><img src="https://user-images.githubusercontent.com/116374553/230759788-677dfd48-b69d-4eef-abf8-3dffdc28102a.png" style="zoom:67%;" />
+
+<h2 id="Ⅲ-节表"><a href="#Ⅲ-节表" class="headerlink" title="Ⅲ.节表"></a>Ⅲ.节表</h2><p>——存储节区的信息（相当于节区的目录）</p>
+<h3 id="①PE整体解析"><a href="#①PE整体解析" class="headerlink" title="①PE整体解析"></a>①PE整体解析</h3><img src="https://user-images.githubusercontent.com/116374553/232229404-9b41444e-1cca-499b-829b-4ecc5a70ac6b.png" style="zoom: 60%;" />
+
+<p>节表的大小存储在标准pe头中——NumberOfSections</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_SECTION_HEADER</span><br><span class="line">&#123;</span><br><span class="line">        0x00 BYTE Name[IMAGE_SIZEOF_SHORT_NAME];//此处被宏定义为8个字节（#define IMAGE_SIZEOF_SHORT_NAME 8），储存了节表的名字（编译器会自动给出，也可自行修改），该处的数据为ASCII字符，需要以&#x27;\0&#x27;结尾，但如果是将8个字节全部占满，就会造成数组越界，如果直接用指针指向该处读取数据，会出现错误（由于一直没找到结束的标志&#x27;\0&#x27;,会出现乱码）—— 一般形式为.xxx,也可以没有&#x27;.&#x27;</span><br><span class="line">             union &#123;</span><br><span class="line">        0x08          DWORD PhysicalAddress;</span><br><span class="line">        0x08          DWORD VirtualSize;</span><br><span class="line">             &#125; Misc;//匿名的联合体，变量为Misc，该节没有对齐前的真实尺寸（这个值可以被修改，同时不影响程序的运行）</span><br><span class="line">        0x0c DWORD VirtualAddress; //内存中的偏移地址（相对于ImageBase的偏移），加上ImageBase之后为内存中的真实地址</span><br><span class="line">        0x10 DWORD SizeOfRawData; //节在文件中对齐后的尺寸</span><br><span class="line">        0x14 DWORD PointerToRawData; //节区在文件中的偏移，即每一个节区离头(文件中起始为0)有多远(其值是文件对齐的整数倍)</span><br><span class="line">        0x18 DWORD PointerToRelocations;</span><br><span class="line">        0x1c DWORD PointerToLinenumbers;</span><br><span class="line">        0x20 WORD NumberOfRelocations;</span><br><span class="line">        0x22 WORD NumberOfLinenumbers;</span><br><span class="line">        0x24 DWORD Characteristics; //当前节的属性（便于分析每一个节区的功能——特别是被加壳后修改名称的文件）</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Misc-VirtualAdress"><a href="#Misc-VirtualAdress" class="headerlink" title="Misc/VirtualAdress"></a>Misc/VirtualAdress</h5><img src="https://user-images.githubusercontent.com/116374553/232231029-38afd01d-0c42-4737-ad18-6bcc6a0e33ad.png" style="zoom: 60%;" />
+
+<h5 id="Characteristics-1"><a href="#Characteristics-1" class="headerlink" title="Characteristics"></a>Characteristics</h5><p>将该处的数据对应着以下相应的属性（将对应拥有的属性的值相加即可获取该处的值）</p>
+<img src="https://user-images.githubusercontent.com/116374553/232231154-3dfc22d2-7daa-4e2b-8565-80ce98109393.png" style="zoom:55%;" />
+
+<h3 id="②单一节表解析"><a href="#②单一节表解析" class="headerlink" title="②单一节表解析"></a>②单一节表解析</h3><img src="https://user-images.githubusercontent.com/116374553/232231796-c40a06c5-e31b-4437-9385-45913aa715d5.png" style="zoom:55%;" />
+
+<h2 id="Ⅳ-FileBuffer-ImageBuffer"><a href="#Ⅳ-FileBuffer-ImageBuffer" class="headerlink" title="Ⅳ.FileBuffer/ImageBuffer"></a>Ⅳ.FileBuffer/ImageBuffer</h2><h3 id="①FileBuffer-——-gt-ImageBuffer"><a href="#①FileBuffer-——-gt-ImageBuffer" class="headerlink" title="①FileBuffer ——&gt; ImageBuffer"></a>①FileBuffer ——&gt; ImageBuffer</h3><p><img src="https://user-images.githubusercontent.com/116374553/232238119-2f3c79ee-10b6-45a1-abcb-52df62526b2b.png"></p>
+<h3 id="②计算ImageBuffer中某一节表的位置到FileBuffer中的位置"><a href="#②计算ImageBuffer中某一节表的位置到FileBuffer中的位置" class="headerlink" title="②计算ImageBuffer中某一节表的位置到FileBuffer中的位置"></a>②计算ImageBuffer中某一节表的位置到FileBuffer中的位置</h3><p>计算在ImageBuffer中某一节表中地址对应FileBuffer中的地址</p>
+<p>ImageBuffer中的地址为501234，PE文件初位置为50000</p>
+<p>其中节表的大致分布如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">节1：PointerToRawData 400</span><br><span class="line">    VirtualAdress 1000</span><br><span class="line">节2：PointerToRawData 600</span><br><span class="line">    VirtualAdress 2000</span><br><span class="line">节3：PointerToRawData 800</span><br><span class="line">    VirtualAdress 3000</span><br></pre></td></tr></table></figure>
+
+<p>第一步：501234 - 500000 = 1234 //得出现下的偏移地址</p>
+<p>第二步：VirtualAdress &lt; 1234 &lt; Misc.VirtualSize //判断目前处于哪一个节区 ——&gt;  得出在第一个节区</p>
+<p>第三步：1234 - VirtualAdress = 234 //关于第一个节区的偏移</p>
+<p>第四步：PointerToRawData + 234 = 634</p>
+<h2 id="Ⅴ-代码节空白区插入代码"><a href="#Ⅴ-代码节空白区插入代码" class="headerlink" title="Ⅴ.代码节空白区插入代码"></a>Ⅴ.代码节空白区插入代码</h2><p><strong>以向某一个程序中插入MessageBox这个函数为例</strong></p>
+<h3 id="①程序插入MessageBox"><a href="#①程序插入MessageBox" class="headerlink" title="①程序插入MessageBox"></a>①程序插入MessageBox</h3><h5 id="MessageBox函数"><a href="#MessageBox函数" class="headerlink" title="MessageBox函数"></a>MessageBox函数</h5><p><strong>MessageBox</strong>一个<strong>Win32API</strong>函数</p>
+<p>MessageBox指的是显示一个模态对话框，其中包含一个系统图标、 一组按钮和一个简短的<em>特定于应用程序消息，如状态或错误的信息</em>。</p>
+<h5 id="在OD中利用指令对函数下断点"><a href="#在OD中利用指令对函数下断点" class="headerlink" title="在OD中利用指令对函数下断点"></a>在OD中利用指令对函数下断点</h5><p>在OD中对MessageBox下断点的时候可以直接在OD下方的Command直接输入bp MessageBoxA，同时按Enter键。在断点清单中即可看到该函数。</p>
+<img src="https://user-images.githubusercontent.com/116374553/234433867-6b5950ed-8cf4-4f09-9621-bbf3833999e2.png" style="zoom:67%;" />
+
+<img src="https://user-images.githubusercontent.com/116374553/234622569-dfa6e7a5-0344-400a-aa04-adf931579d59.png" style="zoom: 80%;" />
+
+<img src="https://user-images.githubusercontent.com/116374553/234621943-f59dca17-0ada-4656-925e-6f542b8bb7de.png" style="zoom:67%;" />
+
+<p>此时可以知道我电脑上的MessageBox函数的地址为779CA7D0</p>
+<h5 id="在vs中查看反汇编"><a href="#在vs中查看反汇编" class="headerlink" title="在vs中查看反汇编"></a>在vs中查看反汇编</h5><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/avrdpy/article/details/128682835">https://blog.csdn.net/avrdpy/article/details/128682835</a></p>
+<p>同时可以在上方的查看选项中调出需要的部分</p>
+<img src="https://user-images.githubusercontent.com/116374553/234439394-6075ceb6-12f2-4355-8344-bb19d4bb5b63.png" style="zoom:67%;" />
+
+<h5 id="E8、E9计算公式"><a href="#E8、E9计算公式" class="headerlink" title="E8、E9计算公式"></a>E8、E9计算公式</h5><h6 id="E8："><a href="#E8：" class="headerlink" title="E8："></a>E8：</h6><p>call指令对应的硬编码，后接上4个字节的地址跳转（此跳转地址并不是我们想要的跳转的地方）</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/234441719-8eb69102-db55-4161-babd-26bea268c30a.png"></p>
+<p>此处的硬编码E8后的地址并不是函数Function后的跳转地址</p>
+<p>真正要跳转的地址 = E8这条指令的下一条指令 + X</p>
+<p>于是通过该方程式<strong>求取X</strong>的值：</p>
+<p>E8下一条指令的地址为A918D6</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/234442340-9542e174-bfd9-4c16-bc98-676873067ab9.png"></p>
+<p>实际跳转的地址0A91023</p>
+<p>①<strong>X = 真正要跳转的地址 - E8这条指令的下一条指令</strong></p>
+<p>即：X = 0xA91023 - 0xA918D6 = 0xFFFF F74D</p>
+<img src="https://user-images.githubusercontent.com/116374553/234443202-214c83c9-5d6b-44be-b1a2-046320210816.png" style="zoom:50%;" />
+
+<p>此值恰好是E8后面的地址</p>
+<p><strong>注意</strong>：由于存储地址的地方都是四个字节，是双字，所以在利用计算器计算的时候需要选中DWORD</p>
+<p>②<strong>X = 真正要跳转的地址 -（E8当前的地址（拉伸后的地址） + 5）（E8的下一条指令的地址 = E8 + 硬编码所占的字节数）</strong></p>
+<h6 id="E9："><a href="#E9：" class="headerlink" title="E9："></a>E9：</h6><p>与E8同理</p>
+<p>jmp指令对应的硬编码，后接上4个字节的地址跳转</p>
+<h4 id="●构造shellcode-调用MessageBox"><a href="#●构造shellcode-调用MessageBox" class="headerlink" title="●构造shellcode(调用MessageBox)"></a>●构造shellcode(调用MessageBox)</h4><img src="https://user-images.githubusercontent.com/116374553/234475466-f619e567-2827-4a06-80fb-21e10890b02d.png" style="zoom: 67%;" />
+
+<p>调用MessageBox函数先是将参数push入栈，其硬编码为6A 00；然后是call指令调用函数(求取X = 值)；最后是jmp跳转到原来程序的OEP(求取jmp的X)。</p>
+<h5 id="Shellcode"><a href="#Shellcode" class="headerlink" title="Shellcode"></a>Shellcode</h5><p><em><strong>6A 00 6A 00 6A 00 6A 00 E8 00 00 00 00 E9 00 00 00 00</strong></em></p>
+<h5 id="求取E8后X"><a href="#求取E8后X" class="headerlink" title="求取E8后X"></a>求取E8后X</h5><p>此时需要填写E8和E9后的X</p>
+<p>首先利用PETool工具打开我想要加入shellcode的程序，去到第一个节表中（判断空白的区域是否足够我插入代码（文件对齐后的大小 - 内存中的大小））</p>
+<img src="https://user-images.githubusercontent.com/116374553/234625644-1f6df591-5bd9-47f6-874c-caea19abcda6.png" style="zoom: 67%;" />
+
+<p>在winhex中以文件模式打开该程序，先找到文件偏移的位置（即第一个节表的起始位置），加上文件中的偏移等于第二个节表开始的位置。在其中的空白区域填写我们的shellcode</p>
+<img src="https://user-images.githubusercontent.com/116374553/234627090-53900013-28bd-4a54-9333-31da01a40541.png" style="zoom:50%;" />
+
+<p>由之前可知此时电脑中的MessageBox函数的地址为<em><strong>0x7544A7D0</strong></em>（真正要跳转的地址）</p>
+<p>此时<em><strong>X = 7544A7D0 - E8下一条指令的地址</strong></em>（<strong>运行时</strong>的地址此时是拉伸之后的（Image Buffer））</p>
+<p>其中：<em><strong>E8地址 = ImageBase + 偏移地址 = 400000 + 拉伸后E8下一条指令的地址 = 400000 + （244d - 400 + 1000）= 40304D</strong></em></p>
+<p>ImageBase：<img src="https://user-images.githubusercontent.com/116374553/234630622-445e36df-adec-45dc-853a-add9569d3969.png"></p>
+<p>最终解得<em><strong>X = 7544A7D0 - 40304D = 75047783</strong></em> </p>
+<p>则<em><strong>E8 83 77 04 75</strong></em></p>
+<p><img src="https://user-images.githubusercontent.com/116374553/234633620-92ea411d-57ab-48c3-8670-fb9f7d30d42d.png"></p>
+<h5 id="求取E9后X"><a href="#求取E9后X" class="headerlink" title="求取E9后X"></a>求取E9后X</h5><p>跳转到真正的程序OEP处（入口地点）</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/234634266-9cb0421f-9b03-4bce-b882-2d15d84f1e6e.png"></p>
+<p><em><strong>真正地址 = ImageBase + AddressOfEntryPoint = 4021A8</strong></em></p>
+<p><em><strong>X = 真正地址 - E9下一条指令 = 4021A8 - （400000 + 2452 - 400 + 1000）= FFFFF156</strong></em></p>
+<p>则<em><strong>E9 56 F1 FF FF</strong></em></p>
+<p><img src="https://user-images.githubusercontent.com/116374553/234639802-d10db288-cbad-4295-aadd-f3d2f326af60.png"></p>
+<h4 id="●修改OEP"><a href="#●修改OEP" class="headerlink" title="●修改OEP"></a>●修改OEP</h4><p>现在oep = 现在构造的shellcode的起始位置 = 2440 - 400 + 1000 = 3040</p>
+<p><strong>原来</strong>：<img src="https://user-images.githubusercontent.com/116374553/234640243-411c5fb3-888c-444f-8947-b67efac2da8e.png" style="zoom:50%;" /></p>
+<p><strong>修改</strong>后：<img src="https://user-images.githubusercontent.com/116374553/234640925-7588306e-1349-42e2-b38b-a46ab24e5269.png" style="zoom:50%;" /></p>
+<h4 id="●运行结果"><a href="#●运行结果" class="headerlink" title="●运行结果"></a>●运行结果</h4><p><strong>原来</strong>：<img src="https://user-images.githubusercontent.com/116374553/234641315-168e0f3b-937c-4fde-82cc-d872b9a87802.png" style="zoom:50%;" /></p>
+<p><strong>现在</strong>：<img src="https://user-images.githubusercontent.com/116374553/234641613-0c78e699-9f8c-48d4-8214-7f2407472ec9.png" style="zoom:50%;" /></p>
+<p>点击确定后<img src="https://user-images.githubusercontent.com/116374553/234641740-50ebd33c-dfd6-44ec-b165-5c481f80d790.png" style="zoom:50%;" /></p>
+<h6 id="FF15和E8"><a href="#FF15和E8" class="headerlink" title="FF15和E8"></a>FF15和E8</h6><p><strong>注意</strong>：①00A018EB FF 15 98 B0 A0 00    call        dword ptr [__imp__MessageBoxW@16 (0A0B098h)]  </p>
+<p>当call指令的硬编码为FF15时，后跟的地址是绝对地址</p>
+<p>②00A018F3 E8 51 F9 FF FF       call        __RTC_CheckEsp (0A01249h) </p>
+<p>当call指令的硬编码为E8时，后跟的地址是相对偏移地址</p>
+<h2 id="Ⅵ-在任意空白处添加代码"><a href="#Ⅵ-在任意空白处添加代码" class="headerlink" title="Ⅵ.在任意空白处添加代码"></a>Ⅵ.在任意空白处添加代码</h2><p><img src="https://user-images.githubusercontent.com/116374553/235347608-18d37579-e134-42eb-b635-3f8176e51983.png"></p>
+
+      
+    </div><!-- .entry-content -->
+    
+    <footer class="entry-meta">
+    <a href="/2023/04/30/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">
+    <time datetime="2023-04-29T16:00:00.000Z" class="entry-date">
+        2023-04-30
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a>
+  </div>
+
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2023/04/20/%E6%88%91%E4%B8%8D%E6%98%AF%E7%97%85%E6%AF%922.0/" rel="next">XCTF_rev2 我不是病毒2.0 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/">python逆向</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2023/04/30/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/20/%E6%88%91%E4%B8%8D%E6%98%AF%E7%97%85%E6%AF%922.0/">XCTF_rev2 我不是病毒2.0</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/20/Python/">Python逆向</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/09/%E8%84%B1%E5%A3%B3%E9%A2%98%E7%9B%AE/">脱壳题目</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/09/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE/">迷宫问题相关题目</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2023 Blank
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+
+<script src="../../source/js/top.js" type="text/javascript"></script>
+<!--返回顶部开始-->
+
+<div id="full" style="width:0px; height:0px; position:fixed; right:8%; bottom:100px; z-index:100; text-align:center; background-color:transparent; cursor:pointer;">
+  <a href="#" onclick="goTop();return false;">
+    <img src="/css/images/top.png" border=0 alt="返回顶部">
+  </a>
+</div>
+<!--返回顶部结束-->
+
+<!--底部添加运行时间-->
+
+<div class="run_time" style=" text-align:center;">
+    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("03/07/2023 00:00:00");  // 此处修改为你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+      setInterval("createtime()",250);
+    </script>
+    </br>
+    </br>
+    <!--添加不蒜子统计-->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"> </script>
+    <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+    </span>
+    <span id="busuanzi_container_site_uv">
+        ฅʕ•͡-•ʔ 访问人数：<span id="busuanzi_value_site_uv"></span>人
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+    </span> 
+    <span id="busuanzi_container_site_pv">
+        👀访问量：<span id="busuanzi_value_site_pv"></span>次
+    </span>
+    </br>
+    </br>
+</div>
+<script src="../../source/js/top.js" type="text/javascript"></script>
+<!--返回顶部开始-->
+<div id="full" style="width:0px; height:0px; position:fixed; right:8%; bottom:100px; z-index:100; text-align:center; background-color:transparent; cursor:pointer;">
+  <a href="#" onclick="goTop();return false;">
+    <img src="/css/images/top.png" border=0 alt="返回顶部">
+  </a>
+</div>
+<!--返回顶部结束-->
+
+  
+
+
+
+
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

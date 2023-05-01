@@ -58,7 +58,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234641740-50ebd33c-dfd6-44ec-b165-5c481f80d790.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/116374553/235347608-18d37579-e134-42eb-b635-3f8176e51983.png">
 <meta property="article:published_time" content="2023-04-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-04-30T10:18:10.293Z">
+<meta property="article:modified_time" content="2023-05-01T11:03:20.272Z">
 <meta property="article:author" content="Blank">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/116374553/230752170-8a91623d-c080-497e-a8f2-cfb22ac89ce1.png">
@@ -161,7 +161,7 @@
 <h3 id="③PE文件结构图"><a href="#③PE文件结构图" class="headerlink" title="③PE文件结构图"></a>③PE文件结构图</h3><p><img src="https://user-images.githubusercontent.com/116374553/230752214-03d33392-2206-4ae3-85b2-93ddc4b6fe7c.jpg"></p>
 <h2 id="Ⅱ-PE文件头解析"><a href="#Ⅱ-PE文件头解析" class="headerlink" title="Ⅱ.PE文件头解析"></a>Ⅱ.PE文件头解析</h2><h3 id="①DOS头-MZ文件头和DOS-Stub"><a href="#①DOS头-MZ文件头和DOS-Stub" class="headerlink" title="①DOS头(MZ文件头和DOS Stub)"></a>①DOS头(MZ文件头和DOS Stub)</h3><p>​        ——&gt;40(确定大小)</p>
 <p>​        ——16位系统中使用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">0x00 WORD e_magic;                *//5A4D  判断PE文件的标识符（MZ）                  </span><br><span class="line">0x04 WORD e_cp;                   //0090</span><br><span class="line">0x06 WORD e_crlc;                 //0003</span><br><span class="line">0x08 WORD e_cparhdr;              //0000</span><br><span class="line">0x0a WORD e_minalloc;             //0004</span><br><span class="line">0x0c WORD e_maxalloc;             //0000</span><br><span class="line">0x0e WORD e_ss;                   //FFFF</span><br><span class="line">0x10 WORD e_sp;                   //0000</span><br><span class="line">0x12 WORD e_csum;                 //00B8</span><br><span class="line">0x14 WORD e_ip;                   //0000</span><br><span class="line">0x16 WORD e_cs;                   //0000</span><br><span class="line">0x18 WORD e_lfarlc;               //0040</span><br><span class="line">0x1a WORD e_ovno;                 //0000 </span><br><span class="line">0x1c WORD e_res[4];               //0000 * 4</span><br><span class="line">0x24 WORD e_oemid;                //0000</span><br><span class="line">0x26 WORD e_oeminfo;              //0000</span><br><span class="line">0x28 WORD e_res2[10];             //0000*10</span><br><span class="line">0x3c DWORD e_lfanew;              *//000000E8(不尽相同)  pe文件的偏移量(从起始位置开始算)，寻找pe头的位置</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">0x00 WORD e_magic;                *//5A4D  判断PE文件的标识符（MZ） </span><br><span class="line">0x02 WORD e_cblp;                 //</span><br><span class="line">0x04 WORD e_cp;                   //0090</span><br><span class="line">0x06 WORD e_crlc;                 //0003</span><br><span class="line">0x08 WORD e_cparhdr;              //0000</span><br><span class="line">0x0a WORD e_minalloc;             //0004</span><br><span class="line">0x0c WORD e_maxalloc;             //0000</span><br><span class="line">0x0e WORD e_ss;                   //FFFF</span><br><span class="line">0x10 WORD e_sp;                   //0000</span><br><span class="line">0x12 WORD e_csum;                 //00B8</span><br><span class="line">0x14 WORD e_ip;                   //0000</span><br><span class="line">0x16 WORD e_cs;                   //0000</span><br><span class="line">0x18 WORD e_lfarlc;               //0040</span><br><span class="line">0x1a WORD e_ovno;                 //0000 </span><br><span class="line">0x1c WORD e_res[4];               //0000 * 4</span><br><span class="line">0x24 WORD e_oemid;                //0000</span><br><span class="line">0x26 WORD e_oeminfo;              //0000</span><br><span class="line">0x28 WORD e_res2[10];             //0000*10</span><br><span class="line">0x3c DWORD e_lfanew;              *//000000E8(不尽相同)  pe文件的偏移量(从起始位置开始算)，寻找pe头的位置</span><br></pre></td></tr></table></figure>
 
 <p><strong>重点</strong>：e_magic/e_lfanew</p>
 <h3 id="②NT头"><a href="#②NT头" class="headerlink" title="②NT头"></a>②NT头</h3><p>NT头——&gt;标准PE头/<strong>可选PE头</strong></p>
@@ -307,6 +307,8 @@
 <nav class="nav-single">
     <h3 class="assistive-text">文章导航</h3>
     
+        <span class="nav-previous"><a href="/2023/05/01/%E6%89%93%E5%8D%B0PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%EF%BC%88C%E8%AF%AD%E8%A8%80%EF%BC%89/" rel="prev"><span class="meta-nav">←</span> 打印PE文件结构（C语言）</a></span>
+    
     
         <span class="nav-next"><a href="/2023/04/20/Python/" rel="next">Python逆向 <span class="meta-nav">→</span></a></span>
     
@@ -334,7 +336,7 @@
   <aside class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/">python逆向</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/">python逆向</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">3</span></li></ul>
     </div>
   </aside>
 
@@ -344,6 +346,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget-content">
       <ul>
+        
+          <li>
+            <a href="/2023/05/01/%E6%89%93%E5%8D%B0PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%EF%BC%88C%E8%AF%AD%E8%A8%80%EF%BC%89/">打印PE文件结构（C语言）</a>
+          </li>
         
           <li>
             <a href="/2023/04/30/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a>
@@ -359,10 +365,6 @@
         
           <li>
             <a href="/2023/04/09/%E8%84%B1%E5%A3%B3%E9%A2%98%E7%9B%AE/">脱壳题目</a>
-          </li>
-        
-          <li>
-            <a href="/2023/04/09/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE/">迷宫问题相关题目</a>
           </li>
         
       </ul>

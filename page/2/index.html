@@ -83,7 +83,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://example.com/2023/03/25/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%881%EF%BC%89/" data-id="clh39cife0009m4l07e5b9d4c" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://example.com/2023/03/25/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%881%EF%BC%89/" data-id="clhn258nj000fvwl03u01biui" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
     
@@ -203,6 +203,61 @@
 
 
   
+    <article id="post-c语言自动走迷宫" class="post-c语言自动走迷宫 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2023/03/18/c%E8%AF%AD%E8%A8%80%E8%87%AA%E5%8A%A8%E8%B5%B0%E8%BF%B7%E5%AE%AB/">c语言自动走迷宫</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://example.com/2023/03/18/c%E8%AF%AD%E8%A8%80%E8%87%AA%E5%8A%A8%E8%B5%B0%E8%BF%B7%E5%AE%AB/" data-id="clhn258ng0006vwl0dfh94niw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+    
+    <div class="entry-content">
+      
+      <!-- Table of Contents -->
+    <!--目录-侧边栏-->
+    
+    <!--目录-文章开头-->
+    
+    </br>   
+        <h1 id="C语言自动走迷宫"><a href="#C语言自动走迷宫" class="headerlink" title="C语言自动走迷宫"></a><em><strong>C语言自动走迷宫</strong></em></h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y,<span class="type">int</span> step)</span>;<span class="comment">//DFS算法</span></span><br><span class="line"><span class="type">char</span> dir[<span class="number">4</span>] = &#123; <span class="string">&#x27;s&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;w&#x27;</span>,<span class="string">&#x27;d&#x27;</span> &#125;;<span class="comment">//下，左，上，右（定义方向）</span></span><br><span class="line"><span class="type">char</span> t = <span class="string">&#x27; &#x27;</span>;<span class="comment">//通路</span></span><br><span class="line"><span class="type">char</span> q = <span class="string">&#x27;*&#x27;</span>;<span class="comment">//墙</span></span><br><span class="line"><span class="comment">//以上部分需要根据迷宫内容进行更改</span></span><br><span class="line"><span class="type">int</span> end_x, end_y;<span class="comment">//迷宫的终点</span></span><br><span class="line"><span class="type">int</span> N_x, N_y;<span class="comment">//地图的行和列</span></span><br><span class="line"><span class="type">char</span> maze[<span class="number">100</span>][<span class="number">100</span>];<span class="comment">//定义地图</span></span><br><span class="line"><span class="type">int</span> v[<span class="number">100</span>][<span class="number">100</span>] = &#123;<span class="number">0</span>&#125;;<span class="comment">//判断是否走过该地址，0为未经过，1为经过</span></span><br><span class="line"><span class="type">char</span> flag[<span class="number">100</span>];<span class="comment">//获取迷宫路径</span></span><br><span class="line"><span class="type">char</span> ch = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line"><span class="type">int</span> dy[<span class="number">4</span>] = &#123; <span class="number">0</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span> &#125;;</span><br><span class="line"><span class="type">int</span> dx[<span class="number">4</span>] = &#123; <span class="number">1</span>,<span class="number">0</span>,<span class="number">-1</span>,<span class="number">0</span> &#125;;<span class="comment">//用于坐标移动</span></span><br><span class="line"><span class="type">int</span> k = <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> x, y, step = <span class="number">0</span>;<span class="comment">//step步数</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;输入迷宫的行数和列数：&quot;</span>);</span><br><span class="line">	scanf_s(<span class="string">&quot;%d%d&quot;</span>, &amp;N_x, &amp;N_y);</span><br><span class="line">	getchar();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;输入迷宫地图：&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; N_x; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; N_y; j++)</span><br><span class="line">			scanf_s(<span class="string">&quot;%c&quot;</span>, &amp;maze[i][j]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;输入迷宫的起点坐标：&quot;</span>);</span><br><span class="line">	scanf_s(<span class="string">&quot;%d%d&quot;</span>, &amp;x, &amp;y);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;输入迷宫的终点坐标：&quot;</span>);</span><br><span class="line">	scanf_s(<span class="string">&quot;%d%d&quot;</span>, &amp;end_x, &amp;end_y);</span><br><span class="line">	dfs(x, y, step);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> step)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (k == <span class="number">1</span>)<span class="comment">//以保证第一次开始运算时没有将ch的初值赋给flag</span></span><br><span class="line">		flag[step - <span class="number">1</span>] = ch;</span><br><span class="line">	<span class="keyword">if</span> ((x == end_x &amp;&amp; y == end_y))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;flag&#123;%s&#125;\n&quot;</span>, flag);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (x &lt; <span class="number">0</span> || x &gt; N_x || y &lt; <span class="number">0</span> || y &gt; N_y)<span class="comment">//判断有没有出地图</span></span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">3</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (maze[x + dx[i]][y + dy[i]] == t &amp;&amp; v[x + dx[i]][y + dy[i]] == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			k = <span class="number">1</span>;</span><br><span class="line">			ch = dir[i];</span><br><span class="line">			v[x + dx[i]][y + dy[i]] = <span class="number">1</span>;</span><br><span class="line">			dfs(x + dx[i], y + dy[i], step + <span class="number">1</span>);</span><br><span class="line">			step -= <span class="number">1</span>;<span class="comment">//回溯时还原之前的值</span></span><br><span class="line">			v[x + dx[i]][y + dy[i]] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div><!-- .entry-content -->
+    
+    <footer class="entry-meta">
+    <a href="/2023/03/18/c%E8%AF%AD%E8%A8%80%E8%87%AA%E5%8A%A8%E8%B5%B0%E8%BF%B7%E5%AE%AB/">
+    <time datetime="2023-03-17T16:00:00.000Z" class="entry-date">
+        2023-03-18
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a>
+  </div>
+
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-UPX脱壳" class="post-UPX脱壳 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -218,7 +273,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://example.com/2023/03/18/UPX%E8%84%B1%E5%A3%B3/" data-id="clh39cifc0005m4l09p1zdyig" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://example.com/2023/03/18/UPX%E8%84%B1%E5%A3%B3/" data-id="clhn258nh0009vwl081rd8pxs" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
     
@@ -319,61 +374,6 @@
 
 
   
-    <article id="post-c语言自动走迷宫" class="post-c语言自动走迷宫 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2023/03/18/c%E8%AF%AD%E8%A8%80%E8%87%AA%E5%8A%A8%E8%B5%B0%E8%BF%B7%E5%AE%AB/">c语言自动走迷宫</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://example.com/2023/03/18/c%E8%AF%AD%E8%A8%80%E8%87%AA%E5%8A%A8%E8%B5%B0%E8%BF%B7%E5%AE%AB/" data-id="clh39cifd0006m4l0hb702af3" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-    
-    <div class="entry-content">
-      
-      <!-- Table of Contents -->
-    <!--目录-侧边栏-->
-    
-    <!--目录-文章开头-->
-    
-    </br>   
-        <h1 id="C语言自动走迷宫"><a href="#C语言自动走迷宫" class="headerlink" title="C语言自动走迷宫"></a><em><strong>C语言自动走迷宫</strong></em></h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y,<span class="type">int</span> step)</span>;<span class="comment">//DFS算法</span></span><br><span class="line"><span class="type">char</span> dir[<span class="number">4</span>] = &#123; <span class="string">&#x27;s&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;w&#x27;</span>,<span class="string">&#x27;d&#x27;</span> &#125;;<span class="comment">//下，左，上，右（定义方向）</span></span><br><span class="line"><span class="type">char</span> t = <span class="string">&#x27; &#x27;</span>;<span class="comment">//通路</span></span><br><span class="line"><span class="type">char</span> q = <span class="string">&#x27;*&#x27;</span>;<span class="comment">//墙</span></span><br><span class="line"><span class="comment">//以上部分需要根据迷宫内容进行更改</span></span><br><span class="line"><span class="type">int</span> end_x, end_y;<span class="comment">//迷宫的终点</span></span><br><span class="line"><span class="type">int</span> N_x, N_y;<span class="comment">//地图的行和列</span></span><br><span class="line"><span class="type">char</span> maze[<span class="number">100</span>][<span class="number">100</span>];<span class="comment">//定义地图</span></span><br><span class="line"><span class="type">int</span> v[<span class="number">100</span>][<span class="number">100</span>] = &#123;<span class="number">0</span>&#125;;<span class="comment">//判断是否走过该地址，0为未经过，1为经过</span></span><br><span class="line"><span class="type">char</span> flag[<span class="number">100</span>];<span class="comment">//获取迷宫路径</span></span><br><span class="line"><span class="type">char</span> ch = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line"><span class="type">int</span> dy[<span class="number">4</span>] = &#123; <span class="number">0</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span> &#125;;</span><br><span class="line"><span class="type">int</span> dx[<span class="number">4</span>] = &#123; <span class="number">1</span>,<span class="number">0</span>,<span class="number">-1</span>,<span class="number">0</span> &#125;;<span class="comment">//用于坐标移动</span></span><br><span class="line"><span class="type">int</span> k = <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> x, y, step = <span class="number">0</span>;<span class="comment">//step步数</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;输入迷宫的行数和列数：&quot;</span>);</span><br><span class="line">	scanf_s(<span class="string">&quot;%d%d&quot;</span>, &amp;N_x, &amp;N_y);</span><br><span class="line">	getchar();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;输入迷宫地图：&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; N_x; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; N_y; j++)</span><br><span class="line">			scanf_s(<span class="string">&quot;%c&quot;</span>, &amp;maze[i][j]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;输入迷宫的起点坐标：&quot;</span>);</span><br><span class="line">	scanf_s(<span class="string">&quot;%d%d&quot;</span>, &amp;x, &amp;y);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;输入迷宫的终点坐标：&quot;</span>);</span><br><span class="line">	scanf_s(<span class="string">&quot;%d%d&quot;</span>, &amp;end_x, &amp;end_y);</span><br><span class="line">	dfs(x, y, step);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> step)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (k == <span class="number">1</span>)<span class="comment">//以保证第一次开始运算时没有将ch的初值赋给flag</span></span><br><span class="line">		flag[step - <span class="number">1</span>] = ch;</span><br><span class="line">	<span class="keyword">if</span> ((x == end_x &amp;&amp; y == end_y))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;flag&#123;%s&#125;\n&quot;</span>, flag);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (x &lt; <span class="number">0</span> || x &gt; N_x || y &lt; <span class="number">0</span> || y &gt; N_y)<span class="comment">//判断有没有出地图</span></span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">3</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (maze[x + dx[i]][y + dy[i]] == t &amp;&amp; v[x + dx[i]][y + dy[i]] == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			k = <span class="number">1</span>;</span><br><span class="line">			ch = dir[i];</span><br><span class="line">			v[x + dx[i]][y + dy[i]] = <span class="number">1</span>;</span><br><span class="line">			dfs(x + dx[i], y + dy[i], step + <span class="number">1</span>);</span><br><span class="line">			step -= <span class="number">1</span>;<span class="comment">//回溯时还原之前的值</span></span><br><span class="line">			v[x + dx[i]][y + dy[i]] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div><!-- .entry-content -->
-    
-    <footer class="entry-meta">
-    <a href="/2023/03/18/c%E8%AF%AD%E8%A8%80%E8%87%AA%E5%8A%A8%E8%B5%B0%E8%BF%B7%E5%AE%AB/">
-    <time datetime="2023-03-17T16:00:00.000Z" class="entry-date">
-        2023-03-18
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a>
-  </div>
-
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
     <article id="post-迷宫问题" class="post-迷宫问题 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -389,7 +389,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://example.com/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" data-id="clh39cifh000gm4l0em4w7j86" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://example.com/2023/03/07/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" data-id="clhn258nl000nvwl04x4o9kkq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
     
@@ -491,7 +491,7 @@
           </li>
         
           <li>
-            <a href="/2023/04/20/%E6%88%91%E4%B8%8D%E6%98%AF%E7%97%85%E6%AF%922.0/">XCTF_rev2 我不是病毒2.0</a>
+            <a href="/2023/04/20/easyRE/">easyRE</a>
           </li>
         
       </ul>

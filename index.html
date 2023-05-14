@@ -83,7 +83,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://example.com/2023/05/14/%E5%9C%A8%E7%A9%BA%E7%99%BD%E5%A4%84%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81/" data-id="clhn24raf0004gsl0aaay1bf1" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://example.com/2023/05/14/%E5%9C%A8%E7%A9%BA%E7%99%BD%E5%A4%84%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81/" data-id="clhn258nf0005vwl0h6we6nwn" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
     
@@ -178,7 +178,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://example.com/2023/05/01/%E6%89%93%E5%8D%B0PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%EF%BC%88C%E8%AF%AD%E8%A8%80%EF%BC%89/" data-id="clh4xxl6j00006wl064en9knm" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://example.com/2023/05/01/%E6%89%93%E5%8D%B0PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%EF%BC%88C%E8%AF%AD%E8%A8%80%EF%BC%89/" data-id="clhn258nh000bvwl0ax5o3a8r" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
     
@@ -231,7 +231,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://example.com/2023/04/30/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" data-id="clh39cif60001m4l06qqmeva2" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://example.com/2023/04/30/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" data-id="clhn258nb0001vwl0191976fr" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
     
@@ -436,7 +436,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://example.com/2023/04/20/Python/" data-id="clh39cifc0004m4l0gaoza7yw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://example.com/2023/04/20/Python/" data-id="clhn258n80000vwl0fch25f2x" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
     
@@ -596,6 +596,72 @@
 
 
   
+    <article id="post-easyRE" class="post-easyRE post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2023/04/20/easyRE/">easyRE</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://example.com/2023/04/20/easyRE/" data-id="clhn258ne0004vwl0hjti3qxy" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+    
+    <div class="entry-content">
+      
+      <!-- Table of Contents -->
+    <!--目录-侧边栏-->
+    
+    <!--目录-文章开头-->
+    
+    </br>   
+        <h1 id="easyRE"><a href="#easyRE" class="headerlink" title="easyRE"></a>easyRE</h1><p>是一个py的可执行文件，利用pyinstxtractor-master解包，利用代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> dis</span><br><span class="line"><span class="keyword">import</span> marshal</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;D:\\信安\\pycdc\\easyRE.pyc&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:<span class="comment">#如果直接填写pyc文件名称无法运行，就填写pyc文件的绝对路径(绝对路径不能过长，否者会打开文件失败)</span></span><br><span class="line">    f.seek(<span class="number">16</span>)</span><br><span class="line">    dis.dis(marshal.load(f))</span><br></pre></td></tr></table></figure>
+
+<p>运行环境需要和文件的Python的python环境一致，否者会报错。解包得到的easyRE.pyc将会变为字节码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"> <span class="number">0</span>           <span class="number">0</span> RESUME                   <span class="number">0</span>                                <span class="comment">#表示函数的开始</span></span><br><span class="line"></span><br><span class="line"> <span class="number">1</span>           <span class="number">2</span> LOAD_CONST               <span class="number">0</span> (<span class="number">0</span>)                        <span class="comment">#import random</span></span><br><span class="line">             <span class="number">4</span> LOAD_CONST               <span class="number">1</span> (<span class="literal">None</span>)</span><br><span class="line">             <span class="number">6</span> IMPORT_NAME              <span class="number">0</span> (random)                   </span><br><span class="line">             <span class="number">8</span> STORE_NAME               <span class="number">0</span> (random)</span><br><span class="line"></span><br><span class="line"> <span class="number">3</span>          <span class="number">10</span> PUSH_NULL                  <span class="comment">#r = random.Random(322376503)   </span></span><br><span class="line">            <span class="number">12</span> LOAD_NAME                <span class="number">0</span> (random)</span><br><span class="line">            <span class="number">14</span> LOAD_ATTR                <span class="number">1</span> (Random)</span><br><span class="line">            <span class="number">24</span> LOAD_CONST               <span class="number">2</span> (<span class="number">322376503</span>)</span><br><span class="line">            <span class="number">26</span> PRECALL                  <span class="number">1</span></span><br><span class="line">            <span class="number">30</span> CALL                     <span class="number">1</span></span><br><span class="line">            <span class="number">40</span> STORE_NAME               <span class="number">2</span> (r)</span><br><span class="line"></span><br><span class="line"> <span class="number">6</span>          <span class="number">42</span> PUSH_NULL</span><br><span class="line">            <span class="number">44</span> LOAD_NAME                <span class="number">3</span> (<span class="built_in">input</span>)</span><br><span class="line">            <span class="number">46</span> LOAD_CONST               <span class="number">3</span> (<span class="string">&#x27;Enter your flag: &#x27;</span>)</span><br><span class="line">            <span class="number">48</span> PRECALL                  <span class="number">1</span></span><br><span class="line">            <span class="number">52</span> CALL                     <span class="number">1</span></span><br><span class="line">            <span class="number">62</span> LOAD_METHOD              <span class="number">4</span> (encode)</span><br><span class="line">            <span class="number">84</span> PRECALL                  <span class="number">0</span></span><br><span class="line">            <span class="number">88</span> CALL                     <span class="number">0</span></span><br><span class="line">            <span class="number">98</span> STORE_NAME               <span class="number">5</span> (pt)  pt = <span class="built_in">input</span>(<span class="string">&quot;Enter your flag: &quot;</span>).encode()</span><br><span class="line"></span><br><span class="line"> <span class="number">8</span>         <span class="number">100</span> LOAD_CONST               <span class="number">4</span> (<span class="string">b&#x27;\x8b\xcck\xd3\xed\x96\xffFb\x06r\x085\x82\xbc \xb2\xde)p\x88Q`\x1bf\x18\xb6QUSw\x10\xcd\xd9\x13A$\x86\xe5\xcd\xd9\xff&#x27;</span>)</span><br><span class="line">           <span class="number">102</span> STORE_NAME               <span class="number">6</span> (ct)           ct = <span class="string">b&#x27;\x8b\xcck\xd3\xed\x96\xffFb\x06r\x085\x82\xbc \xb2\xde)p\x88Q`\x1bf\x18\xb6QUSw\x10\xcd\xd9\x13A$\x86\xe5\xcd\xd9\xff&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="number">10</span>         <span class="number">104</span> BUILD_LIST               <span class="number">0</span>           <span class="comment">#buf = []</span></span><br><span class="line">           <span class="number">106</span> STORE_NAME               <span class="number">7</span> (buf)</span><br><span class="line"></span><br><span class="line"><span class="number">12</span>         <span class="number">108</span> LOAD_NAME                <span class="number">5</span> (pt)            <span class="comment">#for b in pt</span></span><br><span class="line">           <span class="number">110</span> GET_ITER</span><br><span class="line">       &gt;&gt;  <span class="number">112</span> FOR_ITER                <span class="number">46</span> (to <span class="number">206</span>)<span class="comment">#此处标注循环结束的位置下一句</span></span><br><span class="line">           <span class="number">114</span> STORE_NAME               <span class="number">8</span> (b)</span><br><span class="line"></span><br><span class="line"><span class="number">13</span>         <span class="number">116</span> LOAD_NAME                <span class="number">7</span> (buf)  <span class="comment">#buf.append(r.randint(0,255)^b)</span></span><br><span class="line">           <span class="number">118</span> LOAD_METHOD              <span class="number">9</span> (append)</span><br><span class="line">           <span class="number">140</span> LOAD_NAME                <span class="number">2</span> (r)</span><br><span class="line">           <span class="number">142</span> LOAD_METHOD             <span class="number">10</span> (randint)</span><br><span class="line">           <span class="number">164</span> LOAD_CONST               <span class="number">0</span> (<span class="number">0</span>)</span><br><span class="line">           <span class="number">166</span> LOAD_CONST               <span class="number">5</span> (<span class="number">255</span>)</span><br><span class="line">           <span class="number">168</span> PRECALL                  <span class="number">2</span></span><br><span class="line">           <span class="number">172</span> CALL                     <span class="number">2</span></span><br><span class="line">           <span class="number">182</span> LOAD_NAME                <span class="number">8</span> (b)</span><br><span class="line">           <span class="number">184</span> BINARY_OP               <span class="number">12</span> (^)</span><br><span class="line">           <span class="number">188</span> PRECALL                  <span class="number">1</span></span><br><span class="line">           <span class="number">192</span> CALL                     <span class="number">1</span></span><br><span class="line">           <span class="number">202</span> POP_TOP</span><br><span class="line">           <span class="number">204</span> JUMP_BACKWARD           <span class="number">47</span> (to <span class="number">112</span>)</span><br><span class="line"></span><br><span class="line"><span class="number">15</span>     &gt;&gt;  <span class="number">206</span> PUSH_NULL                                   <span class="comment">#if bytes(buf) == ct:</span></span><br><span class="line">           <span class="number">208</span> LOAD_NAME               <span class="number">11</span> (<span class="built_in">bytes</span>)</span><br><span class="line">           <span class="number">210</span> LOAD_NAME                <span class="number">7</span> (buf)</span><br><span class="line">           <span class="number">212</span> PRECALL                  <span class="number">1</span></span><br><span class="line">           <span class="number">216</span> CALL                     <span class="number">1</span></span><br><span class="line">           <span class="number">226</span> LOAD_NAME                <span class="number">6</span> (ct)</span><br><span class="line">           <span class="number">228</span> COMPARE_OP               <span class="number">2</span> (==)</span><br><span class="line">           <span class="number">234</span> POP_JUMP_FORWARD_IF_TRUE     <span class="number">2</span> (to <span class="number">240</span>)</span><br><span class="line">           <span class="number">236</span> LOAD_ASSERTION_ERROR</span><br><span class="line">           <span class="number">238</span> RAISE_VARARGS            <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="number">17</span>     &gt;&gt;  <span class="number">240</span> PUSH_NULL</span><br><span class="line">           <span class="number">242</span> LOAD_NAME               <span class="number">12</span> (<span class="built_in">print</span>)</span><br><span class="line">           <span class="number">244</span> LOAD_CONST               <span class="number">6</span> (<span class="string">&#x27;Correct!&#x27;</span>)</span><br><span class="line">           <span class="number">246</span> PRECALL                  <span class="number">1</span></span><br><span class="line">           <span class="number">250</span> CALL                     <span class="number">1</span></span><br><span class="line">           <span class="number">260</span> POP_TOP</span><br><span class="line">           <span class="number">262</span> LOAD_CONST               <span class="number">1</span> (<span class="literal">None</span>)</span><br><span class="line">           <span class="number">264</span> RETURN_VALUE</span><br></pre></td></tr></table></figure>
+
+<p>手撸字节码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">r = random.Random(<span class="number">322376503</span>)</span><br><span class="line">pt = <span class="built_in">input</span>(<span class="string">&#x27;Enter your flag: &#x27;</span>).encode()</span><br><span class="line">ct = <span class="string">b&#x27;\x8b\xcck\xd3\xed\x96\xffFb\x06r\x085\x82\xbc \xb2\xde)p\x88Q`\x1bf\x18\xb6QUSw\x10\xcd\xd9\x13A$\x86\xe5\xcd\xd9\xff&#x27;</span></span><br><span class="line">buf = []</span><br><span class="line"><span class="keyword">for</span> b <span class="keyword">in</span> pt:</span><br><span class="line">	buf.append(r.randint(<span class="number">0</span>, <span class="number">255</span>) ^ b)</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">bytes</span>(buf) == ct:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;Correct!&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="keyword">raise</span> Assert Error</span><br></pre></td></tr></table></figure>
+
+<p>然后编写脚本进行解密</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">r = random.Random(<span class="number">322376503</span>)</span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line">buf = <span class="string">b&#x27;\x8b\xcck\xd3\xed\x96\xffFb\x06r\x085\x82\xbc \xb2\xde)p\x88Q`\x1bf\x18\xb6QUSw\x10\xcd\xd9\x13A$\x86\xe5\xcd\xd9\xff&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> buf:</span><br><span class="line">    flag += <span class="built_in">chr</span>(i^(r.randint(<span class="number">0</span>,<span class="number">255</span>)))</span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
+
+<p>flag：flag{69858b56-4987-438f-a02c-5ab5c09e5138}</p>
+
+      
+    </div><!-- .entry-content -->
+    
+    <footer class="entry-meta">
+    <a href="/2023/04/20/easyRE/">
+    <time datetime="2023-04-19T16:00:00.000Z" class="entry-date">
+        2023-04-20
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/python%E9%80%86%E5%90%91/">python逆向</a>, <a class="article-category-link" href="/categories/python%E9%80%86%E5%90%91/python%E9%80%86%E5%90%91%E7%BB%83%E4%B9%A0/">python逆向练习</a>
+  </div>
+
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-我不是病毒2.0" class="post-我不是病毒2.0 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -611,7 +677,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://example.com/2023/04/20/%E6%88%91%E4%B8%8D%E6%98%AF%E7%97%85%E6%AF%922.0/" data-id="clh39cife0008m4l07neabu7k" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://example.com/2023/04/20/%E6%88%91%E4%B8%8D%E6%98%AF%E7%97%85%E6%AF%922.0/" data-id="clhn258ni000dvwl0ev10f5tt" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
     
@@ -707,72 +773,6 @@
 
 
   
-    <article id="post-easyRE" class="post-easyRE post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2023/04/20/easyRE/">easyRE</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://example.com/2023/04/20/easyRE/" data-id="clhn24rab0000gsl0bbozgjmb" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-    
-    <div class="entry-content">
-      
-      <!-- Table of Contents -->
-    <!--目录-侧边栏-->
-    
-    <!--目录-文章开头-->
-    
-    </br>   
-        <h1 id="easyRE"><a href="#easyRE" class="headerlink" title="easyRE"></a>easyRE</h1><p>是一个py的可执行文件，利用pyinstxtractor-master解包，利用代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> dis</span><br><span class="line"><span class="keyword">import</span> marshal</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;D:\\信安\\pycdc\\easyRE.pyc&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:<span class="comment">#如果直接填写pyc文件名称无法运行，就填写pyc文件的绝对路径(绝对路径不能过长，否者会打开文件失败)</span></span><br><span class="line">    f.seek(<span class="number">16</span>)</span><br><span class="line">    dis.dis(marshal.load(f))</span><br></pre></td></tr></table></figure>
-
-<p>运行环境需要和文件的Python的python环境一致，否者会报错。解包得到的easyRE.pyc将会变为字节码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"> <span class="number">0</span>           <span class="number">0</span> RESUME                   <span class="number">0</span>                                <span class="comment">#表示函数的开始</span></span><br><span class="line"></span><br><span class="line"> <span class="number">1</span>           <span class="number">2</span> LOAD_CONST               <span class="number">0</span> (<span class="number">0</span>)                        <span class="comment">#import random</span></span><br><span class="line">             <span class="number">4</span> LOAD_CONST               <span class="number">1</span> (<span class="literal">None</span>)</span><br><span class="line">             <span class="number">6</span> IMPORT_NAME              <span class="number">0</span> (random)                   </span><br><span class="line">             <span class="number">8</span> STORE_NAME               <span class="number">0</span> (random)</span><br><span class="line"></span><br><span class="line"> <span class="number">3</span>          <span class="number">10</span> PUSH_NULL                  <span class="comment">#r = random.Random(322376503)   </span></span><br><span class="line">            <span class="number">12</span> LOAD_NAME                <span class="number">0</span> (random)</span><br><span class="line">            <span class="number">14</span> LOAD_ATTR                <span class="number">1</span> (Random)</span><br><span class="line">            <span class="number">24</span> LOAD_CONST               <span class="number">2</span> (<span class="number">322376503</span>)</span><br><span class="line">            <span class="number">26</span> PRECALL                  <span class="number">1</span></span><br><span class="line">            <span class="number">30</span> CALL                     <span class="number">1</span></span><br><span class="line">            <span class="number">40</span> STORE_NAME               <span class="number">2</span> (r)</span><br><span class="line"></span><br><span class="line"> <span class="number">6</span>          <span class="number">42</span> PUSH_NULL</span><br><span class="line">            <span class="number">44</span> LOAD_NAME                <span class="number">3</span> (<span class="built_in">input</span>)</span><br><span class="line">            <span class="number">46</span> LOAD_CONST               <span class="number">3</span> (<span class="string">&#x27;Enter your flag: &#x27;</span>)</span><br><span class="line">            <span class="number">48</span> PRECALL                  <span class="number">1</span></span><br><span class="line">            <span class="number">52</span> CALL                     <span class="number">1</span></span><br><span class="line">            <span class="number">62</span> LOAD_METHOD              <span class="number">4</span> (encode)</span><br><span class="line">            <span class="number">84</span> PRECALL                  <span class="number">0</span></span><br><span class="line">            <span class="number">88</span> CALL                     <span class="number">0</span></span><br><span class="line">            <span class="number">98</span> STORE_NAME               <span class="number">5</span> (pt)  pt = <span class="built_in">input</span>(<span class="string">&quot;Enter your flag: &quot;</span>).encode()</span><br><span class="line"></span><br><span class="line"> <span class="number">8</span>         <span class="number">100</span> LOAD_CONST               <span class="number">4</span> (<span class="string">b&#x27;\x8b\xcck\xd3\xed\x96\xffFb\x06r\x085\x82\xbc \xb2\xde)p\x88Q`\x1bf\x18\xb6QUSw\x10\xcd\xd9\x13A$\x86\xe5\xcd\xd9\xff&#x27;</span>)</span><br><span class="line">           <span class="number">102</span> STORE_NAME               <span class="number">6</span> (ct)           ct = <span class="string">b&#x27;\x8b\xcck\xd3\xed\x96\xffFb\x06r\x085\x82\xbc \xb2\xde)p\x88Q`\x1bf\x18\xb6QUSw\x10\xcd\xd9\x13A$\x86\xe5\xcd\xd9\xff&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="number">10</span>         <span class="number">104</span> BUILD_LIST               <span class="number">0</span>           <span class="comment">#buf = []</span></span><br><span class="line">           <span class="number">106</span> STORE_NAME               <span class="number">7</span> (buf)</span><br><span class="line"></span><br><span class="line"><span class="number">12</span>         <span class="number">108</span> LOAD_NAME                <span class="number">5</span> (pt)            <span class="comment">#for b in pt</span></span><br><span class="line">           <span class="number">110</span> GET_ITER</span><br><span class="line">       &gt;&gt;  <span class="number">112</span> FOR_ITER                <span class="number">46</span> (to <span class="number">206</span>)<span class="comment">#此处标注循环结束的位置下一句</span></span><br><span class="line">           <span class="number">114</span> STORE_NAME               <span class="number">8</span> (b)</span><br><span class="line"></span><br><span class="line"><span class="number">13</span>         <span class="number">116</span> LOAD_NAME                <span class="number">7</span> (buf)  <span class="comment">#buf.append(r.randint(0,255)^b)</span></span><br><span class="line">           <span class="number">118</span> LOAD_METHOD              <span class="number">9</span> (append)</span><br><span class="line">           <span class="number">140</span> LOAD_NAME                <span class="number">2</span> (r)</span><br><span class="line">           <span class="number">142</span> LOAD_METHOD             <span class="number">10</span> (randint)</span><br><span class="line">           <span class="number">164</span> LOAD_CONST               <span class="number">0</span> (<span class="number">0</span>)</span><br><span class="line">           <span class="number">166</span> LOAD_CONST               <span class="number">5</span> (<span class="number">255</span>)</span><br><span class="line">           <span class="number">168</span> PRECALL                  <span class="number">2</span></span><br><span class="line">           <span class="number">172</span> CALL                     <span class="number">2</span></span><br><span class="line">           <span class="number">182</span> LOAD_NAME                <span class="number">8</span> (b)</span><br><span class="line">           <span class="number">184</span> BINARY_OP               <span class="number">12</span> (^)</span><br><span class="line">           <span class="number">188</span> PRECALL                  <span class="number">1</span></span><br><span class="line">           <span class="number">192</span> CALL                     <span class="number">1</span></span><br><span class="line">           <span class="number">202</span> POP_TOP</span><br><span class="line">           <span class="number">204</span> JUMP_BACKWARD           <span class="number">47</span> (to <span class="number">112</span>)</span><br><span class="line"></span><br><span class="line"><span class="number">15</span>     &gt;&gt;  <span class="number">206</span> PUSH_NULL                                   <span class="comment">#if bytes(buf) == ct:</span></span><br><span class="line">           <span class="number">208</span> LOAD_NAME               <span class="number">11</span> (<span class="built_in">bytes</span>)</span><br><span class="line">           <span class="number">210</span> LOAD_NAME                <span class="number">7</span> (buf)</span><br><span class="line">           <span class="number">212</span> PRECALL                  <span class="number">1</span></span><br><span class="line">           <span class="number">216</span> CALL                     <span class="number">1</span></span><br><span class="line">           <span class="number">226</span> LOAD_NAME                <span class="number">6</span> (ct)</span><br><span class="line">           <span class="number">228</span> COMPARE_OP               <span class="number">2</span> (==)</span><br><span class="line">           <span class="number">234</span> POP_JUMP_FORWARD_IF_TRUE     <span class="number">2</span> (to <span class="number">240</span>)</span><br><span class="line">           <span class="number">236</span> LOAD_ASSERTION_ERROR</span><br><span class="line">           <span class="number">238</span> RAISE_VARARGS            <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="number">17</span>     &gt;&gt;  <span class="number">240</span> PUSH_NULL</span><br><span class="line">           <span class="number">242</span> LOAD_NAME               <span class="number">12</span> (<span class="built_in">print</span>)</span><br><span class="line">           <span class="number">244</span> LOAD_CONST               <span class="number">6</span> (<span class="string">&#x27;Correct!&#x27;</span>)</span><br><span class="line">           <span class="number">246</span> PRECALL                  <span class="number">1</span></span><br><span class="line">           <span class="number">250</span> CALL                     <span class="number">1</span></span><br><span class="line">           <span class="number">260</span> POP_TOP</span><br><span class="line">           <span class="number">262</span> LOAD_CONST               <span class="number">1</span> (<span class="literal">None</span>)</span><br><span class="line">           <span class="number">264</span> RETURN_VALUE</span><br></pre></td></tr></table></figure>
-
-<p>手撸字节码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">r = random.Random(<span class="number">322376503</span>)</span><br><span class="line">pt = <span class="built_in">input</span>(<span class="string">&#x27;Enter your flag: &#x27;</span>).encode()</span><br><span class="line">ct = <span class="string">b&#x27;\x8b\xcck\xd3\xed\x96\xffFb\x06r\x085\x82\xbc \xb2\xde)p\x88Q`\x1bf\x18\xb6QUSw\x10\xcd\xd9\x13A$\x86\xe5\xcd\xd9\xff&#x27;</span></span><br><span class="line">buf = []</span><br><span class="line"><span class="keyword">for</span> b <span class="keyword">in</span> pt:</span><br><span class="line">	buf.append(r.randint(<span class="number">0</span>, <span class="number">255</span>) ^ b)</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">bytes</span>(buf) == ct:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;Correct!&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="keyword">raise</span> Assert Error</span><br></pre></td></tr></table></figure>
-
-<p>然后编写脚本进行解密</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">r = random.Random(<span class="number">322376503</span>)</span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line">buf = <span class="string">b&#x27;\x8b\xcck\xd3\xed\x96\xffFb\x06r\x085\x82\xbc \xb2\xde)p\x88Q`\x1bf\x18\xb6QUSw\x10\xcd\xd9\x13A$\x86\xe5\xcd\xd9\xff&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> buf:</span><br><span class="line">    flag += <span class="built_in">chr</span>(i^(r.randint(<span class="number">0</span>,<span class="number">255</span>)))</span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
-
-<p>flag：flag{69858b56-4987-438f-a02c-5ab5c09e5138}</p>
-
-      
-    </div><!-- .entry-content -->
-    
-    <footer class="entry-meta">
-    <a href="/2023/04/20/easyRE/">
-    <time datetime="2023-04-19T16:00:00.000Z" class="entry-date">
-        2023-04-20
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/python%E9%80%86%E5%90%91/">python逆向</a>, <a class="article-category-link" href="/categories/python%E9%80%86%E5%90%91/python%E9%80%86%E5%90%91%E7%BB%83%E4%B9%A0/">python逆向练习</a>
-  </div>
-
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
     <article id="post-脱壳题目" class="post-脱壳题目 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -788,7 +788,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://example.com/2023/04/09/%E8%84%B1%E5%A3%B3%E9%A2%98%E7%9B%AE/" data-id="clh39cifg000dm4l05l8fgybv" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://example.com/2023/04/09/%E8%84%B1%E5%A3%B3%E9%A2%98%E7%9B%AE/" data-id="clhn258nl000mvwl0fzasajx0" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
     
@@ -875,7 +875,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://example.com/2023/04/09/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE/" data-id="clh39cifl000tm4l05krq3ff3" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://example.com/2023/04/09/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE/" data-id="clhn258nm000ovwl0ffg4cdhl" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
     
@@ -1004,7 +1004,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://example.com/2023/04/02/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%882%EF%BC%89/" data-id="clh39ciff000cm4l06pfegzwn" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://example.com/2023/04/02/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%882%EF%BC%89/" data-id="clhn258nj000hvwl09hiab2wu" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
     
@@ -1130,7 +1130,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://example.com/2023/03/25/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95%EF%BC%88linux%EF%BC%89/" data-id="clh39cif90002m4l0dfs818v7" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://example.com/2023/03/25/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95%EF%BC%88linux%EF%BC%89/" data-id="clhn258ng0007vwl056lhflsu" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
     
@@ -1246,7 +1246,7 @@
           </li>
         
           <li>
-            <a href="/2023/04/20/%E6%88%91%E4%B8%8D%E6%98%AF%E7%97%85%E6%AF%922.0/">XCTF_rev2 我不是病毒2.0</a>
+            <a href="/2023/04/20/easyRE/">easyRE</a>
           </li>
         
       </ul>

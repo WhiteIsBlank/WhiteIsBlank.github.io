@@ -58,7 +58,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/116374553/234641740-50ebd33c-dfd6-44ec-b165-5c481f80d790.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/116374553/235347608-18d37579-e134-42eb-b635-3f8176e51983.png">
 <meta property="article:published_time" content="2023-04-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-01T14:33:32.049Z">
+<meta property="article:modified_time" content="2023-05-13T18:20:36.579Z">
 <meta property="article:author" content="Blank">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/116374553/230752170-8a91623d-c080-497e-a8f2-cfb22ac89ce1.png">
@@ -261,8 +261,9 @@
 <p>由之前可知此时电脑中的MessageBox函数的地址为<em><strong>0x7544A7D0</strong></em>（真正要跳转的地址）</p>
 <p>此时<em><strong>X = 7544A7D0 - E8下一条指令的地址</strong></em>（<strong>运行时</strong>的地址此时是拉伸之后的（Image Buffer））</p>
 <p>其中：<em><strong>E8地址 = ImageBase + 偏移地址 = 400000 + 拉伸后E8下一条指令的地址 = 400000 + （244d - 400 + 1000）= 40304D</strong></em></p>
+<p>注：244d - 400 + 1000  此时在file文件中e8下条指令的地址-文件中偏移+内存偏移</p>
 <p>ImageBase：<img src="https://user-images.githubusercontent.com/116374553/234630622-445e36df-adec-45dc-853a-add9569d3969.png"></p>
-<p>最终解得<em><strong>X = 7544A7D0 - 40304D = 75047783</strong></em> </p>
+<p>最终解得<em><strong>X = 7544A7D0 - 40304D = 75047783</strong></em>  </p>
 <p>则<em><strong>E8 83 77 04 75</strong></em></p>
 <p><img src="https://user-images.githubusercontent.com/116374553/234633620-92ea411d-57ab-48c3-8670-fb9f7d30d42d.png"></p>
 <h5 id="求取E9后X"><a href="#求取E9后X" class="headerlink" title="求取E9后X"></a>求取E9后X</h5><p>跳转到真正的程序OEP处（入口地点）</p>
@@ -281,8 +282,8 @@
 <p>当call指令的硬编码为FF15时，后跟的地址是绝对地址</p>
 <p>②00A018F3 E8 51 F9 FF FF       call        __RTC_CheckEsp (0A01249h) </p>
 <p>当call指令的硬编码为E8时，后跟的地址是相对偏移地址</p>
-<h2 id="Ⅵ-在任意空白处添加代码"><a href="#Ⅵ-在任意空白处添加代码" class="headerlink" title="Ⅵ.在任意空白处添加代码"></a>Ⅵ.在任意空白处添加代码</h2><p><img src="https://user-images.githubusercontent.com/116374553/235347608-18d37579-e134-42eb-b635-3f8176e51983.png"></p>
-
+<h2 id="Ⅵ-在任意空白处添加代码"><a href="#Ⅵ-在任意空白处添加代码" class="headerlink" title="Ⅵ.在任意空白处添加代码"></a>Ⅵ.在任意空白处添加代码</h2><p><img src="https://user-images.githubusercontent.com/116374553/235347608-18d37579-e134-42eb-b635-3f8176e51983.png" alt="00"></p>
+<h2 id="Ⅶ-新增节-添加代码"><a href="#Ⅶ-新增节-添加代码" class="headerlink" title="Ⅶ.新增节-添加代码"></a>Ⅶ.新增节-添加代码</h2>
       
     </div><!-- .entry-content -->
     
@@ -336,7 +337,7 @@
   <aside class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/">python逆向</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/">python逆向</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/python%E9%80%86%E5%90%91%E7%BB%83%E4%B9%A0/">python逆向练习</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">3</span></li></ul>
     </div>
   </aside>
 
@@ -346,6 +347,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget-content">
       <ul>
+        
+          <li>
+            <a href="/2023/05/14/%E5%9C%A8%E7%A9%BA%E7%99%BD%E5%A4%84%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81/">在空白处添加代码</a>
+          </li>
         
           <li>
             <a href="/2023/05/01/%E6%89%93%E5%8D%B0PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%EF%BC%88C%E8%AF%AD%E8%A8%80%EF%BC%89/">打印PE文件结构（C语言）</a>
@@ -361,10 +366,6 @@
         
           <li>
             <a href="/2023/04/20/%E6%88%91%E4%B8%8D%E6%98%AF%E7%97%85%E6%AF%922.0/">XCTF_rev2 我不是病毒2.0</a>
-          </li>
-        
-          <li>
-            <a href="/2023/04/09/%E8%84%B1%E5%A3%B3%E9%A2%98%E7%9B%AE/">脱壳题目</a>
           </li>
         
       </ul>

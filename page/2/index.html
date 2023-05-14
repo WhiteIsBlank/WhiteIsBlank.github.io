@@ -68,6 +68,257 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-汇编语言（1）" class="post-汇编语言（1） post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2023/03/25/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%881%EF%BC%89/">汇编语言</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://example.com/2023/03/25/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%881%EF%BC%89/" data-id="clh39cife0009m4l07e5b9d4c" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+    
+    <div class="entry-content">
+      
+      <!-- Table of Contents -->
+    <!--目录-侧边栏-->
+    
+    <!--目录-文章开头-->
+    
+    </br>   
+        <h1 id="汇编语言"><a href="#汇编语言" class="headerlink" title="汇编语言"></a>汇编语言</h1><h2 id="学习笔记"><a href="#学习笔记" class="headerlink" title="学习笔记"></a>学习笔记</h2><h4 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h4><p><em><strong>1</strong></em>.<strong>存储单元</strong>（1Byte）：存储器被划分为若干存储单元，由0开始编号</p>
+<p><strong>2</strong>.<strong>CPU对存储器读写</strong>：①存储单元的地址（地址信息）</p>
+<p>​                                      ②器件的选择，读或写命令（控制信息）</p>
+<p>​                                      ③读或写的数据（数据信息）</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/227700054-8dbe6227-d6ef-4ff3-84cd-c67c5946cde9.jpeg"></p>
+<p>地址总线：CPU通过地址总线来指定存储器单元</p>
+<p>​                   N根地址线，则地址总线宽度为N，最多可以寻找2的N次方个内存单元</p>
+<p>数据总线：CPU和外界的数据传送速度</p>
+<p>控制总线：CPU提供对外部器件的多少种控制（对外部器件的控制能力）</p>
+<h3 id="寄存器（8086-16位结构CPU）"><a href="#寄存器（8086-16位结构CPU）" class="headerlink" title="寄存器（8086 16位结构CPU）"></a>寄存器（8086 16位结构CPU）</h3><p><em><strong>1</strong></em>.<strong>通用寄存器</strong>(16位)：AX、BX、CX、DX</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/227700856-2f37a3bf-d81d-4512-abc6-c50461fee746.jpg"></p>
+<p>AX低八位构成AL，高八位构成AH。(AL和AH均可独立使用)</p>
+<p>补充：32位寄存器eax的低16位即是ax，64位寄存器rax的低32即是eax</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">|63..32|31..16|15-8|7-0|</span><br><span class="line">               |AH.|AL.|</span><br><span class="line">               |AX.....|</span><br><span class="line">       |EAX............|</span><br><span class="line">|RAX...................|</span><br></pre></td></tr></table></figure>
+
+<p>在单独的使用al和ah时，它们将是两个毫不相干的寄存器，当要存入al中的值大于al中能存储的内容的时候，将会丢弃高位值但并不会存储到ah中</p>
+<p><em><strong>2</strong></em>.<strong>物理地址</strong> = 段地址 * 16 + 偏移地址 （由两个16位地址合成一个20位的物理地址）</p>
+<p>​                    = 基础地址 + 偏移地址</p>
+<p><em><strong>3</strong></em>.<strong>CS</strong>（段寄存器）<strong>和IP</strong>：</p>
+<p>CS为代码段寄存器，IP为指令指针寄存器 </p>
+<p> 补充：cs和ip或cs和eip一起构成了下一条即将执行的指令的完整地址</p>
+<p>任意时刻CPU将CS:IP指向的内容当做指令执行（若将CS、IP中内容分别设为M、N，则指向地址16*CS+IP)</p>
+<p>在读取一条指令之后，IP的值会自增（以便CPU读取下一条指令）</p>
+<p>8086CPU在加电启动或复位后CS = FFFFH,IP = 0000H</p>
+<p><em><strong>4</strong></em>.<strong>修改CS和IP</strong>（mov指令不能用来设置CS和IP的值）：</p>
+<p>方式：jmp 指令</p>
+<p>​        ①同时修改CS、IP：jmp 段地址：偏移地址</p>
+<p>​        ②修改IP：jmp 某一合法寄存器（相当于将寄存器的值赋给了IP） </p>
+<p><em><strong>5</strong></em>.<strong>段和代码段</strong>：</p>
+<p>段：根据需要将一组内存单元定义为一个段。内存并未分段，段的划分来自CPU。由于求取内存单元物理地址的方式，使得可以用分段的方式来管理内存。</p>
+<p>代码段：用来存放程序执行代码的一块内存区域。</p>
+<p><em><strong>6</strong></em>.<strong>内存中字的存储</strong>：</p>
+<p>CPU中用16位寄存器来存储一个字。高八位存放高位字节，低八位存放低位字节</p>
+<img src="https://user-images.githubusercontent.com/116374553/227703751-bff5879f-7538-4ec1-b052-5932f31fd6dc.jpg" style="zoom: 20%;" />
+
+<p>字单元：存放一个字型数据（16位）的内存单元</p>
+<p><em><strong>7</strong></em>.<strong>DS和[address]</strong>:</p>
+<p>例子：将1000:0的数据读取到al中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov bx,1000H</span><br><span class="line">mov ds,bx  /*将段地址放入ds*/</span><br><span class="line">mov al,[0] /*mov 寄存器名，内存单元地址*/</span><br></pre></td></tr></table></figure>
+
+<p>“[….]”表示一个内存单元，“[….]”中括号中的内容表示内存单元的偏移地址</p>
+<p>注意：80886CPU不支持将数据直接送入段寄存器</p>
+<p>区别ds和cs：cs为代码段寄存器</p>
+<p>​                        ds为数据段寄存器</p>
+<p><em><strong>8</strong></em>.<strong>mov、add、sub指令</strong>：</p>
+<p>mov：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mov 寄存器，数据</span><br><span class="line">mov 寄存器，寄存器</span><br><span class="line">mov 寄存器，内存单元  /*将ds:[...]中的值传入寄存器中*/</span><br><span class="line">mov 内存单元，寄存器  /*将寄存器中的值传入ds:[...]中*/</span><br><span class="line">mov 段寄存器，寄存器  /*将数据传递给段寄存器*/</span><br><span class="line">mov 寄存器，段寄存器  /*从段寄存器向寄存器传递数据*/</span><br><span class="line">mov 内存单元，段寄存器/*从段寄存器向内存单元传送数据*/</span><br><span class="line">/*例如：</span><br><span class="line">mov ax,1000H</span><br><span class="line">mov ds,ax</span><br><span class="line">mov [0],cs</span><br><span class="line">*/</span><br><span class="line">mov 段寄存器，内存单元</span><br><span class="line">/*例如：</span><br><span class="line">mov ax,1000H</span><br><span class="line">mov ds,ax</span><br><span class="line">mov ds,[0]</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+<p>add:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">add 寄存器，数据</span><br><span class="line">add 寄存器，寄存器</span><br><span class="line">add 寄存器，内存单元</span><br><span class="line">add 内存单元，寄存器</span><br></pre></td></tr></table></figure>
+
+<p>sub：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sub 寄存器 数据</span><br><span class="line">sub 寄存器，寄存器</span><br><span class="line">sub 寄存器，内存单元</span><br><span class="line">sub 内存单元，寄存器</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>9</strong></em>.<strong>数据段</strong>：指用来存放程序中已初始化的全局变量的一块内存区域。数据段属于静态内存分配。</p>
+<p>用ds存放数据段地址</p>
+<p><em><strong>10</strong></em>.<strong>栈</strong>：访问方式：栈顶的元素最后入栈，出栈的时候最先取出（这种规则称为：LIFO)</p>
+<p>入栈：将一个新的元素放到栈顶</p>
+<p>出栈：从栈顶取出一个元素</p>
+<p><em><strong>11</strong></em>.<strong>CPU提供的栈机制</strong>：入栈（push)和出栈（pop)操作均以字为单位进行</p>
+<p>SS段寄存器：栈顶的段地址</p>
+<p>SP寄存器：偏移地址</p>
+<p>任意时刻SS:SP指向栈顶元素</p>
+<p>入栈的时候执行一次push指令，SP -= 2（入栈由高地址向低地址增长）</p>
+<img src="https://user-images.githubusercontent.com/116374553/227724581-4a468204-32b6-4509-b19f-78b0c92fe23a.png" style="zoom:50%;" />
+
+<p>出栈的时候执行一次pop指令，  SP += 2</p>
+<img src="https://user-images.githubusercontent.com/116374553/227724560-a1fde403-e9b0-4997-8e53-d9e055ce0cff.png" style="zoom:50%;" />
+
+<p><em><strong>12</strong></em>.<strong>栈顶超界</strong>：覆盖其他地址的内容</p>
+<p><em><strong>13</strong></em>.<strong>push、pop指令</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">push 寄存器</span><br><span class="line">pop 寄存器</span><br><span class="line"></span><br><span class="line">push 段寄存器</span><br><span class="line">pop 段寄存器</span><br><span class="line"></span><br><span class="line">push 内存单元</span><br><span class="line">pop 内存单元</span><br></pre></td></tr></table></figure>
+
+<p><strong>14</strong>.<strong>栈段</strong>：采用栈方式工作的一段内存</p>
+<h3 id="逆向练习："><a href="#逆向练习：" class="headerlink" title="逆向练习："></a>逆向练习：</h3><h5 id="buu-WUSTCTF2020-level1"><a href="#buu-WUSTCTF2020-level1" class="headerlink" title="buu_[WUSTCTF2020]level1"></a>buu_[WUSTCTF2020]level1</h5><p>打开题目文件，其中有一个名为output的txt文本文件，和level1名字的文件</p>
+<p>用Die打开文件，发现它是一个64位的ELF文件，用IDA64打开，查看main函数</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/227707380-d9d5219e-dc95-48ce-9ae3-37a44db6aba4.png"></p>
+<p>main函数大概就是，以只读的形式打开一个名为flag的文件，然后将其中的内容存储到ptr数组中，然后对其内容进行加密，最终输出内容。for循环一共进行了19次，打开output文件，发现其中刚好是19个数字，可想而知这是程序的打印值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ptr = [<span class="string">&#x27;198&#x27;</span>, <span class="string">&#x27;232&#x27;</span>, <span class="string">&#x27;816&#x27;</span>, <span class="string">&#x27;200&#x27;</span>, <span class="string">&#x27;1536&#x27;</span>, <span class="string">&#x27;300&#x27;</span>, <span class="string">&#x27;6144&#x27;</span>, <span class="string">&#x27;984&#x27;</span>, <span class="string">&#x27;51200&#x27;</span>, <span class="string">&#x27;570&#x27;</span>, <span class="string">&#x27;92160&#x27;</span>, <span class="string">&#x27;1200&#x27;</span>, <span class="string">&#x27;565248&#x27;</span>, <span class="string">&#x27;756&#x27;</span>, <span class="string">&#x27;1474560&#x27;</span>, <span class="string">&#x27;800&#x27;</span>, <span class="string">&#x27;6291456&#x27;</span>, <span class="string">&#x27;1782&#x27;</span>, <span class="string">&#x27;65536000&#x27;</span>,<span class="string">&#x27;0&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">20</span>):</span><br><span class="line">    <span class="keyword">if</span> i &amp; <span class="number">1</span> != <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">chr</span>(<span class="built_in">int</span>(ptr[i - <span class="number">1</span>]) &gt;&gt; i)),end = <span class="string">&quot;&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">chr</span>(<span class="built_in">int</span>(<span class="built_in">int</span>(ptr[i - <span class="number">1</span>])/i))),end = <span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>最终输出：ctf2020{d9-dE6-20c}</p>
+<p>则flag为：flag{d9-dE6-20c}</p>
+
+      
+    </div><!-- .entry-content -->
+    
+    <footer class="entry-meta">
+    <a href="/2023/03/25/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%881%EF%BC%89/">
+    <time datetime="2023-03-24T16:00:00.000Z" class="entry-date">
+        2023-03-25
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a>
+  </div>
+
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-UPX脱壳" class="post-UPX脱壳 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2023/03/18/UPX%E8%84%B1%E5%A3%B3/">脱壳</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://example.com/2023/03/18/UPX%E8%84%B1%E5%A3%B3/" data-id="clh39cifc0005m4l09p1zdyig" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+    
+    <div class="entry-content">
+      
+      <!-- Table of Contents -->
+    <!--目录-侧边栏-->
+    
+    <!--目录-文章开头-->
+    
+    </br>   
+        <h1 id="脱壳"><a href="#脱壳" class="headerlink" title="脱壳"></a>脱壳</h1><h3 id="1-ESP脱壳定律（大多压缩壳和少数加密壳）"><a href="#1-ESP脱壳定律（大多压缩壳和少数加密壳）" class="headerlink" title="1.ESP脱壳定律（大多压缩壳和少数加密壳）"></a>1.ESP脱壳定律（大多压缩壳和少数加密壳）</h3><h6 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h6><p>1.将32位PE文件载入OD，64位PE文件载入x64dbg</p>
+<p>2.载入程序的第一条指令为pushad/pushfd，使用F8单步一次，如果只有ESP寄存器发生变化，即可使用ESP定律（如果程序载入时不是pushad/pushfd，则可以查看断点清单中是否有pushad/pushfd）</p>
+<p>3.右键ESP处，选择在寄存器窗口跟随，然后在相应的地址窗口处设置一个硬件访问的四字节断点</p>
+<p>4.F9再次运行</p>
+<p>5.再次F8运行进入OEP</p>
+<p>6.利用OD插件（OllyDump）和x64dbg插件（Scylla）进行脱壳</p>
+<h3 id="2-单步跟踪法（通用）"><a href="#2-单步跟踪法（通用）" class="headerlink" title="2.单步跟踪法（通用）"></a>2.单步跟踪法（通用）</h3><h6 id="步骤：-1"><a href="#步骤：-1" class="headerlink" title="步骤："></a>步骤：</h6><p>1.将32位PE文件载入OD，64位PE文件载入x64dbg</p>
+<p>2.程序用F8运行（上不跳转下跳转。对于call指令，程序调试进入地址附近的call指令F7进入，跳转地址距离当前调试地址较近的F7进入，其余都F8步过），程序调试开始的位置不一定是pushad/pushfd</p>
+<p>3.一边动态调试，一边观察汇编指令，如果出现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">push ebp</span><br><span class="line">mov ebp,esp</span><br></pre></td></tr></table></figure>
+
+<p>并且后面跟着一些指令带有程序的名称此处大概就是oep/如果遇到的是popad/popfd，在其下方可能会出现带有程序名的指令，并且伴有一个极大地跳转，那么跳转后的地址应该就是oep的地址。</p>
+<p>4.利用OD插件（OllyDump）和x64dbg插件（Scylla）进行脱壳</p>
+<h3 id="3-一步直达OEP（少数壳）"><a href="#3-一步直达OEP（少数壳）" class="headerlink" title="3.一步直达OEP（少数壳）"></a>3.一步直达OEP（少数壳）</h3><h6 id="步骤：-2"><a href="#步骤：-2" class="headerlink" title="步骤："></a>步骤：</h6><p>1.在OD/xdbg中查询Ctrl+F查询popad，不符合（符合：其下方可能会出现带有程序名的指令，并且伴有一个极大地跳转）则Ctrl+L匹配下一个</p>
+<p>2.直到出现有关程序（一般这些跳转处会出现程序名）的跳转</p>
+<p>3.F8跳转程序，进入OEP</p>
+<p>4.利用OD插件（OllyDump）和x64dbg插件（Scylla）进行脱壳</p>
+<h3 id="4-内存镜像法（大多压缩和加密壳）"><a href="#4-内存镜像法（大多压缩和加密壳）" class="headerlink" title="4.内存镜像法（大多压缩和加密壳）"></a>4.内存镜像法（大多压缩和加密壳）</h3><h6 id="步骤：-3"><a href="#步骤：-3" class="headerlink" title="步骤："></a>步骤：</h6><p>1.OD打开程序，点击选项—&gt;调试设置—&gt;异常（此处将所有的异常勾选上)</p>
+<p>2.Alt+M打开内存镜像，在程序的第一个.rsrc（资源）处F2下断点，再F9运行</p>
+<p>3.再次Alt+M，在刚才断点上方的.text处下断点，F9运行</p>
+<p>4.如果并未到达程序oep，上下翻动界面，查看是否有oep或者是popad，如果都没有继续F8执行，直到oep出现为止</p>
+<p>5.插件脱壳</p>
+<h3 id="5-最后一次异常法（加密壳）"><a href="#5-最后一次异常法（加密壳）" class="headerlink" title="5.最后一次异常法（加密壳）"></a>5.最后一次异常法（加密壳）</h3><h6 id="步骤：-4"><a href="#步骤：-4" class="headerlink" title="步骤："></a>步骤：</h6><p>1.OD载入程序之后，点击选项—&gt;调试设置—&gt;异常（此处将所有的异常勾选都去掉)，Ctrl+F2重载</p>
+<p>2.shift + F9让程序运行，记录按键次数，重载后再次按shift + F9，次数为记录次数减一</p>
+<p>3.在OD右下窗口中，会出现SE处理程序，在反汇编窗口按Ctrl+G跳转到这句话前面的地址，F2下一个断点，再次shift + F9运行，再取消该处的断点</p>
+<p>4.单步跟踪直到OEP</p>
+<p>5.插件脱壳</p>
+<h4 id="脱壳思路："><a href="#脱壳思路：" class="headerlink" title="脱壳思路："></a>脱壳思路：</h4><p>1.在程序pushad/pushfd处开始调试（ESP定律一定在此处开始）</p>
+<p>2.找到对应的popad/popfd（在这句指令后伴随着一个跨度极大地跳转指令）</p>
+<p>3.找到OEP</p>
+<h4 id="buu-HDCTF2019-maze（ESP定律）"><a href="#buu-HDCTF2019-maze（ESP定律）" class="headerlink" title="buu_[HDCTF2019]maze（ESP定律）"></a>buu_[HDCTF2019]maze（ESP定律）</h4><p><img src="https://user-images.githubusercontent.com/116374553/225170230-c22035f8-0400-4415-8b38-875ea1808d08.png"></p>
+<p>将程序放入Die中发现，程序是32位的PE文件，并且被UPX进行了加壳</p>
+<p>用OD打开程序，单步一次F8，发现只有ESP寄存器发生变化，即可使用ESP定律</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/225170506-5d63be20-2902-4333-ab05-9ec0260d145d.png"></p>
+<p>先右键点击寄存器窗口中的ESP，选择数据窗口中跟随，在数据窗口中下一个硬件访问的四字节断点。F9再次运行，进入下面图片中的位置</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/225171218-aefd3bfd-b080-4fd8-a24a-bc409dd1914a.png"></p>
+<p>F4运行到jmp处，F8跳转进入OEP</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/225171626-39560cd2-3585-4187-95e8-c18ce6d82750.png"></p>
+<p>利用OD插件OllyDump进行脱壳</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/225955353-b2a9f338-c172-49cc-b564-297301c6b36c.png"></p>
+<p>再次用IDA打开程序，发现脱壳成功</p>
+<h4 id="buu-新年快乐（单步跟踪法）"><a href="#buu-新年快乐（单步跟踪法）" class="headerlink" title="buu_新年快乐（单步跟踪法）"></a>buu_新年快乐（单步跟踪法）</h4><p>用Die发现，程序为32位PE文件，UPX加壳</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226079452-f2be6f2b-c703-4d1d-ad3d-e6ebea709016.png"></p>
+<p>利用od打开，发现程序的入口处并不是pushad，则考虑单步跟踪，由于入口点就是一个call指令，则用F7进入call指令，之后依旧遵循不向上跳转的原则，对于call指令，遇到距离调试位置近的可以F7进入，其余均F8跳过。之后程序突然出现了一个跳转指令，它的跳转地址前带上了程序的名称，可以考虑上下查看一下周围的汇编指令，在跳转指令的上方发现popad，并且该条跳转指令的上一条指令是一个大的跳转，这里跳转后的地址应该就是程序oep。记下该条指令的地址0x40E493，然后F8进入发现是一堆重复的指令</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226078298-ee2b85f3-90b0-4dba-9d2e-05b2c00a8909.png"></p>
+<p>之后我们Ctr+G回到之前跳转指令的位置，F2下一个断点，再F9运行，之后F8一直运行，直到指令地址再次跳转为0x4开头，可以上下翻动汇编界面，可以发现之前的0x401280地址处的汇编指令已经出现</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226078583-4f247564-dd65-4ff5-9fb9-3b6e07e089e2.png"></p>
+<p>在此处进行脱壳</p>
+<p>再次用Die打开脱壳后的程序，发现脱壳成功</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226079454-93ce01b1-c5dc-4b99-90b2-7c232c9d5b9d.png"></p>
+<h4 id="新年快乐（内存镜像法）"><a href="#新年快乐（内存镜像法）" class="headerlink" title="新年快乐（内存镜像法）"></a>新年快乐（内存镜像法）</h4><p>先点击选项—&gt;调试设置—&gt;异常</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226089528-9094429c-ad9c-44cb-ad01-275ef8d44a70.png"></p>
+<p>Alt+M进入内存镜像，在第一个资源处，下断点</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226089562-8560eff8-ae80-41f0-8ac2-63b65e91475e.png"></p>
+<p>F9运行</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226089594-c8a28950-306e-4703-99e8-395102ff21a2.png"></p>
+<p>再次Alt+M，在.text处下断点</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226089578-70228f73-c102-4133-bec3-a2f9463977ee.png"></p>
+<p>再次F9运行</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226089630-92d9ab0c-278f-4a47-a751-206215b24b6a.png"></p>
+<p>发现还未到达oep位置，继续F8直到指令的地址变为004开头，再次观察</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/226089664-0290e403-4354-4edb-87be-249e77856c3b.png"></p>
+<p>重复之前单步跟踪到这儿之后的操作即可找到oep。</p>
+
+      
+    </div><!-- .entry-content -->
+    
+    <footer class="entry-meta">
+    <a href="/2023/03/18/UPX%E8%84%B1%E5%A3%B3/">
+    <time datetime="2023-03-17T16:00:00.000Z" class="entry-date">
+        2023-03-18
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a>
+  </div>
+
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-c语言自动走迷宫" class="post-c语言自动走迷宫 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -212,7 +463,7 @@
   <aside class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/">python逆向</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/">python逆向</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/python%E9%80%86%E5%90%91%E7%BB%83%E4%B9%A0/">python逆向练习</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">3</span></li></ul>
     </div>
   </aside>
 
@@ -222,6 +473,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget-content">
       <ul>
+        
+          <li>
+            <a href="/2023/05/14/%E5%9C%A8%E7%A9%BA%E7%99%BD%E5%A4%84%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81/">在空白处添加代码</a>
+          </li>
         
           <li>
             <a href="/2023/05/01/%E6%89%93%E5%8D%B0PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%EF%BC%88C%E8%AF%AD%E8%A8%80%EF%BC%89/">打印PE文件结构（C语言）</a>
@@ -237,10 +492,6 @@
         
           <li>
             <a href="/2023/04/20/%E6%88%91%E4%B8%8D%E6%98%AF%E7%97%85%E6%AF%922.0/">XCTF_rev2 我不是病毒2.0</a>
-          </li>
-        
-          <li>
-            <a href="/2023/04/09/%E8%84%B1%E5%A3%B3%E9%A2%98%E7%9B%AE/">脱壳题目</a>
           </li>
         
       </ul>

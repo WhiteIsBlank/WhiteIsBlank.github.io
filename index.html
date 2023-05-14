@@ -68,6 +68,101 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-在空白处添加代码" class="post-在空白处添加代码 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2023/05/14/%E5%9C%A8%E7%A9%BA%E7%99%BD%E5%A4%84%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81/">在空白处添加代码</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://example.com/2023/05/14/%E5%9C%A8%E7%A9%BA%E7%99%BD%E5%A4%84%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81/" data-id="clhn24raf0004gsl0aaay1bf1" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+    
+    <div class="entry-content">
+      
+      <!-- Table of Contents -->
+    <!--目录-侧边栏-->
+    
+    <!--目录-文章开头-->
+    
+    </br>   
+        <h1 id="在空白处添加代码"><a href="#在空白处添加代码" class="headerlink" title="在空白处添加代码"></a>在空白处添加代码</h1><h4 id="PE文件分节："><a href="#PE文件分节：" class="headerlink" title="PE文件分节："></a>PE文件分节：</h4><table>
+<thead>
+<tr>
+<th>节区名</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.text</td>
+<td>包含可执行代码</td>
+</tr>
+<tr>
+<td>.rdata</td>
+<td>包含程序中全局可访问的只读数据</td>
+</tr>
+<tr>
+<td>.data</td>
+<td>存储程序中都可以访问的全局数据</td>
+</tr>
+<tr>
+<td>.idata</td>
+<td>有时会显示和存储导入函数信息，如果此节不存在，导入函数信息会存储在rdata中</td>
+</tr>
+<tr>
+<td>.edata</td>
+<td>导出</td>
+</tr>
+<tr>
+<td>.pdata</td>
+<td>只在64位可执行文件中存在，存储异常处理信息</td>
+</tr>
+<tr>
+<td>.rsrc</td>
+<td>存储可执行文件所需的资源</td>
+</tr>
+<tr>
+<td>.reloc</td>
+<td>包含用来重定位库文件的信息</td>
+</tr>
+</tbody></table>
+<h4 id="使用c语言在-text处添加shellcode"><a href="#使用c语言在-text处添加shellcode" class="headerlink" title="使用c语言在.text处添加shellcode"></a>使用c语言在.text处添加shellcode</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FILEPATH_IN <span class="string">&quot;D:\\buu.exe&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FILEPATH_OUT <span class="string">&quot;D:\\buu1.exe&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SHELLCODE 0x12</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MESSAGEBOXADDR 0x7561A7D0 <span class="comment">//messagebox的地址在每一次重启电脑都会有所改变</span></span></span><br><span class="line">DWORD <span class="title function_">ReadPEFile</span><span class="params">(OUT LPVOID* pFileBuffer)</span>;<span class="comment">//读取文件</span></span><br><span class="line">BOOL <span class="title function_">isPE</span><span class="params">(IN LPVOID pFileBuffer)</span>;<span class="comment">//判断是否为pe文件</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">TestAddCodeInCodeSec</span><span class="params">()</span>;<span class="comment">//在空白区域写入代码</span></span><br><span class="line">BOOL <span class="title function_">MemeryTOFile</span><span class="params">(LPVOID pMemBuffer, <span class="type">size_t</span> size)</span>;<span class="comment">//写入新的文件中</span></span><br><span class="line"></span><br><span class="line">BYTE shellcode[] =</span><br><span class="line">&#123;</span><br><span class="line">	<span class="number">0x6A</span>,<span class="number">00</span>,<span class="number">0x6A</span>,<span class="number">00</span>,<span class="number">0x6A</span>,<span class="number">00</span>,<span class="number">0x6A</span>,<span class="number">00</span>,<span class="comment">//push参数</span></span><br><span class="line">	<span class="number">0xE8</span>,<span class="number">00</span>,<span class="number">00</span>,<span class="number">00</span>,<span class="number">00</span>,<span class="comment">//执行call</span></span><br><span class="line">	<span class="number">0xE9</span>,<span class="number">00</span>,<span class="number">00</span>,<span class="number">00</span>,<span class="number">00</span></span><br><span class="line">&#125;;<span class="comment">//定义全局变量</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	TestAddCodeInCodeSec();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">DWORD <span class="title function_">ReadPEFile</span><span class="params">(OUT LPVOID* pFileBuffer)</span><span class="comment">//读取PE文件</span></span><br><span class="line">&#123;</span><br><span class="line">	FILE* pFile = <span class="literal">NULL</span>;<span class="comment">//文件指针</span></span><br><span class="line">	DWORD fileSize = <span class="number">0</span>;<span class="comment">//文件大小</span></span><br><span class="line">	LPVOID pTempFileBuffer = <span class="literal">NULL</span>;<span class="comment">//申请空间指针</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//打开文件</span></span><br><span class="line">	pFile = fopen(FILEPATH_IN, <span class="string">&quot;rb&quot;</span>);<span class="comment">//以二进制的可读形式打开文件</span></span><br><span class="line">	<span class="keyword">if</span> (!pFile)<span class="comment">//如果读取的数据为空，则未能成功打开文件</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;无法打开EXE文件！&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//读取文件大小</span></span><br><span class="line">	fseek(pFile, <span class="number">0</span>, SEEK_END);<span class="comment">//将文件指针指向文件末尾</span></span><br><span class="line">	fileSize = ftell(pFile);<span class="comment">//读取文件大小</span></span><br><span class="line">	fseek(pFile, <span class="number">0</span>, SEEK_SET);<span class="comment">//将文件指针放到起始位置</span></span><br><span class="line">	<span class="comment">//分配缓冲区</span></span><br><span class="line">	pTempFileBuffer = <span class="built_in">malloc</span>(fileSize);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (!pTempFileBuffer)<span class="comment">//如果没有成功申请内存空间</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;申请内存空间失败！&quot;</span>);</span><br><span class="line">		fclose(pFile);<span class="comment">//关闭文件</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//将文件数据读取到缓冲区</span></span><br><span class="line">	<span class="type">size_t</span> n = fread(pTempFileBuffer, fileSize, <span class="number">1</span>, pFile);</span><br><span class="line">	<span class="keyword">if</span> (!n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;读取数据失败！\n&quot;</span>);</span><br><span class="line">		<span class="built_in">free</span>(pTempFileBuffer);<span class="comment">//释放开辟的内存空间</span></span><br><span class="line">		fclose(pFile);<span class="comment">//关闭文件</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//关闭文件</span></span><br><span class="line">	*pFileBuffer = pTempFileBuffer;<span class="comment">//将开辟的空间指针给我们的缓冲区指针</span></span><br><span class="line">	pTempFileBuffer = <span class="literal">NULL</span>;<span class="comment">//释放指针</span></span><br><span class="line">	fclose(pFile);</span><br><span class="line">	<span class="keyword">return</span> fileSize;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">BOOL <span class="title function_">isPE</span><span class="params">(IN LPVOID pFileBuffer)</span><span class="comment">//判断是否是PE文件</span></span><br><span class="line">&#123;</span><br><span class="line">	PIMAGE_DOS_HEADER pDosHeader = <span class="literal">NULL</span>;<span class="comment">//PE的DOS头指针</span></span><br><span class="line">	PIMAGE_NT_HEADERS pNTHeader = <span class="literal">NULL</span>;<span class="comment">//NT头指针</span></span><br><span class="line">	PIMAGE_FILE_HEADER pPEHeader = <span class="literal">NULL</span>;<span class="comment">//PE文件头指针</span></span><br><span class="line">	PIMAGE_OPTIONAL_HEADER32 pOptionHeader = <span class="literal">NULL</span>;<span class="comment">//PE可选PE头的指针</span></span><br><span class="line">	PIMAGE_SECTION_HEADER pSectionHeader = <span class="literal">NULL</span>;<span class="comment">//文件的节表指针</span></span><br><span class="line">	LPVOID pTempImageBuffer = <span class="literal">NULL</span>;<span class="comment">//开辟内存空间</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (pFileBuffer == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;缓冲区指针无效&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> FALSE;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//判断是否有有效的MZ标记（两位十六进制码占据一个字节）</span></span><br><span class="line">	<span class="keyword">if</span> (*((PWORD)pFileBuffer) != IMAGE_DOS_SIGNATURE)<span class="comment">//将FileBuffer的指针强制转换为WORD类型（四字节） IMAGE_DOS_SIGNATURE宏定义PE头的MZ标志</span></span><br><span class="line">	&#123;<span class="comment">//去FileBuffer的地址，读取两个字节的数据内容与DOS头即PE文件的标识进行对比</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;不是有效的MZ标志&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> FALSE;</span><br><span class="line">	&#125;</span><br><span class="line">	pDosHeader = (PIMAGE_DOS_HEADER)pFileBuffer;<span class="comment">//将pFileBuffe的文件指针,赋给Dos头指针（同种指针才可以互相赋值）</span></span><br><span class="line">	<span class="comment">//判断是否是有效的PE标志，从文件头开始加上pe头从文件起始的偏移位置</span></span><br><span class="line">	<span class="keyword">if</span> (*((PDWORD)((DWORD)pFileBuffer + pDosHeader-&gt;e_lfanew)) != IMAGE_NT_SIGNATURE)</span><br><span class="line">	&#123;<span class="comment">//强制转换为四个字节的指针，并且取其中的四个值</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;无有效的PE标志\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> FALSE;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">TestAddCodeInCodeSec</span><span class="params">()</span><span class="comment">//在代码区添加shellcode</span></span><br><span class="line">&#123;</span><br><span class="line">	LPVOID pFileBuffer = <span class="literal">NULL</span>;</span><br><span class="line">	PIMAGE_DOS_HEADER pDosHeader = <span class="literal">NULL</span>;</span><br><span class="line">	PIMAGE_NT_HEADERS pNTHeader = <span class="literal">NULL</span>;</span><br><span class="line">	PIMAGE_FILE_HEADER pFileHeader = <span class="literal">NULL</span>;</span><br><span class="line">	PIMAGE_OPTIONAL_HEADER32 pOptionHeader = <span class="literal">NULL</span>;</span><br><span class="line">	PIMAGE_SECTION_HEADER pSectionHeader = <span class="literal">NULL</span>;</span><br><span class="line">	PBYTE codeBegin = <span class="literal">NULL</span>;</span><br><span class="line">	BOOL isOK = FALSE;</span><br><span class="line">	DWORD size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//File--&gt;FileBuffer</span></span><br><span class="line">	size = ReadPEFile(&amp;pFileBuffer);</span><br><span class="line">	<span class="keyword">if</span> (!pFileBuffer)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;文件--&gt;缓冲区失败&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;<span class="comment">//谁得到指针谁去释放相应的内存空间</span></span><br><span class="line">	<span class="comment">//判断是否为pe文件</span></span><br><span class="line">	<span class="keyword">if</span> (!isPE)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;并不是PE文件&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//判断代码段空闲区是否足够存储shellcode代码</span></span><br><span class="line">	pDosHeader = (PIMAGE_DOS_HEADER)pFileBuffer;</span><br><span class="line">	pNTHeader = (PIMAGE_NT_HEADERS)((byte *)pFileBuffer + pDosHeader-&gt;e_lfanew);</span><br><span class="line">	pFileHeader = (PIMAGE_FILE_HEADER)((byte*)pNTHeader + <span class="number">4</span>);</span><br><span class="line">	pOptionHeader = (PIMAGE_OPTIONAL_HEADER32)((byte*)pFileHeader + IMAGE_SIZEOF_FILE_HEADER);</span><br><span class="line">	<span class="comment">//第一个节目录指针</span></span><br><span class="line">	pSectionHeader = (PIMAGE_SECTION_HEADER)((byte*)pOptionHeader + pFileHeader-&gt;SizeOfOptionalHeader);</span><br><span class="line">	<span class="keyword">if</span> (((pSectionHeader-&gt;SizeOfRawData) - (pSectionHeader-&gt;Misc.VirtualSize)) &lt; SHELLCODE)</span><br><span class="line">	&#123;<span class="comment">//求取在文件中对齐后和未对齐的差值，判断是否可以存储下编写的shellcode</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;代码空闲区空间不够&quot;</span>);</span><br><span class="line">		<span class="built_in">free</span>(pFileBuffer);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//将代码复制到空闲区</span></span><br><span class="line">	<span class="comment">//shellcode起始位置,此处是在文件中代码段的最后一节</span></span><br><span class="line">	codeBegin = (PBYTE)((byte*)pFileBuffer + pSectionHeader-&gt;PointerToRawData + pSectionHeader-&gt;Misc.VirtualSize);</span><br><span class="line">	<span class="comment">//复制shellcode</span></span><br><span class="line">	<span class="built_in">memcpy</span>(codeBegin, shellcode, SHELLCODE);</span><br><span class="line">	<span class="comment">//修正E8(将跳转地址减去E8下一条指令的地址)                      //此处直接将codeBegin这个地址指针，直接强制改变为一个数据</span></span><br><span class="line">	DWORD callAddr = (MESSAGEBOXADDR - (pOptionHeader-&gt;ImageBase + ((DWORD)codeBegin - (DWORD)pFileBuffer + <span class="number">0xD</span> - pSectionHeader-&gt;PointerToRawData + pSectionHeader-&gt;VirtualAddress)));</span><br><span class="line">	<span class="comment">//跳转地址           E8的下一条指令的地址         shellcode的起始位置 + e8指令前这段指令的大小（push部分和e8指令） - 文件对齐大小 + 内存对齐大小</span></span><br><span class="line">	*(PDWORD)(codeBegin + <span class="number">0x9</span>) = callAddr;<span class="comment">//向e8指令后的空白指令填写相应的地址参数</span></span><br><span class="line">	<span class="comment">//修正E9,跳转到oep处，此时jmp后的地址依旧是跳转地址-jmp下一条指令地址</span></span><br><span class="line">	DWORD jmpAddr = ((DWORD)pOptionHeader-&gt;AddressOfEntryPoint - (((DWORD)codeBegin + <span class="number">0x12</span>) - (DWORD)pFileBuffer - (DWORD)pSectionHeader-&gt;PointerToRawData + (DWORD)pSectionHeader-&gt;VirtualAddress ));</span><br><span class="line">	*(PDWORD)(codeBegin + <span class="number">0xE</span>) = jmpAddr;</span><br><span class="line">	<span class="comment">//修改OEP</span></span><br><span class="line">	pOptionHeader-&gt;AddressOfEntryPoint = (DWORD)codeBegin - (DWORD)pFileBuffer - (DWORD)pSectionHeader-&gt;PointerToRawData + (DWORD)pSectionHeader-&gt;VirtualAddress;</span><br><span class="line"></span><br><span class="line">	isOK = MemeryTOFile(pFileBuffer, size);</span><br><span class="line">	<span class="keyword">if</span> (isOK)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;存盘成功&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">free</span>(pFileBuffer);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">BOOL <span class="title function_">MemeryTOFile</span><span class="params">(LPVOID pMemBuffer, <span class="type">size_t</span> size)</span><span class="comment">//将newbuffer存盘</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//有一个文件</span></span><br><span class="line">	FILE* fp = <span class="literal">NULL</span>;</span><br><span class="line">	fp = fopen(FILEPATH_OUT, <span class="string">&quot;wb+&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (fp == <span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span> FALSE;</span><br><span class="line">	<span class="comment">//向该文件中写入我们的newbuffer中的内容信息</span></span><br><span class="line">	fwrite(pMemBuffer, size, <span class="number">1</span>, fp);</span><br><span class="line">	fclose(fp);</span><br><span class="line">	fp = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div><!-- .entry-content -->
+    
+    <footer class="entry-meta">
+    <a href="/2023/05/14/%E5%9C%A8%E7%A9%BA%E7%99%BD%E5%A4%84%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81/">
+    <time datetime="2023-05-13T16:00:00.000Z" class="entry-date">
+        2023-05-14
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a>
+  </div>
+
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-打印PE文件结构（C语言）" class="post-打印PE文件结构（C语言） post type-post status-publish format-standard hentry">
     <!---->
 
@@ -278,8 +373,9 @@
 <p>由之前可知此时电脑中的MessageBox函数的地址为<em><strong>0x7544A7D0</strong></em>（真正要跳转的地址）</p>
 <p>此时<em><strong>X = 7544A7D0 - E8下一条指令的地址</strong></em>（<strong>运行时</strong>的地址此时是拉伸之后的（Image Buffer））</p>
 <p>其中：<em><strong>E8地址 = ImageBase + 偏移地址 = 400000 + 拉伸后E8下一条指令的地址 = 400000 + （244d - 400 + 1000）= 40304D</strong></em></p>
+<p>注：244d - 400 + 1000  此时在file文件中e8下条指令的地址-文件中偏移+内存偏移</p>
 <p>ImageBase：<img src="https://user-images.githubusercontent.com/116374553/234630622-445e36df-adec-45dc-853a-add9569d3969.png"></p>
-<p>最终解得<em><strong>X = 7544A7D0 - 40304D = 75047783</strong></em> </p>
+<p>最终解得<em><strong>X = 7544A7D0 - 40304D = 75047783</strong></em>  </p>
 <p>则<em><strong>E8 83 77 04 75</strong></em></p>
 <p><img src="https://user-images.githubusercontent.com/116374553/234633620-92ea411d-57ab-48c3-8670-fb9f7d30d42d.png"></p>
 <h5 id="求取E9后X"><a href="#求取E9后X" class="headerlink" title="求取E9后X"></a>求取E9后X</h5><p>跳转到真正的程序OEP处（入口地点）</p>
@@ -298,8 +394,8 @@
 <p>当call指令的硬编码为FF15时，后跟的地址是绝对地址</p>
 <p>②00A018F3 E8 51 F9 FF FF       call        __RTC_CheckEsp (0A01249h) </p>
 <p>当call指令的硬编码为E8时，后跟的地址是相对偏移地址</p>
-<h2 id="Ⅵ-在任意空白处添加代码"><a href="#Ⅵ-在任意空白处添加代码" class="headerlink" title="Ⅵ.在任意空白处添加代码"></a>Ⅵ.在任意空白处添加代码</h2><p><img src="https://user-images.githubusercontent.com/116374553/235347608-18d37579-e134-42eb-b635-3f8176e51983.png"></p>
-
+<h2 id="Ⅵ-在任意空白处添加代码"><a href="#Ⅵ-在任意空白处添加代码" class="headerlink" title="Ⅵ.在任意空白处添加代码"></a>Ⅵ.在任意空白处添加代码</h2><p><img src="https://user-images.githubusercontent.com/116374553/235347608-18d37579-e134-42eb-b635-3f8176e51983.png" alt="00"></p>
+<h2 id="Ⅶ-新增节-添加代码"><a href="#Ⅶ-新增节-添加代码" class="headerlink" title="Ⅶ.新增节-添加代码"></a>Ⅶ.新增节-添加代码</h2>
       
     </div><!-- .entry-content -->
     
@@ -416,6 +512,9 @@
 <p>其中还有一点就是向<strong>winhex中插入数据</strong>：</p>
 <p>我们赋制struct中我们想要插入login.pyc的内容，也可以我们自己编写相应的内容在记事本中，然后粘贴到我们想要插入的起始位置</p>
 <p>详细参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/destiny1507/article/details/101352748?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161968055116780264099891%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=161968055116780264099891&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-4-101352748.pc_search_result_cache&amp;utm_term=winhex%E5%A6%82%E4%BD%95%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE">https://blog.csdn.net/destiny1507/article/details/101352748?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161968055116780264099891%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=161968055116780264099891&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-4-101352748.pc_search_result_cache&amp;utm_term=winhex%E5%A6%82%E4%BD%95%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE</a></p>
+<h4 id="python魔数"><a href="#python魔数" class="headerlink" title="python魔数"></a>python魔数</h4><p>python3.6：330D0D0A7079693001010000E3000000</p>
+<p>python3.10：6F0D0D0A000000007079693010010000</p>
+<p>python3.11：A70D0D0A000000003A3E1C6484000000</p>
 <h4 id="pyc-—-gt-源文件"><a href="#pyc-—-gt-源文件" class="headerlink" title=".pyc —&gt; 源文件"></a>.pyc —&gt; 源文件</h4><h5 id="1-无Key参数的逆向"><a href="#1-无Key参数的逆向" class="headerlink" title="1.无Key参数的逆向"></a>1.无Key参数的逆向</h5><p>直接用Extractor工具解包，再反编译即可</p>
 <h5 id="2-有Key参数的逆向"><a href="#2-有Key参数的逆向" class="headerlink" title="2.有Key参数的逆向"></a>2.有Key参数的逆向</h5><p>pyinstaller打包原理，将py编译成pyc，然后部分压缩为pyz，然后程序再调用pyc和pyz</p>
 <p>此类文件解包后生成的是被加密的pyc文件，使用的是AES加密算法，密钥会被被存放在“pyimod00_crypto_key.pyc”文件中。</p>
@@ -427,6 +526,48 @@
 
 <p><strong>注意</strong>：运行这段代码的时候，需要pyc的python环境和软件的python环境一致，否者会失败</p>
 <h4 id="字节码"><a href="#字节码" class="headerlink" title="字节码"></a>字节码</h4><h5 id="字节码-1"><a href="#字节码-1" class="headerlink" title="字节码"></a>字节码</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">实例：    5          0      LOAD_FAST       0(a)</span><br><span class="line">含义：源码行号|指令在函数中的偏移|操作指令|操作数|实际参数值</span><br></pre></td></tr></table></figure>
+
+<h6 id="RESUME"><a href="#RESUME" class="headerlink" title="RESUME"></a>RESUME</h6><p>无操作。执行内部跟踪、调试和优化检查。</p>
+<ul>
+<li><code>0</code>函数的开始</li>
+<li><code>1</code>表达式后<code>yield</code>          yield是一个将普通函数变成生成器，yield一个值，迭代是可以得到一个值</li>
+<li><code>2</code>表达式后<code>yield from </code>     yield from是将后面的值变成一个可迭代对象</li>
+</ul>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43192617/article/details/117791470">python中yield和yield from的区别（附代码理解）_yield和yield from区别_七分辣度的博客-CSDN博客</a></p>
+<ul>
+<li><code>3</code>表达式后<code>await</code>    await将等待对象（协程对象，Future，Task对象（IO等待））</li>
+</ul>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43380180/article/details/111573642">Python 异步 async/await（进阶详解）_python await_零否的博客-CSDN博客</a></p>
+<h6 id="LOAD-CONST"><a href="#LOAD-CONST" class="headerlink" title="LOAD_CONST"></a>LOAD_CONST</h6><p>加载 const 变量，比如数值、字符串等等，一般用于传给函数的参数</p>
+<h6 id="STORE-CONST"><a href="#STORE-CONST" class="headerlink" title="STORE_CONST"></a>STORE_CONST</h6><p>一般用于保存值到局部变量</p>
+<h6 id="LOAD-NAME"><a href="#LOAD-NAME" class="headerlink" title="LOAD_NAME"></a>LOAD_NAME</h6><p>加载函数的名字、某些集合、强制转换所用的变量类型</p>
+<h6 id="STORE-NAME"><a href="#STORE-NAME" class="headerlink" title="STORE_NAME"></a>STORE_NAME</h6><p>变量名</p>
+<h6 id="导入函数包"><a href="#导入函数包" class="headerlink" title="导入函数包"></a><em><strong>导入函数包</strong></em></h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>           <span class="number">2</span> LOAD_CONST               <span class="number">0</span> (<span class="number">0</span>)                        <span class="comment">#import random</span></span><br><span class="line">            <span class="number">4</span> LOAD_CONST               <span class="number">1</span> (<span class="literal">None</span>)</span><br><span class="line">            <span class="number">6</span> IMPORT_NAME              <span class="number">0</span> (random)                   </span><br><span class="line">            <span class="number">8</span> STORE_NAME               <span class="number">0</span> (random)</span><br></pre></td></tr></table></figure>
+
+<p>源码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br></pre></td></tr></table></figure>
+
+<h6 id="函数的调用-LOAD-NAME和LOAD-ATTR-PRECALL和CALL"><a href="#函数的调用-LOAD-NAME和LOAD-ATTR-PRECALL和CALL" class="headerlink" title="函数的调用(LOAD_NAME和LOAD_ATTR PRECALL和CALL )"></a><em><strong>函数的调用</strong></em>(LOAD_NAME和LOAD_ATTR PRECALL和CALL )</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span> PUSH_NULL                  <span class="comment">#r = random.Random(322376503)   </span></span><br><span class="line"><span class="number">12</span> LOAD_NAME                <span class="number">0</span> (random)</span><br><span class="line"><span class="number">14</span> LOAD_ATTR                <span class="number">1</span> (Random)</span><br><span class="line"><span class="number">24</span> LOAD_CONST               <span class="number">2</span> (<span class="number">322376503</span>)</span><br><span class="line"><span class="number">26</span> PRECALL                  <span class="number">1</span></span><br><span class="line"><span class="number">30</span> CALL                     <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>源码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r = random.Random(<span class="number">322376503</span>)</span><br></pre></td></tr></table></figure>
+
+<h6 id="BUILD-LIST"><a href="#BUILD-LIST" class="headerlink" title="BUILD_LIST"></a><em>BUILD_LIST</em></h6><p>创建列表</p>
+<h6 id="for循环-GET-ITER和FOR-ITER"><a href="#for循环-GET-ITER和FOR-ITER" class="headerlink" title="for循环  GET_ITER和FOR_ITER"></a><em><strong>for循环</strong></em>  GET_ITER和FOR_ITER</h6><p>for循环的开始</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">12</span>         <span class="number">108</span> LOAD_NAME                <span class="number">5</span> (pt)            <span class="comment">#for b in pt:</span></span><br><span class="line">           <span class="number">110</span> GET_ITER</span><br><span class="line">       &gt;&gt;  <span class="number">112</span> FOR_ITER                <span class="number">46</span> (to <span class="number">206</span>)<span class="comment">#此处标注循环结束的位置</span></span><br><span class="line">           <span class="number">114</span> STORE_NAME               <span class="number">8</span> (b)</span><br></pre></td></tr></table></figure>
+
+<p>源码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> b <span class="keyword">in</span> pt:</span><br></pre></td></tr></table></figure>
+
+<p>for循环的中间部分</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">116</span> LOAD_NAME                    <span class="number">7</span> (buf)  <span class="comment">#buf.append(r.randint(0,255)^b)</span></span><br><span class="line"><span class="number">118</span> LOAD_METHOD              <span class="number">9</span> (append)</span><br><span class="line"><span class="number">140</span> LOAD_NAME                <span class="number">2</span> (r)</span><br><span class="line"><span class="number">142</span> LOAD_METHOD             <span class="number">10</span> (randint)  <span class="comment">#调用的变量的函数的方法</span></span><br><span class="line"><span class="number">164</span> LOAD_CONST               <span class="number">0</span> (<span class="number">0</span>)</span><br><span class="line"><span class="number">166</span> LOAD_CONST               <span class="number">5</span> (<span class="number">255</span>)</span><br><span class="line"><span class="number">168</span> PRECALL                  <span class="number">2</span></span><br><span class="line"><span class="number">172</span> CALL                     <span class="number">2</span></span><br><span class="line"><span class="number">182</span> LOAD_NAME                <span class="number">8</span> (b)</span><br><span class="line"><span class="number">184</span> BINARY_OP               <span class="number">12</span> (^)</span><br><span class="line"><span class="number">188</span> PRECALL                  <span class="number">1</span></span><br><span class="line"><span class="number">192</span> CALL                     <span class="number">1</span></span><br><span class="line"><span class="number">202</span> POP_TOP</span><br><span class="line"><span class="number">204</span> JUMP_BACKWARD           <span class="number">47</span> (to <span class="number">112</span>)    <span class="comment">#跳转到该指令的地址</span></span><br></pre></td></tr></table></figure>
+
+<p>源码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">buf.append(r.randint(<span class="number">0</span>,<span class="number">255</span>)^b)</span><br></pre></td></tr></table></figure>
+
+<h6 id="if…eles…语句"><a href="#if…eles…语句" class="headerlink" title="if…eles…语句"></a>if…eles…语句</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">15</span>     &gt;&gt;  <span class="number">206</span> PUSH_NULL                                   <span class="comment">#if bytes(buf) == ct:</span></span><br><span class="line">           <span class="number">208</span> LOAD_NAME               <span class="number">11</span> (<span class="built_in">bytes</span>)</span><br><span class="line">           <span class="number">210</span> LOAD_NAME                <span class="number">7</span> (buf)</span><br><span class="line">           <span class="number">212</span> PRECALL                  <span class="number">1</span></span><br><span class="line">           <span class="number">216</span> CALL                     <span class="number">1</span></span><br><span class="line">           <span class="number">226</span> LOAD_NAME                <span class="number">6</span> (ct)</span><br><span class="line">           <span class="number">228</span> COMPARE_OP               <span class="number">2</span> (==)</span><br><span class="line">           <span class="number">234</span> POP_JUMP_FORWARD_IF_TRUE     <span class="number">2</span> (to <span class="number">240</span>)      <span class="comment">#for循环的跳转的地址240</span></span><br><span class="line">           <span class="number">236</span> LOAD_ASSERTION_ERROR                         <span class="comment">#else:</span></span><br><span class="line">           <span class="number">238</span> RAISE_VARARGS            <span class="number">1</span>                   <span class="comment">#     assert False</span></span><br><span class="line"></span><br><span class="line">           </span><br><span class="line"><span class="number">17</span>     &gt;&gt;  <span class="number">240</span> PUSH_NULL</span><br><span class="line">           <span class="number">242</span> LOAD_NAME               <span class="number">12</span> (<span class="built_in">print</span>)          <span class="comment">#print(&#x27;Correct!&#x27;)</span></span><br><span class="line">           <span class="number">244</span> LOAD_CONST               <span class="number">6</span> (<span class="string">&#x27;Correct!&#x27;</span>)</span><br><span class="line">           <span class="number">246</span> PRECALL                  <span class="number">1</span></span><br><span class="line">           <span class="number">250</span> CALL                     <span class="number">1</span></span><br><span class="line">           <span class="number">260</span> POP_TOP</span><br><span class="line">           <span class="number">262</span> LOAD_CONST               <span class="number">1</span> (<span class="literal">None</span>)</span><br><span class="line">           <span class="number">264</span> RETURN_VALUE</span><br></pre></td></tr></table></figure>
+
+
 
 <h5 id="指令符号"><a href="#指令符号" class="headerlink" title="指令符号"></a>指令符号</h5><p>参考：官方文档：<a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.8/library/dis.html">https://docs.python.org/zh-cn/3.8/library/dis.html</a></p>
 
@@ -556,6 +697,72 @@
     </time>
 </a>
     
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-easyRE" class="post-easyRE post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2023/04/20/easyRE/">easyRE</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://example.com/2023/04/20/easyRE/" data-id="clhn24rab0000gsl0bbozgjmb" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+    
+    <div class="entry-content">
+      
+      <!-- Table of Contents -->
+    <!--目录-侧边栏-->
+    
+    <!--目录-文章开头-->
+    
+    </br>   
+        <h1 id="easyRE"><a href="#easyRE" class="headerlink" title="easyRE"></a>easyRE</h1><p>是一个py的可执行文件，利用pyinstxtractor-master解包，利用代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> dis</span><br><span class="line"><span class="keyword">import</span> marshal</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;D:\\信安\\pycdc\\easyRE.pyc&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:<span class="comment">#如果直接填写pyc文件名称无法运行，就填写pyc文件的绝对路径(绝对路径不能过长，否者会打开文件失败)</span></span><br><span class="line">    f.seek(<span class="number">16</span>)</span><br><span class="line">    dis.dis(marshal.load(f))</span><br></pre></td></tr></table></figure>
+
+<p>运行环境需要和文件的Python的python环境一致，否者会报错。解包得到的easyRE.pyc将会变为字节码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"> <span class="number">0</span>           <span class="number">0</span> RESUME                   <span class="number">0</span>                                <span class="comment">#表示函数的开始</span></span><br><span class="line"></span><br><span class="line"> <span class="number">1</span>           <span class="number">2</span> LOAD_CONST               <span class="number">0</span> (<span class="number">0</span>)                        <span class="comment">#import random</span></span><br><span class="line">             <span class="number">4</span> LOAD_CONST               <span class="number">1</span> (<span class="literal">None</span>)</span><br><span class="line">             <span class="number">6</span> IMPORT_NAME              <span class="number">0</span> (random)                   </span><br><span class="line">             <span class="number">8</span> STORE_NAME               <span class="number">0</span> (random)</span><br><span class="line"></span><br><span class="line"> <span class="number">3</span>          <span class="number">10</span> PUSH_NULL                  <span class="comment">#r = random.Random(322376503)   </span></span><br><span class="line">            <span class="number">12</span> LOAD_NAME                <span class="number">0</span> (random)</span><br><span class="line">            <span class="number">14</span> LOAD_ATTR                <span class="number">1</span> (Random)</span><br><span class="line">            <span class="number">24</span> LOAD_CONST               <span class="number">2</span> (<span class="number">322376503</span>)</span><br><span class="line">            <span class="number">26</span> PRECALL                  <span class="number">1</span></span><br><span class="line">            <span class="number">30</span> CALL                     <span class="number">1</span></span><br><span class="line">            <span class="number">40</span> STORE_NAME               <span class="number">2</span> (r)</span><br><span class="line"></span><br><span class="line"> <span class="number">6</span>          <span class="number">42</span> PUSH_NULL</span><br><span class="line">            <span class="number">44</span> LOAD_NAME                <span class="number">3</span> (<span class="built_in">input</span>)</span><br><span class="line">            <span class="number">46</span> LOAD_CONST               <span class="number">3</span> (<span class="string">&#x27;Enter your flag: &#x27;</span>)</span><br><span class="line">            <span class="number">48</span> PRECALL                  <span class="number">1</span></span><br><span class="line">            <span class="number">52</span> CALL                     <span class="number">1</span></span><br><span class="line">            <span class="number">62</span> LOAD_METHOD              <span class="number">4</span> (encode)</span><br><span class="line">            <span class="number">84</span> PRECALL                  <span class="number">0</span></span><br><span class="line">            <span class="number">88</span> CALL                     <span class="number">0</span></span><br><span class="line">            <span class="number">98</span> STORE_NAME               <span class="number">5</span> (pt)  pt = <span class="built_in">input</span>(<span class="string">&quot;Enter your flag: &quot;</span>).encode()</span><br><span class="line"></span><br><span class="line"> <span class="number">8</span>         <span class="number">100</span> LOAD_CONST               <span class="number">4</span> (<span class="string">b&#x27;\x8b\xcck\xd3\xed\x96\xffFb\x06r\x085\x82\xbc \xb2\xde)p\x88Q`\x1bf\x18\xb6QUSw\x10\xcd\xd9\x13A$\x86\xe5\xcd\xd9\xff&#x27;</span>)</span><br><span class="line">           <span class="number">102</span> STORE_NAME               <span class="number">6</span> (ct)           ct = <span class="string">b&#x27;\x8b\xcck\xd3\xed\x96\xffFb\x06r\x085\x82\xbc \xb2\xde)p\x88Q`\x1bf\x18\xb6QUSw\x10\xcd\xd9\x13A$\x86\xe5\xcd\xd9\xff&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="number">10</span>         <span class="number">104</span> BUILD_LIST               <span class="number">0</span>           <span class="comment">#buf = []</span></span><br><span class="line">           <span class="number">106</span> STORE_NAME               <span class="number">7</span> (buf)</span><br><span class="line"></span><br><span class="line"><span class="number">12</span>         <span class="number">108</span> LOAD_NAME                <span class="number">5</span> (pt)            <span class="comment">#for b in pt</span></span><br><span class="line">           <span class="number">110</span> GET_ITER</span><br><span class="line">       &gt;&gt;  <span class="number">112</span> FOR_ITER                <span class="number">46</span> (to <span class="number">206</span>)<span class="comment">#此处标注循环结束的位置下一句</span></span><br><span class="line">           <span class="number">114</span> STORE_NAME               <span class="number">8</span> (b)</span><br><span class="line"></span><br><span class="line"><span class="number">13</span>         <span class="number">116</span> LOAD_NAME                <span class="number">7</span> (buf)  <span class="comment">#buf.append(r.randint(0,255)^b)</span></span><br><span class="line">           <span class="number">118</span> LOAD_METHOD              <span class="number">9</span> (append)</span><br><span class="line">           <span class="number">140</span> LOAD_NAME                <span class="number">2</span> (r)</span><br><span class="line">           <span class="number">142</span> LOAD_METHOD             <span class="number">10</span> (randint)</span><br><span class="line">           <span class="number">164</span> LOAD_CONST               <span class="number">0</span> (<span class="number">0</span>)</span><br><span class="line">           <span class="number">166</span> LOAD_CONST               <span class="number">5</span> (<span class="number">255</span>)</span><br><span class="line">           <span class="number">168</span> PRECALL                  <span class="number">2</span></span><br><span class="line">           <span class="number">172</span> CALL                     <span class="number">2</span></span><br><span class="line">           <span class="number">182</span> LOAD_NAME                <span class="number">8</span> (b)</span><br><span class="line">           <span class="number">184</span> BINARY_OP               <span class="number">12</span> (^)</span><br><span class="line">           <span class="number">188</span> PRECALL                  <span class="number">1</span></span><br><span class="line">           <span class="number">192</span> CALL                     <span class="number">1</span></span><br><span class="line">           <span class="number">202</span> POP_TOP</span><br><span class="line">           <span class="number">204</span> JUMP_BACKWARD           <span class="number">47</span> (to <span class="number">112</span>)</span><br><span class="line"></span><br><span class="line"><span class="number">15</span>     &gt;&gt;  <span class="number">206</span> PUSH_NULL                                   <span class="comment">#if bytes(buf) == ct:</span></span><br><span class="line">           <span class="number">208</span> LOAD_NAME               <span class="number">11</span> (<span class="built_in">bytes</span>)</span><br><span class="line">           <span class="number">210</span> LOAD_NAME                <span class="number">7</span> (buf)</span><br><span class="line">           <span class="number">212</span> PRECALL                  <span class="number">1</span></span><br><span class="line">           <span class="number">216</span> CALL                     <span class="number">1</span></span><br><span class="line">           <span class="number">226</span> LOAD_NAME                <span class="number">6</span> (ct)</span><br><span class="line">           <span class="number">228</span> COMPARE_OP               <span class="number">2</span> (==)</span><br><span class="line">           <span class="number">234</span> POP_JUMP_FORWARD_IF_TRUE     <span class="number">2</span> (to <span class="number">240</span>)</span><br><span class="line">           <span class="number">236</span> LOAD_ASSERTION_ERROR</span><br><span class="line">           <span class="number">238</span> RAISE_VARARGS            <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="number">17</span>     &gt;&gt;  <span class="number">240</span> PUSH_NULL</span><br><span class="line">           <span class="number">242</span> LOAD_NAME               <span class="number">12</span> (<span class="built_in">print</span>)</span><br><span class="line">           <span class="number">244</span> LOAD_CONST               <span class="number">6</span> (<span class="string">&#x27;Correct!&#x27;</span>)</span><br><span class="line">           <span class="number">246</span> PRECALL                  <span class="number">1</span></span><br><span class="line">           <span class="number">250</span> CALL                     <span class="number">1</span></span><br><span class="line">           <span class="number">260</span> POP_TOP</span><br><span class="line">           <span class="number">262</span> LOAD_CONST               <span class="number">1</span> (<span class="literal">None</span>)</span><br><span class="line">           <span class="number">264</span> RETURN_VALUE</span><br></pre></td></tr></table></figure>
+
+<p>手撸字节码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">r = random.Random(<span class="number">322376503</span>)</span><br><span class="line">pt = <span class="built_in">input</span>(<span class="string">&#x27;Enter your flag: &#x27;</span>).encode()</span><br><span class="line">ct = <span class="string">b&#x27;\x8b\xcck\xd3\xed\x96\xffFb\x06r\x085\x82\xbc \xb2\xde)p\x88Q`\x1bf\x18\xb6QUSw\x10\xcd\xd9\x13A$\x86\xe5\xcd\xd9\xff&#x27;</span></span><br><span class="line">buf = []</span><br><span class="line"><span class="keyword">for</span> b <span class="keyword">in</span> pt:</span><br><span class="line">	buf.append(r.randint(<span class="number">0</span>, <span class="number">255</span>) ^ b)</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">bytes</span>(buf) == ct:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;Correct!&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="keyword">raise</span> Assert Error</span><br></pre></td></tr></table></figure>
+
+<p>然后编写脚本进行解密</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">r = random.Random(<span class="number">322376503</span>)</span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line">buf = <span class="string">b&#x27;\x8b\xcck\xd3\xed\x96\xffFb\x06r\x085\x82\xbc \xb2\xde)p\x88Q`\x1bf\x18\xb6QUSw\x10\xcd\xd9\x13A$\x86\xe5\xcd\xd9\xff&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> buf:</span><br><span class="line">    flag += <span class="built_in">chr</span>(i^(r.randint(<span class="number">0</span>,<span class="number">255</span>)))</span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
+
+<p>flag：flag{69858b56-4987-438f-a02c-5ab5c09e5138}</p>
+
+      
+    </div><!-- .entry-content -->
+    
+    <footer class="entry-meta">
+    <a href="/2023/04/20/easyRE/">
+    <time datetime="2023-04-19T16:00:00.000Z" class="entry-date">
+        2023-04-20
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/python%E9%80%86%E5%90%91/">python逆向</a>, <a class="article-category-link" href="/categories/python%E9%80%86%E5%90%91/python%E9%80%86%E5%90%91%E7%BB%83%E4%B9%A0/">python逆向练习</a>
+  </div>
+
     
     </footer>
 </article>
@@ -987,257 +1194,6 @@
 
 
   
-    <article id="post-汇编语言（1）" class="post-汇编语言（1） post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2023/03/25/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%881%EF%BC%89/">汇编语言</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://example.com/2023/03/25/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%881%EF%BC%89/" data-id="clh39cife0009m4l07e5b9d4c" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-    
-    <div class="entry-content">
-      
-      <!-- Table of Contents -->
-    <!--目录-侧边栏-->
-    
-    <!--目录-文章开头-->
-    
-    </br>   
-        <h1 id="汇编语言"><a href="#汇编语言" class="headerlink" title="汇编语言"></a>汇编语言</h1><h2 id="学习笔记"><a href="#学习笔记" class="headerlink" title="学习笔记"></a>学习笔记</h2><h4 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h4><p><em><strong>1</strong></em>.<strong>存储单元</strong>（1Byte）：存储器被划分为若干存储单元，由0开始编号</p>
-<p><strong>2</strong>.<strong>CPU对存储器读写</strong>：①存储单元的地址（地址信息）</p>
-<p>​                                      ②器件的选择，读或写命令（控制信息）</p>
-<p>​                                      ③读或写的数据（数据信息）</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/227700054-8dbe6227-d6ef-4ff3-84cd-c67c5946cde9.jpeg"></p>
-<p>地址总线：CPU通过地址总线来指定存储器单元</p>
-<p>​                   N根地址线，则地址总线宽度为N，最多可以寻找2的N次方个内存单元</p>
-<p>数据总线：CPU和外界的数据传送速度</p>
-<p>控制总线：CPU提供对外部器件的多少种控制（对外部器件的控制能力）</p>
-<h3 id="寄存器（8086-16位结构CPU）"><a href="#寄存器（8086-16位结构CPU）" class="headerlink" title="寄存器（8086 16位结构CPU）"></a>寄存器（8086 16位结构CPU）</h3><p><em><strong>1</strong></em>.<strong>通用寄存器</strong>(16位)：AX、BX、CX、DX</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/227700856-2f37a3bf-d81d-4512-abc6-c50461fee746.jpg"></p>
-<p>AX低八位构成AL，高八位构成AH。(AL和AH均可独立使用)</p>
-<p>补充：32位寄存器eax的低16位即是ax，64位寄存器rax的低32即是eax</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">|63..32|31..16|15-8|7-0|</span><br><span class="line">               |AH.|AL.|</span><br><span class="line">               |AX.....|</span><br><span class="line">       |EAX............|</span><br><span class="line">|RAX...................|</span><br></pre></td></tr></table></figure>
-
-<p>在单独的使用al和ah时，它们将是两个毫不相干的寄存器，当要存入al中的值大于al中能存储的内容的时候，将会丢弃高位值但并不会存储到ah中</p>
-<p><em><strong>2</strong></em>.<strong>物理地址</strong> = 段地址 * 16 + 偏移地址 （由两个16位地址合成一个20位的物理地址）</p>
-<p>​                    = 基础地址 + 偏移地址</p>
-<p><em><strong>3</strong></em>.<strong>CS</strong>（段寄存器）<strong>和IP</strong>：</p>
-<p>CS为代码段寄存器，IP为指令指针寄存器 </p>
-<p> 补充：cs和ip或cs和eip一起构成了下一条即将执行的指令的完整地址</p>
-<p>任意时刻CPU将CS:IP指向的内容当做指令执行（若将CS、IP中内容分别设为M、N，则指向地址16*CS+IP)</p>
-<p>在读取一条指令之后，IP的值会自增（以便CPU读取下一条指令）</p>
-<p>8086CPU在加电启动或复位后CS = FFFFH,IP = 0000H</p>
-<p><em><strong>4</strong></em>.<strong>修改CS和IP</strong>（mov指令不能用来设置CS和IP的值）：</p>
-<p>方式：jmp 指令</p>
-<p>​        ①同时修改CS、IP：jmp 段地址：偏移地址</p>
-<p>​        ②修改IP：jmp 某一合法寄存器（相当于将寄存器的值赋给了IP） </p>
-<p><em><strong>5</strong></em>.<strong>段和代码段</strong>：</p>
-<p>段：根据需要将一组内存单元定义为一个段。内存并未分段，段的划分来自CPU。由于求取内存单元物理地址的方式，使得可以用分段的方式来管理内存。</p>
-<p>代码段：用来存放程序执行代码的一块内存区域。</p>
-<p><em><strong>6</strong></em>.<strong>内存中字的存储</strong>：</p>
-<p>CPU中用16位寄存器来存储一个字。高八位存放高位字节，低八位存放低位字节</p>
-<img src="https://user-images.githubusercontent.com/116374553/227703751-bff5879f-7538-4ec1-b052-5932f31fd6dc.jpg" style="zoom: 20%;" />
-
-<p>字单元：存放一个字型数据（16位）的内存单元</p>
-<p><em><strong>7</strong></em>.<strong>DS和[address]</strong>:</p>
-<p>例子：将1000:0的数据读取到al中</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov bx,1000H</span><br><span class="line">mov ds,bx  /*将段地址放入ds*/</span><br><span class="line">mov al,[0] /*mov 寄存器名，内存单元地址*/</span><br></pre></td></tr></table></figure>
-
-<p>“[….]”表示一个内存单元，“[….]”中括号中的内容表示内存单元的偏移地址</p>
-<p>注意：80886CPU不支持将数据直接送入段寄存器</p>
-<p>区别ds和cs：cs为代码段寄存器</p>
-<p>​                        ds为数据段寄存器</p>
-<p><em><strong>8</strong></em>.<strong>mov、add、sub指令</strong>：</p>
-<p>mov：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mov 寄存器，数据</span><br><span class="line">mov 寄存器，寄存器</span><br><span class="line">mov 寄存器，内存单元  /*将ds:[...]中的值传入寄存器中*/</span><br><span class="line">mov 内存单元，寄存器  /*将寄存器中的值传入ds:[...]中*/</span><br><span class="line">mov 段寄存器，寄存器  /*将数据传递给段寄存器*/</span><br><span class="line">mov 寄存器，段寄存器  /*从段寄存器向寄存器传递数据*/</span><br><span class="line">mov 内存单元，段寄存器/*从段寄存器向内存单元传送数据*/</span><br><span class="line">/*例如：</span><br><span class="line">mov ax,1000H</span><br><span class="line">mov ds,ax</span><br><span class="line">mov [0],cs</span><br><span class="line">*/</span><br><span class="line">mov 段寄存器，内存单元</span><br><span class="line">/*例如：</span><br><span class="line">mov ax,1000H</span><br><span class="line">mov ds,ax</span><br><span class="line">mov ds,[0]</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
-
-<p>add:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">add 寄存器，数据</span><br><span class="line">add 寄存器，寄存器</span><br><span class="line">add 寄存器，内存单元</span><br><span class="line">add 内存单元，寄存器</span><br></pre></td></tr></table></figure>
-
-<p>sub：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sub 寄存器 数据</span><br><span class="line">sub 寄存器，寄存器</span><br><span class="line">sub 寄存器，内存单元</span><br><span class="line">sub 内存单元，寄存器</span><br></pre></td></tr></table></figure>
-
-<p><em><strong>9</strong></em>.<strong>数据段</strong>：指用来存放程序中已初始化的全局变量的一块内存区域。数据段属于静态内存分配。</p>
-<p>用ds存放数据段地址</p>
-<p><em><strong>10</strong></em>.<strong>栈</strong>：访问方式：栈顶的元素最后入栈，出栈的时候最先取出（这种规则称为：LIFO)</p>
-<p>入栈：将一个新的元素放到栈顶</p>
-<p>出栈：从栈顶取出一个元素</p>
-<p><em><strong>11</strong></em>.<strong>CPU提供的栈机制</strong>：入栈（push)和出栈（pop)操作均以字为单位进行</p>
-<p>SS段寄存器：栈顶的段地址</p>
-<p>SP寄存器：偏移地址</p>
-<p>任意时刻SS:SP指向栈顶元素</p>
-<p>入栈的时候执行一次push指令，SP -= 2（入栈由高地址向低地址增长）</p>
-<img src="https://user-images.githubusercontent.com/116374553/227724581-4a468204-32b6-4509-b19f-78b0c92fe23a.png" style="zoom:50%;" />
-
-<p>出栈的时候执行一次pop指令，  SP += 2</p>
-<img src="https://user-images.githubusercontent.com/116374553/227724560-a1fde403-e9b0-4997-8e53-d9e055ce0cff.png" style="zoom:50%;" />
-
-<p><em><strong>12</strong></em>.<strong>栈顶超界</strong>：覆盖其他地址的内容</p>
-<p><em><strong>13</strong></em>.<strong>push、pop指令</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">push 寄存器</span><br><span class="line">pop 寄存器</span><br><span class="line"></span><br><span class="line">push 段寄存器</span><br><span class="line">pop 段寄存器</span><br><span class="line"></span><br><span class="line">push 内存单元</span><br><span class="line">pop 内存单元</span><br></pre></td></tr></table></figure>
-
-<p><strong>14</strong>.<strong>栈段</strong>：采用栈方式工作的一段内存</p>
-<h3 id="逆向练习："><a href="#逆向练习：" class="headerlink" title="逆向练习："></a>逆向练习：</h3><h5 id="buu-WUSTCTF2020-level1"><a href="#buu-WUSTCTF2020-level1" class="headerlink" title="buu_[WUSTCTF2020]level1"></a>buu_[WUSTCTF2020]level1</h5><p>打开题目文件，其中有一个名为output的txt文本文件，和level1名字的文件</p>
-<p>用Die打开文件，发现它是一个64位的ELF文件，用IDA64打开，查看main函数</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/227707380-d9d5219e-dc95-48ce-9ae3-37a44db6aba4.png"></p>
-<p>main函数大概就是，以只读的形式打开一个名为flag的文件，然后将其中的内容存储到ptr数组中，然后对其内容进行加密，最终输出内容。for循环一共进行了19次，打开output文件，发现其中刚好是19个数字，可想而知这是程序的打印值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ptr = [<span class="string">&#x27;198&#x27;</span>, <span class="string">&#x27;232&#x27;</span>, <span class="string">&#x27;816&#x27;</span>, <span class="string">&#x27;200&#x27;</span>, <span class="string">&#x27;1536&#x27;</span>, <span class="string">&#x27;300&#x27;</span>, <span class="string">&#x27;6144&#x27;</span>, <span class="string">&#x27;984&#x27;</span>, <span class="string">&#x27;51200&#x27;</span>, <span class="string">&#x27;570&#x27;</span>, <span class="string">&#x27;92160&#x27;</span>, <span class="string">&#x27;1200&#x27;</span>, <span class="string">&#x27;565248&#x27;</span>, <span class="string">&#x27;756&#x27;</span>, <span class="string">&#x27;1474560&#x27;</span>, <span class="string">&#x27;800&#x27;</span>, <span class="string">&#x27;6291456&#x27;</span>, <span class="string">&#x27;1782&#x27;</span>, <span class="string">&#x27;65536000&#x27;</span>,<span class="string">&#x27;0&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">20</span>):</span><br><span class="line">    <span class="keyword">if</span> i &amp; <span class="number">1</span> != <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">chr</span>(<span class="built_in">int</span>(ptr[i - <span class="number">1</span>]) &gt;&gt; i)),end = <span class="string">&quot;&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">chr</span>(<span class="built_in">int</span>(<span class="built_in">int</span>(ptr[i - <span class="number">1</span>])/i))),end = <span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>最终输出：ctf2020{d9-dE6-20c}</p>
-<p>则flag为：flag{d9-dE6-20c}</p>
-
-      
-    </div><!-- .entry-content -->
-    
-    <footer class="entry-meta">
-    <a href="/2023/03/25/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%881%EF%BC%89/">
-    <time datetime="2023-03-24T16:00:00.000Z" class="entry-date">
-        2023-03-25
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a>
-  </div>
-
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-UPX脱壳" class="post-UPX脱壳 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2023/03/18/UPX%E8%84%B1%E5%A3%B3/">脱壳</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://example.com/2023/03/18/UPX%E8%84%B1%E5%A3%B3/" data-id="clh39cifc0005m4l09p1zdyig" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-    
-    <div class="entry-content">
-      
-      <!-- Table of Contents -->
-    <!--目录-侧边栏-->
-    
-    <!--目录-文章开头-->
-    
-    </br>   
-        <h1 id="脱壳"><a href="#脱壳" class="headerlink" title="脱壳"></a>脱壳</h1><h3 id="1-ESP脱壳定律（大多压缩壳和少数加密壳）"><a href="#1-ESP脱壳定律（大多压缩壳和少数加密壳）" class="headerlink" title="1.ESP脱壳定律（大多压缩壳和少数加密壳）"></a>1.ESP脱壳定律（大多压缩壳和少数加密壳）</h3><h6 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h6><p>1.将32位PE文件载入OD，64位PE文件载入x64dbg</p>
-<p>2.载入程序的第一条指令为pushad/pushfd，使用F8单步一次，如果只有ESP寄存器发生变化，即可使用ESP定律（如果程序载入时不是pushad/pushfd，则可以查看断点清单中是否有pushad/pushfd）</p>
-<p>3.右键ESP处，选择在寄存器窗口跟随，然后在相应的地址窗口处设置一个硬件访问的四字节断点</p>
-<p>4.F9再次运行</p>
-<p>5.再次F8运行进入OEP</p>
-<p>6.利用OD插件（OllyDump）和x64dbg插件（Scylla）进行脱壳</p>
-<h3 id="2-单步跟踪法（通用）"><a href="#2-单步跟踪法（通用）" class="headerlink" title="2.单步跟踪法（通用）"></a>2.单步跟踪法（通用）</h3><h6 id="步骤：-1"><a href="#步骤：-1" class="headerlink" title="步骤："></a>步骤：</h6><p>1.将32位PE文件载入OD，64位PE文件载入x64dbg</p>
-<p>2.程序用F8运行（上不跳转下跳转。对于call指令，程序调试进入地址附近的call指令F7进入，跳转地址距离当前调试地址较近的F7进入，其余都F8步过），程序调试开始的位置不一定是pushad/pushfd</p>
-<p>3.一边动态调试，一边观察汇编指令，如果出现</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">push ebp</span><br><span class="line">mov ebp,esp</span><br></pre></td></tr></table></figure>
-
-<p>并且后面跟着一些指令带有程序的名称此处大概就是oep/如果遇到的是popad/popfd，在其下方可能会出现带有程序名的指令，并且伴有一个极大地跳转，那么跳转后的地址应该就是oep的地址。</p>
-<p>4.利用OD插件（OllyDump）和x64dbg插件（Scylla）进行脱壳</p>
-<h3 id="3-一步直达OEP（少数壳）"><a href="#3-一步直达OEP（少数壳）" class="headerlink" title="3.一步直达OEP（少数壳）"></a>3.一步直达OEP（少数壳）</h3><h6 id="步骤：-2"><a href="#步骤：-2" class="headerlink" title="步骤："></a>步骤：</h6><p>1.在OD/xdbg中查询Ctrl+F查询popad，不符合（符合：其下方可能会出现带有程序名的指令，并且伴有一个极大地跳转）则Ctrl+L匹配下一个</p>
-<p>2.直到出现有关程序（一般这些跳转处会出现程序名）的跳转</p>
-<p>3.F8跳转程序，进入OEP</p>
-<p>4.利用OD插件（OllyDump）和x64dbg插件（Scylla）进行脱壳</p>
-<h3 id="4-内存镜像法（大多压缩和加密壳）"><a href="#4-内存镜像法（大多压缩和加密壳）" class="headerlink" title="4.内存镜像法（大多压缩和加密壳）"></a>4.内存镜像法（大多压缩和加密壳）</h3><h6 id="步骤：-3"><a href="#步骤：-3" class="headerlink" title="步骤："></a>步骤：</h6><p>1.OD打开程序，点击选项—&gt;调试设置—&gt;异常（此处将所有的异常勾选上)</p>
-<p>2.Alt+M打开内存镜像，在程序的第一个.rsrc（资源）处F2下断点，再F9运行</p>
-<p>3.再次Alt+M，在刚才断点上方的.text处下断点，F9运行</p>
-<p>4.如果并未到达程序oep，上下翻动界面，查看是否有oep或者是popad，如果都没有继续F8执行，直到oep出现为止</p>
-<p>5.插件脱壳</p>
-<h3 id="5-最后一次异常法（加密壳）"><a href="#5-最后一次异常法（加密壳）" class="headerlink" title="5.最后一次异常法（加密壳）"></a>5.最后一次异常法（加密壳）</h3><h6 id="步骤：-4"><a href="#步骤：-4" class="headerlink" title="步骤："></a>步骤：</h6><p>1.OD载入程序之后，点击选项—&gt;调试设置—&gt;异常（此处将所有的异常勾选都去掉)，Ctrl+F2重载</p>
-<p>2.shift + F9让程序运行，记录按键次数，重载后再次按shift + F9，次数为记录次数减一</p>
-<p>3.在OD右下窗口中，会出现SE处理程序，在反汇编窗口按Ctrl+G跳转到这句话前面的地址，F2下一个断点，再次shift + F9运行，再取消该处的断点</p>
-<p>4.单步跟踪直到OEP</p>
-<p>5.插件脱壳</p>
-<h4 id="脱壳思路："><a href="#脱壳思路：" class="headerlink" title="脱壳思路："></a>脱壳思路：</h4><p>1.在程序pushad/pushfd处开始调试（ESP定律一定在此处开始）</p>
-<p>2.找到对应的popad/popfd（在这句指令后伴随着一个跨度极大地跳转指令）</p>
-<p>3.找到OEP</p>
-<h4 id="buu-HDCTF2019-maze（ESP定律）"><a href="#buu-HDCTF2019-maze（ESP定律）" class="headerlink" title="buu_[HDCTF2019]maze（ESP定律）"></a>buu_[HDCTF2019]maze（ESP定律）</h4><p><img src="https://user-images.githubusercontent.com/116374553/225170230-c22035f8-0400-4415-8b38-875ea1808d08.png"></p>
-<p>将程序放入Die中发现，程序是32位的PE文件，并且被UPX进行了加壳</p>
-<p>用OD打开程序，单步一次F8，发现只有ESP寄存器发生变化，即可使用ESP定律</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/225170506-5d63be20-2902-4333-ab05-9ec0260d145d.png"></p>
-<p>先右键点击寄存器窗口中的ESP，选择数据窗口中跟随，在数据窗口中下一个硬件访问的四字节断点。F9再次运行，进入下面图片中的位置</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/225171218-aefd3bfd-b080-4fd8-a24a-bc409dd1914a.png"></p>
-<p>F4运行到jmp处，F8跳转进入OEP</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/225171626-39560cd2-3585-4187-95e8-c18ce6d82750.png"></p>
-<p>利用OD插件OllyDump进行脱壳</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/225955353-b2a9f338-c172-49cc-b564-297301c6b36c.png"></p>
-<p>再次用IDA打开程序，发现脱壳成功</p>
-<h4 id="buu-新年快乐（单步跟踪法）"><a href="#buu-新年快乐（单步跟踪法）" class="headerlink" title="buu_新年快乐（单步跟踪法）"></a>buu_新年快乐（单步跟踪法）</h4><p>用Die发现，程序为32位PE文件，UPX加壳</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/226079452-f2be6f2b-c703-4d1d-ad3d-e6ebea709016.png"></p>
-<p>利用od打开，发现程序的入口处并不是pushad，则考虑单步跟踪，由于入口点就是一个call指令，则用F7进入call指令，之后依旧遵循不向上跳转的原则，对于call指令，遇到距离调试位置近的可以F7进入，其余均F8跳过。之后程序突然出现了一个跳转指令，它的跳转地址前带上了程序的名称，可以考虑上下查看一下周围的汇编指令，在跳转指令的上方发现popad，并且该条跳转指令的上一条指令是一个大的跳转，这里跳转后的地址应该就是程序oep。记下该条指令的地址0x40E493，然后F8进入发现是一堆重复的指令</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/226078298-ee2b85f3-90b0-4dba-9d2e-05b2c00a8909.png"></p>
-<p>之后我们Ctr+G回到之前跳转指令的位置，F2下一个断点，再F9运行，之后F8一直运行，直到指令地址再次跳转为0x4开头，可以上下翻动汇编界面，可以发现之前的0x401280地址处的汇编指令已经出现</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/226078583-4f247564-dd65-4ff5-9fb9-3b6e07e089e2.png"></p>
-<p>在此处进行脱壳</p>
-<p>再次用Die打开脱壳后的程序，发现脱壳成功</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/226079454-93ce01b1-c5dc-4b99-90b2-7c232c9d5b9d.png"></p>
-<h4 id="新年快乐（内存镜像法）"><a href="#新年快乐（内存镜像法）" class="headerlink" title="新年快乐（内存镜像法）"></a>新年快乐（内存镜像法）</h4><p>先点击选项—&gt;调试设置—&gt;异常</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/226089528-9094429c-ad9c-44cb-ad01-275ef8d44a70.png"></p>
-<p>Alt+M进入内存镜像，在第一个资源处，下断点</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/226089562-8560eff8-ae80-41f0-8ac2-63b65e91475e.png"></p>
-<p>F9运行</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/226089594-c8a28950-306e-4703-99e8-395102ff21a2.png"></p>
-<p>再次Alt+M，在.text处下断点</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/226089578-70228f73-c102-4133-bec3-a2f9463977ee.png"></p>
-<p>再次F9运行</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/226089630-92d9ab0c-278f-4a47-a751-206215b24b6a.png"></p>
-<p>发现还未到达oep位置，继续F8直到指令的地址变为004开头，再次观察</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/226089664-0290e403-4354-4edb-87be-249e77856c3b.png"></p>
-<p>重复之前单步跟踪到这儿之后的操作即可找到oep。</p>
-
-      
-    </div><!-- .entry-content -->
-    
-    <footer class="entry-meta">
-    <a href="/2023/03/18/UPX%E8%84%B1%E5%A3%B3/">
-    <time datetime="2023-03-17T16:00:00.000Z" class="entry-date">
-        2023-03-18
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a>
-  </div>
-
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
   
     <nav id="pagination">
       <nav id="page-nav">
@@ -1262,7 +1218,7 @@
   <aside class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/">python逆向</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/">python逆向</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/python%E9%80%86%E5%90%91%E7%BB%83%E4%B9%A0/">python逆向练习</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">3</span></li></ul>
     </div>
   </aside>
 
@@ -1272,6 +1228,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget-content">
       <ul>
+        
+          <li>
+            <a href="/2023/05/14/%E5%9C%A8%E7%A9%BA%E7%99%BD%E5%A4%84%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81/">在空白处添加代码</a>
+          </li>
         
           <li>
             <a href="/2023/05/01/%E6%89%93%E5%8D%B0PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%EF%BC%88C%E8%AF%AD%E8%A8%80%EF%BC%89/">打印PE文件结构（C语言）</a>
@@ -1287,10 +1247,6 @@
         
           <li>
             <a href="/2023/04/20/%E6%88%91%E4%B8%8D%E6%98%AF%E7%97%85%E6%AF%922.0/">XCTF_rev2 我不是病毒2.0</a>
-          </li>
-        
-          <li>
-            <a href="/2023/04/09/%E8%84%B1%E5%A3%B3%E9%A2%98%E7%9B%AE/">脱壳题目</a>
           </li>
         
       </ul>

@@ -68,6 +68,85 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-IDA远程动态调试（linux）" class="post-IDA远程动态调试（linux） post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2023/03/25/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95%EF%BC%88linux%EF%BC%89/">IDA远程动态调试（linux）</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://example.com/2023/03/25/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95%EF%BC%88linux%EF%BC%89/" data-id="clhn26xz90001jsl07w40cbyz" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+    
+    <div class="entry-content">
+      
+      <!-- Table of Contents -->
+    <!--目录-侧边栏-->
+    
+    <!--目录-文章开头-->
+    
+    </br>   
+        <h1 id="IDA远程动态调试（linux）"><a href="#IDA远程动态调试（linux）" class="headerlink" title="IDA远程动态调试（linux）"></a>IDA远程动态调试（linux）</h1><h6 id="1-配置linux中远程调试需要的文件"><a href="#1-配置linux中远程调试需要的文件" class="headerlink" title="1.配置linux中远程调试需要的文件"></a>1.配置linux中远程调试需要的文件</h6><p>在IDA文件夹中找到dbgsrv文件夹，将其中下图中的两个文件拖入到虚拟机中</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/227719393-002e854a-d65f-4577-9527-bcbdcefbd94a.png"></p>
+<p>与此同时将需要调试的文件也拖入虚拟机，在终端中利用指令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd filename</span><br></pre></td></tr></table></figure>
+
+<p>获取文件路径</p>
+<h6 id="2-IDA远程连接linux准备"><a href="#2-IDA远程连接linux准备" class="headerlink" title="2.IDA远程连接linux准备"></a>2.IDA远程连接linux准备</h6><p>在IDA界面中按下F9</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/227719814-41229af5-f590-463d-a35d-cba57dca4d9c.png"></p>
+<p>选择Remote Linux debugger。</p>
+<p>再次按下F9，弹框选择Yes即可。</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/227719971-bd1e7d92-d13f-45cb-941f-9127d8928d7d.png"></p>
+<p>其中：Application和Input file填入之前pwd得出的路径，并在后面再加上一个文件的名称</p>
+<p>Directory即直接输入pwd得出的路径</p>
+<p>其中Hostname需要在虚拟机的终端中执行指令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig </span><br></pre></td></tr></table></figure>
+
+<p>即可获取到</p>
+<p>Port默认23946</p>
+<p>其它内容均不需要填写</p>
+<h6 id="3-远程连接"><a href="#3-远程连接" class="headerlink" title="3.远程连接"></a>3.远程连接</h6><p>在linux中打开终端，进入存放linux_server的文件夹，并运行linux_server</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./linux_server   32位程序调试运行</span><br><span class="line">./linux_server64 64位程序调试运行</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://user-images.githubusercontent.com/116374553/227720567-2049019b-3088-43eb-946b-acfce3f0f222.png"></p>
+<p>回到刚才的IDA界面，点击Ok即可</p>
+<p>进入IDA中在想要的地方下断点，F9再次运行，等待一会儿即可开始动态调试</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/227721151-bd99a5e4-cf25-42cb-84b2-b849f978f0cd.png"></p>
+
+      
+    </div><!-- .entry-content -->
+    
+    <footer class="entry-meta">
+    <a href="/2023/03/25/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95%EF%BC%88linux%EF%BC%89/">
+    <time datetime="2023-03-24T16:00:00.000Z" class="entry-date">
+        2023-03-25
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a>
+  </div>
+
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-汇编语言（1）" class="post-汇编语言（1） post type-post status-publish format-standard hentry">
     <!---->
 
@@ -463,7 +542,7 @@
   <aside class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/">python逆向</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/python%E9%80%86%E5%90%91%E7%BB%83%E4%B9%A0/">python逆向练习</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/">python逆向</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/python%E9%80%86%E5%90%91%E7%BB%83%E4%B9%A0/">python逆向练习</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">3</span></li></ul>
     </div>
   </aside>
 
@@ -473,6 +552,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget-content">
       <ul>
+        
+          <li>
+            <a href="/2023/05/17/PE%E6%96%87%E4%BB%B6%E6%B7%BB%E5%8A%A0%E8%8A%82%E8%A1%A8%E4%BB%A3%E7%A0%81/">在空白处添加代码</a>
+          </li>
         
           <li>
             <a href="/2023/05/14/easyRE/">easyRE</a>
@@ -488,10 +571,6 @@
         
           <li>
             <a href="/2023/04/30/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a>
-          </li>
-        
-          <li>
-            <a href="/2023/04/20/Python/">Python逆向</a>
           </li>
         
       </ul>

@@ -18,7 +18,7 @@
   <meta name="description" content="PE文件结构Ⅰ.含义任何一个在Windows上运行的可执行文件都要遵循一定的格式，这个格式就是PE文件的结构。比如：exe、dll、部分sys PE文件在16进制工具内存中打开时，都是以4D 5A开头的，作为可执行文件的一个标记（MZ） 以WPS为例，运行WPS在winhex中以内存的形式打开WPS  ①PE文件分节分节含义在内存和硬盘中pe文件被分为了一节一节的存放，节间空隙以0来填充 PE结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PE文件结构">
-<meta property="og:url" content="http://example.com/2023/04/30/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:url" content="http://example.com/2023/05/17/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="Blank Blog">
 <meta property="og:description" content="PE文件结构Ⅰ.含义任何一个在Windows上运行的可执行文件都要遵循一定的格式，这个格式就是PE文件的结构。比如：exe、dll、部分sys PE文件在16进制工具内存中打开时，都是以4D 5A开头的，作为可执行文件的一个标记（MZ） 以WPS为例，运行WPS在winhex中以内存的形式打开WPS  ①PE文件分节分节含义在内存和硬盘中pe文件被分为了一节一节的存放，节间空隙以0来填充 PE结构">
 <meta property="og:locale" content="zh_CN">
@@ -62,8 +62,8 @@
 <meta property="og:image" content="https://github.com/WhiteIsBlank/Picture/assets/116374553/f63b9931-bf10-4330-a298-703c43c11142">
 <meta property="og:image" content="https://github.com/WhiteIsBlank/Picture/assets/116374553/4fe8c5ec-b608-4541-8353-7cbd5ce1fa1a">
 <meta property="og:image" content="https://github.com/WhiteIsBlank/Picture/assets/116374553/b507da8f-6e4a-4dbb-a467-aab8adec9aa2">
-<meta property="article:published_time" content="2023-04-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-17T13:01:25.280Z">
+<meta property="article:published_time" content="2023-05-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-17T13:11:56.640Z">
 <meta property="article:author" content="Blank">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/116374553/230752170-8a91623d-c080-497e-a8f2-cfb22ac89ce1.png">
@@ -124,7 +124,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://example.com/2023/04/30/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" data-id="clhn26xzb0002jsl0fg533hhv" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://example.com/2023/05/17/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" data-id="clhn26xzb0002jsl0fg533hhv" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
     
@@ -319,9 +319,9 @@
     </div><!-- .entry-content -->
     
     <footer class="entry-meta">
-    <a href="/2023/04/30/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">
-    <time datetime="2023-04-29T16:00:00.000Z" class="entry-date">
-        2023-04-30
+    <a href="/2023/05/17/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">
+    <time datetime="2023-05-16T16:00:00.000Z" class="entry-date">
+        2023-05-17
     </time>
 </a>
     
@@ -339,10 +339,8 @@
 <nav class="nav-single">
     <h3 class="assistive-text">文章导航</h3>
     
-        <span class="nav-previous"><a href="/2023/05/01/%E6%89%93%E5%8D%B0PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%EF%BC%88C%E8%AF%AD%E8%A8%80%EF%BC%89/" rel="prev"><span class="meta-nav">←</span> 打印PE文件结构（C语言）</a></span>
     
-    
-        <span class="nav-next"><a href="/2023/04/20/Python/" rel="next">Python逆向 <span class="meta-nav">→</span></a></span>
+        <span class="nav-next"><a href="/2023/05/17/PE%E6%96%87%E4%BB%B6%E6%B7%BB%E5%8A%A0%E8%8A%82%E8%A1%A8%E4%BB%A3%E7%A0%81/" rel="next">PE文件添加节表代码 <span class="meta-nav">→</span></a></span>
     
 </nav><!-- .nav-single -->
 
@@ -380,6 +378,10 @@
       <ul>
         
           <li>
+            <a href="/2023/05/17/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a>
+          </li>
+        
+          <li>
             <a href="/2023/05/17/PE%E6%96%87%E4%BB%B6%E6%B7%BB%E5%8A%A0%E8%8A%82%E8%A1%A8%E4%BB%A3%E7%A0%81/">PE文件添加节表代码</a>
           </li>
         
@@ -393,10 +395,6 @@
         
           <li>
             <a href="/2023/05/01/%E6%89%93%E5%8D%B0PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%EF%BC%88C%E8%AF%AD%E8%A8%80%EF%BC%89/">打印PE文件结构（C语言）</a>
-          </li>
-        
-          <li>
-            <a href="/2023/04/30/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a>
           </li>
         
       </ul>

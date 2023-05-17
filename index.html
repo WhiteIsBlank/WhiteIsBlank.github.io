@@ -68,6 +68,237 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-PE文件结构" class="post-PE文件结构 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2023/05/17/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://example.com/2023/05/17/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" data-id="clhn26xzb0002jsl0fg533hhv" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+    
+    <div class="entry-content">
+      
+      <!-- Table of Contents -->
+    <!--目录-侧边栏-->
+    
+    <!--目录-文章开头-->
+    
+    </br>   
+        <h1 id="PE文件结构"><a href="#PE文件结构" class="headerlink" title="PE文件结构"></a>PE文件结构</h1><h2 id="Ⅰ-含义"><a href="#Ⅰ-含义" class="headerlink" title="Ⅰ.含义"></a>Ⅰ.含义</h2><p>任何一个在Windows上运行的可执行文件都要遵循一定的格式，这个格式就是PE文件的结构。比如：exe、dll、部分sys</p>
+<p>PE文件在16进制工具内存中打开时，都是以4D 5A开头的，作为可执行文件的一个标记（MZ）</p>
+<p>以WPS为例，运行WPS在winhex中以内存的形式打开WPS</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/230752170-8a91623d-c080-497e-a8f2-cfb22ac89ce1.png"></p>
+<h3 id="①PE文件分节"><a href="#①PE文件分节" class="headerlink" title="①PE文件分节"></a>①PE文件分节</h3><h6 id="分节含义"><a href="#分节含义" class="headerlink" title="分节含义"></a>分节含义</h6><p>在内存和硬盘中pe文件被分为了一节一节的存放，节间空隙以0来填充</p>
+<h6 id="PE结构是分节的原因"><a href="#PE结构是分节的原因" class="headerlink" title="PE结构是分节的原因"></a>PE结构是分节的原因</h6><ol>
+<li>节省硬盘空间（<strong>老的编译器</strong>）</li>
+</ol>
+<img src="https://user-images.githubusercontent.com/116374553/230732307-6db32ddb-fc75-49fd-b3d1-97f5133d6ed7.png" style="zoom: 67%;" />
+
+<ul>
+<li>硬盘对齐：200h</li>
+<li>内存对齐：1000h</li>
+</ul>
+<p>​                                          ——硬盘对齐为了增加读写的速度</p>
+<p>由前两点即可得知，当exe在内存中加载时会有一个拉伸的效果</p>
+<p>即pe文件存在这两种不同的形态：磁盘文件和内存映像</p>
+<p><strong>新的编译器（新的硬盘）</strong></p>
+<p>对齐一致，减小了运算量</p>
+<img src="https://user-images.githubusercontent.com/116374553/230750819-4bff2c1a-fb04-4694-86be-1e92a420be24.png" style="zoom:67%;" />
+
+<p>2.节省硬盘空间</p>
+<p>由于<strong>多开</strong>的原因</p>
+<img src="https://user-images.githubusercontent.com/116374553/230751229-c53d1692-7780-4771-a88e-6a07b231026b.png" style="zoom: 67%;" />
+
+<h3 id="②PE磁盘文件与内存映像的结构图"><a href="#②PE磁盘文件与内存映像的结构图" class="headerlink" title="②PE磁盘文件与内存映像的结构图"></a>②PE磁盘文件与内存映像的结构图</h3><img src="https://user-images.githubusercontent.com/116374553/230751953-02de5621-8e35-4a3a-ba56-d0b00fd2dc80.png" style="zoom: 67%;" />
+
+<h3 id="③PE文件结构图"><a href="#③PE文件结构图" class="headerlink" title="③PE文件结构图"></a>③PE文件结构图</h3><p><img src="https://user-images.githubusercontent.com/116374553/230752214-03d33392-2206-4ae3-85b2-93ddc4b6fe7c.jpg"></p>
+<h2 id="Ⅱ-PE文件头解析"><a href="#Ⅱ-PE文件头解析" class="headerlink" title="Ⅱ.PE文件头解析"></a>Ⅱ.PE文件头解析</h2><h3 id="①DOS头-MZ文件头和DOS-Stub"><a href="#①DOS头-MZ文件头和DOS-Stub" class="headerlink" title="①DOS头(MZ文件头和DOS Stub)"></a>①DOS头(MZ文件头和DOS Stub)</h3><p>​        ——&gt;40(确定大小)</p>
+<p>​        ——16位系统中使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">0x00 WORD e_magic;                *//5A4D  判断PE文件的标识符（MZ） </span><br><span class="line">0x02 WORD e_cblp;                 //</span><br><span class="line">0x04 WORD e_cp;                   //0090</span><br><span class="line">0x06 WORD e_crlc;                 //0003</span><br><span class="line">0x08 WORD e_cparhdr;              //0000</span><br><span class="line">0x0a WORD e_minalloc;             //0004</span><br><span class="line">0x0c WORD e_maxalloc;             //0000</span><br><span class="line">0x0e WORD e_ss;                   //FFFF</span><br><span class="line">0x10 WORD e_sp;                   //0000</span><br><span class="line">0x12 WORD e_csum;                 //00B8</span><br><span class="line">0x14 WORD e_ip;                   //0000</span><br><span class="line">0x16 WORD e_cs;                   //0000</span><br><span class="line">0x18 WORD e_lfarlc;               //0040</span><br><span class="line">0x1a WORD e_ovno;                 //0000 </span><br><span class="line">0x1c WORD e_res[4];               //0000 * 4</span><br><span class="line">0x24 WORD e_oemid;                //0000</span><br><span class="line">0x26 WORD e_oeminfo;              //0000</span><br><span class="line">0x28 WORD e_res2[10];             //0000*10</span><br><span class="line">0x3c DWORD e_lfanew;              *//000000E8(不尽相同)  pe文件的偏移量(从起始位置开始算)，寻找pe头的位置</span><br></pre></td></tr></table></figure>
+
+<p><strong>重点</strong>：e_magic/e_lfanew</p>
+<h3 id="②NT头"><a href="#②NT头" class="headerlink" title="②NT头"></a>②NT头</h3><p>NT头——&gt;标准PE头/<strong>可选PE头</strong></p>
+<p>通过e_lfanew即可找到PE头</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/230752930-64b41565-ecea-42f5-a8fb-5495b629ee54.png"></p>
+<p>在DOS头和PE头之间的数据为垃圾数据（由编译器决定）</p>
+<h5 id="●NT头"><a href="#●NT头" class="headerlink" title="●NT头"></a>●<strong>NT头</strong></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0x00 DWORD Signature;                          //00005045 PE的标记</span><br><span class="line">0x04 _IMAGE_FILE_HEADER FileHeader;            //标准PE头</span><br><span class="line">0x18 _IMAGE_OPTIONAL_HEADRE Optional Header;   //可选PE头</span><br></pre></td></tr></table></figure>
+
+<h5 id="●标准PE头"><a href="#●标准PE头" class="headerlink" title="●标准PE头"></a>●标准PE头</h5><p> ——&gt;20(确定大小)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">0x00 WORD Machine;           **//014C 程序运行的CPU型号:0x0任何处理器/0x14C Intel 386及后续处理器</span><br><span class="line">0x02 WORD NumberOfSections;  **//0005 文件中存在的节的总数，除了头，还有几节数据，如果要新增节或者合并节就要修改这个值</span><br><span class="line">0x04 DWORD TimeDateStamp;   *//535883B8 时间日期戳(文件创建的时间)，和操作系统无关，编译器填写</span><br><span class="line">0x08 DWORD PointerToSymbolTable;            </span><br><span class="line">0x0c DWORD NumberOfSymbols;                 </span><br><span class="line">0x10 WORD SizeOfOptionalHeader;  **//00E0 可选PE头的大小，32位PE文件默认E0h 64位PE文件默认为F0h  大小可以自定义</span><br><span class="line">0x12 WORD Characteristics;       *//0102 pe文件属性 每一位含义不同 </span><br></pre></td></tr></table></figure>
+
+<h6 id="NumberOfSections"><a href="#NumberOfSections" class="headerlink" title="NumberOfSections"></a>NumberOfSections</h6><p>——除了头还有几节数据</p>
+<img src="https://user-images.githubusercontent.com/116374553/230756605-29cb568f-a7ae-4ee3-9e79-bceb09c4e934.png" style="zoom:50%;" />
+
+<h6 id="Characteristics"><a href="#Characteristics" class="headerlink" title="Characteristics"></a>Characteristics</h6><p>将WORD的数据拆成一个二进制数，代表勾选的内容</p>
+<p>例如现在我打开的程序Characteristics为0102，即：0000 0001 0000 0010（1即设置标志勾选的内容）</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/230757079-317f17c0-c18c-4ab0-823a-50640adb939b.png"></p>
+<p><strong>重点</strong>：Machine / NumberOfSections / TimeDateStamp / SizeOfOptionalHeader / Characteristics</p>
+<p>特别是带“**”</p>
+<h5 id="●可选PE头-大小不确定32-64位不同"><a href="#●可选PE头-大小不确定32-64位不同" class="headerlink" title="●可选PE头(大小不确定32/64位不同)"></a>●可选PE头(大小不确定32/64位不同)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">0x00 WORD Magic; **//说明文件类型：010B-&gt;32位下的PE文件 020B-&gt;64位下的PE文件</span><br><span class="line">0x02 BYTE MajorLinkerVersion;</span><br><span class="line">0x03 BYTE MinorLinkerVersion;</span><br><span class="line">0x04 DWORD SizeOfCode; *//代码大小/所有代码节的和，必须是FileAlignment的整数倍 编译器填的 没用</span><br><span class="line">0x08 DWORD SizeOfInitializedData; *//已初始化数据大小的和，必须是 FileAlignment的整数倍 编译器填的 没用</span><br><span class="line">0x0c DWORD SizeOfUninitializedData; *//未初始化数据大小的和，必须是 FileAlignment的整数倍 编译器填的 没用 </span><br><span class="line">0x10 DWORD AddressOfEntryPoint; **//程序入口（OEP)</span><br><span class="line">0x14 DWORD BaseOfCode; *//代码开始的基址，编译器填的 没用</span><br><span class="line">0x18 DWORD BaseOfData; *//数据开始的基址，编译器填的 没用</span><br><span class="line">0x1c DWORD ImageBase; **//内存镜像基址</span><br><span class="line">0x20 DWORD SectionAlignment; **//内存对齐，区段对齐</span><br><span class="line">0x24 DWORD FileAlignment; **//文件对齐</span><br><span class="line">0x28 WORD MajorOperatingSystemVersion;</span><br><span class="line">0x2a WORD MinorOperatingSystemVersion;</span><br><span class="line">0x2c WORD MajorImageVersion;</span><br><span class="line">0x2e WORD MinorImageVersion;</span><br><span class="line">0x30 WORD MajorSubsystemVersion;</span><br><span class="line">0x32 WORD MinorSubsystemVersion;</span><br><span class="line">0x34 DWORD Win32VersionValue;</span><br><span class="line">0x38 DWORD SizeOfImage ; **//镜像大小/内存中整个PE文件的映射的尺寸，可以比实际的值大，但必须是SectionAlignment的整数倍（拉伸之后的大小）</span><br><span class="line">0x3c DWORD SizeOfHeaders; **// 所有头+节表，按照‘文件对齐 FileAlignment’后的大小（即如果现在加起来为1800h，要求1000h对齐，则认为大小为2000h），否则加载会出错</span><br><span class="line">0x40 DWORD CheckSum; *//校验和，一些系统文件有要求，用来判断文件是否被修改</span><br><span class="line">0x44 WORD Subsystem;</span><br><span class="line">0x46 WORD DllCharacteristics;</span><br><span class="line">0x48 DWORD SizeOfStackReserve; *//初始化时保留的堆栈大小</span><br><span class="line">0x4c DWORD SizeOfStackCommit; *//初始化时实际提交的大小</span><br><span class="line">0x50 DWORD SizeOfHeapReserve; *//初始化时保留的堆大小</span><br><span class="line">0x54 DWORD SizeOfHeapCommit; *//初始化时实际提交的大小</span><br><span class="line">0x58 DWORD LoaderFlags;</span><br><span class="line">0x5c DWORD NumberOfRvaAndSizes; *//目录项数目，RVA数目和大小</span><br><span class="line">0x60 _IMAGE_DATA_DIRECTORY DataDirectory[16]; 16个结构体，每个结构体是8个字节</span><br></pre></td></tr></table></figure>
+
+<p>程序在内存中真正的地址：内存镜像基地址+OEP</p>
+<p>​                                   原因：ImageBase的地址可能被抢占，为了保证被抢占了之后依旧可以运行</p>
+<h6 id="CheckSum"><a href="#CheckSum" class="headerlink" title="CheckSum"></a>CheckSum</h6><p>用于检查PE文件的完整性,一般exe文件可以使其值为0，在一些内核模式驱动文件及DLL文件中,该值必须是存在且正确的</p>
+<p>校验值的计算很简单:<br>将PE文件两个两个数据进行累加，如果存不下就自然溢出（剩多少就存多少），将计算结果与CheckSum进行比较,不相等则说明文件被修改过或不完整</p>
+<p><strong>重点</strong>：带‘**’就是</p>
+<p>一个exe不是一个PE文件，而是由多个PE文件构成的</p>
+<p>一个exe有一个虚拟的独立的4G空间</p>
+<h3 id="③PE加载过程"><a href="#③PE加载过程" class="headerlink" title="③PE加载过程"></a>③PE加载过程</h3><img src="https://user-images.githubusercontent.com/116374553/230759788-677dfd48-b69d-4eef-abf8-3dffdc28102a.png" style="zoom:67%;" />
+
+<h2 id="Ⅲ-节表"><a href="#Ⅲ-节表" class="headerlink" title="Ⅲ.节表"></a>Ⅲ.节表</h2><p>——存储节区的信息（相当于节区的目录）</p>
+<h3 id="①PE整体解析"><a href="#①PE整体解析" class="headerlink" title="①PE整体解析"></a>①PE整体解析</h3><img src="https://user-images.githubusercontent.com/116374553/232229404-9b41444e-1cca-499b-829b-4ecc5a70ac6b.png" style="zoom: 60%;" />
+
+<p>节表的大小存储在标准pe头中——NumberOfSections</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_SECTION_HEADER</span><br><span class="line">&#123;</span><br><span class="line">        0x00 BYTE Name[IMAGE_SIZEOF_SHORT_NAME];//此处被宏定义为8个字节（#define IMAGE_SIZEOF_SHORT_NAME 8），储存了节表的名字（编译器会自动给出，也可自行修改），该处的数据为ASCII字符，需要以&#x27;\0&#x27;结尾，但如果是将8个字节全部占满，就会造成数组越界，如果直接用指针指向该处读取数据，会出现错误（由于一直没找到结束的标志&#x27;\0&#x27;,会出现乱码）—— 一般形式为.xxx,也可以没有&#x27;.&#x27;</span><br><span class="line">             union &#123;</span><br><span class="line">        0x08          DWORD PhysicalAddress;</span><br><span class="line">        0x08          DWORD VirtualSize;</span><br><span class="line">             &#125; Misc;//匿名的联合体，变量为Misc，该节没有对齐前的真实尺寸（这个值可以被修改，同时不影响程序的运行）</span><br><span class="line">        0x0c DWORD VirtualAddress; //内存中的偏移地址（相对于ImageBase的偏移），加上ImageBase之后为内存中的真实地址</span><br><span class="line">        0x10 DWORD SizeOfRawData; //节在文件中对齐后的尺寸</span><br><span class="line">        0x14 DWORD PointerToRawData; //节区在文件中的偏移，即每一个节区离头(文件中起始为0)有多远(其值是文件对齐的整数倍)</span><br><span class="line">        0x18 DWORD PointerToRelocations;</span><br><span class="line">        0x1c DWORD PointerToLinenumbers;</span><br><span class="line">        0x20 WORD NumberOfRelocations;</span><br><span class="line">        0x22 WORD NumberOfLinenumbers;</span><br><span class="line">        0x24 DWORD Characteristics; //当前节的属性（便于分析每一个节区的功能——特别是被加壳后修改名称的文件）</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Misc-VirtualAdress"><a href="#Misc-VirtualAdress" class="headerlink" title="Misc/VirtualAdress"></a>Misc/VirtualAdress</h5><img src="https://user-images.githubusercontent.com/116374553/232231029-38afd01d-0c42-4737-ad18-6bcc6a0e33ad.png" style="zoom: 60%;" />
+
+<h5 id="Characteristics-1"><a href="#Characteristics-1" class="headerlink" title="Characteristics"></a>Characteristics</h5><p>将该处的数据对应着以下相应的属性（将对应拥有的属性的值相加即可获取该处的值）</p>
+<img src="https://user-images.githubusercontent.com/116374553/232231154-3dfc22d2-7daa-4e2b-8565-80ce98109393.png" style="zoom:55%;" />
+
+<h3 id="②单一节表解析"><a href="#②单一节表解析" class="headerlink" title="②单一节表解析"></a>②单一节表解析</h3><img src="https://user-images.githubusercontent.com/116374553/232231796-c40a06c5-e31b-4437-9385-45913aa715d5.png" style="zoom:55%;" />
+
+<h2 id="Ⅳ-FileBuffer-ImageBuffer"><a href="#Ⅳ-FileBuffer-ImageBuffer" class="headerlink" title="Ⅳ.FileBuffer/ImageBuffer"></a>Ⅳ.FileBuffer/ImageBuffer</h2><h3 id="①FileBuffer-——-gt-ImageBuffer"><a href="#①FileBuffer-——-gt-ImageBuffer" class="headerlink" title="①FileBuffer ——&gt; ImageBuffer"></a>①FileBuffer ——&gt; ImageBuffer</h3><p><img src="https://user-images.githubusercontent.com/116374553/232238119-2f3c79ee-10b6-45a1-abcb-52df62526b2b.png"></p>
+<h3 id="②计算ImageBuffer中某一节表的位置到FileBuffer中的位置"><a href="#②计算ImageBuffer中某一节表的位置到FileBuffer中的位置" class="headerlink" title="②计算ImageBuffer中某一节表的位置到FileBuffer中的位置"></a>②计算ImageBuffer中某一节表的位置到FileBuffer中的位置</h3><p>计算在ImageBuffer中某一节表中地址对应FileBuffer中的地址</p>
+<p>ImageBuffer中的地址为501234，PE文件初位置为50000</p>
+<p>其中节表的大致分布如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">节1：PointerToRawData 400</span><br><span class="line">    VirtualAdress 1000</span><br><span class="line">节2：PointerToRawData 600</span><br><span class="line">    VirtualAdress 2000</span><br><span class="line">节3：PointerToRawData 800</span><br><span class="line">    VirtualAdress 3000</span><br></pre></td></tr></table></figure>
+
+<p>第一步：501234 - 500000 = 1234 //得出现下的偏移地址</p>
+<p>第二步：VirtualAdress &lt; 1234 &lt; Misc.VirtualSize //判断目前处于哪一个节区 ——&gt;  得出在第一个节区</p>
+<p>第三步：1234 - VirtualAdress = 234 //关于第一个节区的偏移</p>
+<p>第四步：PointerToRawData + 234 = 634</p>
+<h2 id="Ⅴ-代码节空白区插入代码"><a href="#Ⅴ-代码节空白区插入代码" class="headerlink" title="Ⅴ.代码节空白区插入代码"></a>Ⅴ.代码节空白区插入代码</h2><p><strong>以向某一个程序中插入MessageBox这个函数为例</strong></p>
+<h3 id="①程序插入MessageBox"><a href="#①程序插入MessageBox" class="headerlink" title="①程序插入MessageBox"></a>①程序插入MessageBox</h3><h5 id="MessageBox函数"><a href="#MessageBox函数" class="headerlink" title="MessageBox函数"></a>MessageBox函数</h5><p><strong>MessageBox</strong>一个<strong>Win32API</strong>函数</p>
+<p>MessageBox指的是显示一个模态对话框，其中包含一个系统图标、 一组按钮和一个简短的<em>特定于应用程序消息，如状态或错误的信息</em>。</p>
+<h5 id="在OD中利用指令对函数下断点"><a href="#在OD中利用指令对函数下断点" class="headerlink" title="在OD中利用指令对函数下断点"></a>在OD中利用指令对函数下断点</h5><p>在OD中对MessageBox下断点的时候可以直接在OD下方的Command直接输入bp MessageBoxA，同时按Enter键。在断点清单中即可看到该函数。</p>
+<img src="https://user-images.githubusercontent.com/116374553/234433867-6b5950ed-8cf4-4f09-9621-bbf3833999e2.png" style="zoom:67%;" />
+
+<img src="https://user-images.githubusercontent.com/116374553/234622569-dfa6e7a5-0344-400a-aa04-adf931579d59.png" style="zoom: 80%;" />
+
+<img src="https://user-images.githubusercontent.com/116374553/234621943-f59dca17-0ada-4656-925e-6f542b8bb7de.png" style="zoom:67%;" />
+
+<p>此时可以知道我电脑上的MessageBox函数的地址为779CA7D0</p>
+<h5 id="在vs中查看反汇编"><a href="#在vs中查看反汇编" class="headerlink" title="在vs中查看反汇编"></a>在vs中查看反汇编</h5><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/avrdpy/article/details/128682835">https://blog.csdn.net/avrdpy/article/details/128682835</a></p>
+<p>同时可以在上方的查看选项中调出需要的部分</p>
+<img src="https://user-images.githubusercontent.com/116374553/234439394-6075ceb6-12f2-4355-8344-bb19d4bb5b63.png" style="zoom:67%;" />
+
+<h5 id="E8、E9计算公式"><a href="#E8、E9计算公式" class="headerlink" title="E8、E9计算公式"></a>E8、E9计算公式</h5><h6 id="E8："><a href="#E8：" class="headerlink" title="E8："></a>E8：</h6><p>call指令对应的硬编码，后接上4个字节的地址跳转（此跳转地址并不是我们想要的跳转的地方）</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/234441719-8eb69102-db55-4161-babd-26bea268c30a.png"></p>
+<p>此处的硬编码E8后的地址并不是函数Function后的跳转地址</p>
+<p>真正要跳转的地址 = E8这条指令的下一条指令 + X</p>
+<p>于是通过该方程式<strong>求取X</strong>的值：</p>
+<p>E8下一条指令的地址为A918D6</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/234442340-9542e174-bfd9-4c16-bc98-676873067ab9.png"></p>
+<p>实际跳转的地址0A91023</p>
+<p>①<strong>X = 真正要跳转的地址 - E8这条指令的下一条指令</strong></p>
+<p>即：X = 0xA91023 - 0xA918D6 = 0xFFFF F74D</p>
+<img src="https://user-images.githubusercontent.com/116374553/234443202-214c83c9-5d6b-44be-b1a2-046320210816.png" style="zoom:50%;" />
+
+<p>此值恰好是E8后面的地址</p>
+<p><strong>注意</strong>：由于存储地址的地方都是四个字节，是双字，所以在利用计算器计算的时候需要选中DWORD</p>
+<p>②<strong>X = 真正要跳转的地址 -（E8当前的地址（拉伸后的地址） + 5）（E8的下一条指令的地址 = E8 + 硬编码所占的字节数）</strong></p>
+<h6 id="E9："><a href="#E9：" class="headerlink" title="E9："></a>E9：</h6><p>与E8同理</p>
+<p>jmp指令对应的硬编码，后接上4个字节的地址跳转</p>
+<h4 id="●构造shellcode-调用MessageBox"><a href="#●构造shellcode-调用MessageBox" class="headerlink" title="●构造shellcode(调用MessageBox)"></a>●构造shellcode(调用MessageBox)</h4><img src="https://user-images.githubusercontent.com/116374553/234475466-f619e567-2827-4a06-80fb-21e10890b02d.png" style="zoom: 67%;" />
+
+<p>调用MessageBox函数先是将参数push入栈，其硬编码为6A 00；然后是call指令调用函数(求取X = 值)；最后是jmp跳转到原来程序的OEP(求取jmp的X)。</p>
+<h5 id="Shellcode"><a href="#Shellcode" class="headerlink" title="Shellcode"></a>Shellcode</h5><p><em><strong>6A 00 6A 00 6A 00 6A 00 E8 00 00 00 00 E9 00 00 00 00</strong></em></p>
+<h5 id="求取E8后X"><a href="#求取E8后X" class="headerlink" title="求取E8后X"></a>求取E8后X</h5><p>此时需要填写E8和E9后的X</p>
+<p>首先利用PETool工具打开我想要加入shellcode的程序，去到第一个节表中（判断空白的区域是否足够我插入代码（文件对齐后的大小 - 内存中的大小））</p>
+<img src="https://user-images.githubusercontent.com/116374553/234625644-1f6df591-5bd9-47f6-874c-caea19abcda6.png" style="zoom: 67%;" />
+
+<p>在winhex中以文件模式打开该程序，先找到文件偏移的位置（即第一个节表的起始位置），加上文件中的偏移等于第二个节表开始的位置。在其中的空白区域填写我们的shellcode</p>
+<img src="https://user-images.githubusercontent.com/116374553/234627090-53900013-28bd-4a54-9333-31da01a40541.png" style="zoom:50%;" />
+
+<p>由之前可知此时电脑中的MessageBox函数的地址为<em><strong>0x7544A7D0</strong></em>（真正要跳转的地址）</p>
+<p>此时<em><strong>X = 7544A7D0 - E8下一条指令的地址</strong></em>（<strong>运行时</strong>的地址此时是拉伸之后的（Image Buffer））</p>
+<p>其中：<em><strong>E8地址 = ImageBase + 偏移地址 = 400000 + 拉伸后E8下一条指令的地址 = 400000 + （244d - 400 + 1000）= 40304D</strong></em></p>
+<p>注：244d - 400 + 1000  此时在file文件中e8下条指令的地址-文件中偏移+内存偏移</p>
+<p>ImageBase：<img src="https://user-images.githubusercontent.com/116374553/234630622-445e36df-adec-45dc-853a-add9569d3969.png"></p>
+<p>最终解得<em><strong>X = 7544A7D0 - 40304D = 75047783</strong></em>  </p>
+<p>则<em><strong>E8 83 77 04 75</strong></em></p>
+<p><img src="https://user-images.githubusercontent.com/116374553/234633620-92ea411d-57ab-48c3-8670-fb9f7d30d42d.png"></p>
+<h5 id="求取E9后X"><a href="#求取E9后X" class="headerlink" title="求取E9后X"></a>求取E9后X</h5><p>跳转到真正的程序OEP处（入口地点）</p>
+<p><img src="https://user-images.githubusercontent.com/116374553/234634266-9cb0421f-9b03-4bce-b882-2d15d84f1e6e.png"></p>
+<p><em><strong>真正地址 = ImageBase + AddressOfEntryPoint = 4021A8</strong></em></p>
+<p><em><strong>X = 真正地址 - E9下一条指令 = 4021A8 - （400000 + 2452 - 400 + 1000）= FFFFF156</strong></em></p>
+<p>则<em><strong>E9 56 F1 FF FF</strong></em></p>
+<p><img src="https://user-images.githubusercontent.com/116374553/234639802-d10db288-cbad-4295-aadd-f3d2f326af60.png"></p>
+<h4 id="●修改OEP"><a href="#●修改OEP" class="headerlink" title="●修改OEP"></a>●修改OEP</h4><p>现在oep = 现在构造的shellcode的起始位置 = 2440 - 400 + 1000 = 3040</p>
+<p><strong>原来</strong>：<img src="https://user-images.githubusercontent.com/116374553/234640243-411c5fb3-888c-444f-8947-b67efac2da8e.png" style="zoom:50%;" /></p>
+<p><strong>修改</strong>后：<img src="https://user-images.githubusercontent.com/116374553/234640925-7588306e-1349-42e2-b38b-a46ab24e5269.png" style="zoom:50%;" /></p>
+<h4 id="●运行结果"><a href="#●运行结果" class="headerlink" title="●运行结果"></a>●运行结果</h4><p><strong>原来</strong>：<img src="https://user-images.githubusercontent.com/116374553/234641315-168e0f3b-937c-4fde-82cc-d872b9a87802.png" style="zoom:50%;" /></p>
+<p><strong>现在</strong>：<img src="https://user-images.githubusercontent.com/116374553/234641613-0c78e699-9f8c-48d4-8214-7f2407472ec9.png" style="zoom:50%;" /></p>
+<p>点击确定后<img src="https://user-images.githubusercontent.com/116374553/234641740-50ebd33c-dfd6-44ec-b165-5c481f80d790.png" style="zoom:50%;" /></p>
+<h6 id="FF15和E8"><a href="#FF15和E8" class="headerlink" title="FF15和E8"></a>FF15和E8</h6><p><strong>注意</strong>：①00A018EB FF 15 98 B0 A0 00    call        dword ptr [__imp__MessageBoxW@16 (0A0B098h)]  </p>
+<p>当call指令的硬编码为FF15时，后跟的地址是绝对地址</p>
+<p>②00A018F3 E8 51 F9 FF FF       call        __RTC_CheckEsp (0A01249h) </p>
+<p>当call指令的硬编码为E8时，后跟的地址是相对偏移地址</p>
+<h2 id="Ⅵ-在任意空白处添加代码"><a href="#Ⅵ-在任意空白处添加代码" class="headerlink" title="Ⅵ.在任意空白处添加代码"></a>Ⅵ.在任意空白处添加代码</h2><p><img src="https://user-images.githubusercontent.com/116374553/235347608-18d37579-e134-42eb-b635-3f8176e51983.png" alt="00"></p>
+<p>相应代码在另一篇博客中(此处由于一些原因并未采取file-&gt;image-&gt;new这一过程)</p>
+<h2 id="Ⅶ-新增节-添加代码"><a href="#Ⅶ-新增节-添加代码" class="headerlink" title="Ⅶ.新增节-添加代码"></a>Ⅶ.新增节-添加代码</h2><img src="https://github.com/WhiteIsBlank/Picture/assets/116374553/d4b83554-e998-42fe-8b3d-458e4ea70c7c" style="zoom: 67%;" />
+
+<p>每一个节表是40个字节</p>
+<h5 id="目标："><a href="#目标：" class="headerlink" title="目标："></a><em><strong>目标：</strong></em></h5><p><em>新增一个节，并且它的大小为1000字节。</em></p>
+<h5 id="初始运行程序："><a href="#初始运行程序：" class="headerlink" title="初始运行程序："></a><em><strong>初始运行程序</strong></em>：<img src="https://github.com/WhiteIsBlank/Picture/assets/116374553/4d16f9ef-aae9-43a1-ac0a-9a93dd189df9" style="zoom:50%;" /></h5><h5 id="增加节表："><a href="#增加节表：" class="headerlink" title="增加节表："></a><em><strong>增加节表</strong></em>：</h5><h6 id="①修改节的数量"><a href="#①修改节的数量" class="headerlink" title="①修改节的数量"></a>①修改节的数量</h6><p>修改标准pe头中NumberOfSections的值</p>
+<p>示例程序原来有5个节表，将5修改为6</p>
+<h6 id="②修改pe文件的大小（sizeofimage）"><a href="#②修改pe文件的大小（sizeofimage）" class="headerlink" title="②修改pe文件的大小（sizeofimage）"></a>②修改pe文件的大小（sizeofimage）</h6><p>将新增节表的区域映射到内存中去</p>
+<p>此时可以直接用petool打开pe文件，然后先找到pe标识，然后标准pe头20字节，到可选pe头后，直接根据petool中查到的sizeofimage，找到它的位置并进行修改。</p>
+<p>示例程序原来的sizeofimage大小为38000h，此处由于新增节的大小为1000h，则将该数据修改为39000h</p>
+<h6 id="③为新节开辟内存"><a href="#③为新节开辟内存" class="headerlink" title="③为新节开辟内存"></a>③为新节开辟内存</h6><p>在pe文件的最后一个字节，右键选择粘贴字节，此处插入字符应该填写十进制数（4096）</p>
+<h6 id="④修改节表的信息"><a href="#④修改节表的信息" class="headerlink" title="④修改节表的信息"></a>④修改节表的信息</h6><p>此时可以对照petool中的其他节表去修改新增节表的信息（此处需要自己随便选择某一个节表，直接复制到新增节表的位置）</p>
+<ul>
+<li>修改VirtualSize的值的时候，直接将其修改为对齐后的值即可</li>
+<li>PointerToRawData：<strong>PointerToRawData</strong> = PointerToRawData(上) + SizeOfRawData(上) 文件地址+文件中的大小</li>
+<li>VirtualAddress：此时的<strong>VirtualAddress</strong> = VirtualAddress(上) + SizeOfRawData修改为内存对齐时的值   最后一个节表的偏移+文件中大小(或内存中大小（谁大加谁))之后按照对齐原则进行修改即可</li>
+<li>Characteristics：由于复制的是代码节，则此处属性可以不用修改，如果有属性的改变可以对照相应的表格修改此处的数据</li>
+</ul>
+<p><strong>修改后的节表：</strong><img src="https://github.com/WhiteIsBlank/Picture/assets/116374553/f63b9931-bf10-4330-a298-703c43c11142"></p>
+<h5 id="修改后运行："><a href="#修改后运行：" class="headerlink" title="修改后运行："></a><strong>修改后运行</strong>：<img src="https://github.com/WhiteIsBlank/Picture/assets/116374553/4fe8c5ec-b608-4541-8353-7cbd5ce1fa1a" style="zoom:50%;" /></h5><h5 id="增加节的条件"><a href="#增加节的条件" class="headerlink" title="增加节的条件"></a>增加节的条件</h5><p>①节表后的空白空间足够大</p>
+<p>②一些程序在节表之后节区之前自带有一些数据(不清楚用处)，此时可以将我们的NT头以及节表信息直接向上提，提到DOS与NT头之间的垃圾数据上去，同时修改e_lfanew的值。此后在多出来的区域直接填充0即可，在此填写新增的节表数据</p>
+<p><img src="https://github.com/WhiteIsBlank/Picture/assets/116374553/b507da8f-6e4a-4dbb-a467-aab8adec9aa2"></p>
+<p><em><strong>注意</strong></em>：节表结束后一定要留有一个节表的空白区域（40个0）</p>
+<p>由于windows判断结构体数组结束的机制是，当出现一个结构体大小的空白区域时结构体数组结束（不一定会是如此）</p>
+<p>③当DOS头NT头间的数据依旧不够用，则扩大最后一个节（因为不会影响其他节区的偏移）</p>
+<p>相应代码在另一篇博客中</p>
+
+      
+    </div><!-- .entry-content -->
+    
+    <footer class="entry-meta">
+    <a href="/2023/05/17/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">
+    <time datetime="2023-05-16T16:00:00.000Z" class="entry-date">
+        2023-05-17
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a>
+  </div>
+
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-PE文件添加节表代码" class="post-PE文件添加节表代码 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -319,237 +550,6 @@
     <a href="/2023/05/01/%E6%89%93%E5%8D%B0PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%EF%BC%88C%E8%AF%AD%E8%A8%80%EF%BC%89/">
     <time datetime="2023-04-30T16:00:00.000Z" class="entry-date">
         2023-05-01
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a>
-  </div>
-
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-PE文件结构" class="post-PE文件结构 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2023/04/30/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://example.com/2023/04/30/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" data-id="clhn26xzb0002jsl0fg533hhv" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-    
-    <div class="entry-content">
-      
-      <!-- Table of Contents -->
-    <!--目录-侧边栏-->
-    
-    <!--目录-文章开头-->
-    
-    </br>   
-        <h1 id="PE文件结构"><a href="#PE文件结构" class="headerlink" title="PE文件结构"></a>PE文件结构</h1><h2 id="Ⅰ-含义"><a href="#Ⅰ-含义" class="headerlink" title="Ⅰ.含义"></a>Ⅰ.含义</h2><p>任何一个在Windows上运行的可执行文件都要遵循一定的格式，这个格式就是PE文件的结构。比如：exe、dll、部分sys</p>
-<p>PE文件在16进制工具内存中打开时，都是以4D 5A开头的，作为可执行文件的一个标记（MZ）</p>
-<p>以WPS为例，运行WPS在winhex中以内存的形式打开WPS</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/230752170-8a91623d-c080-497e-a8f2-cfb22ac89ce1.png"></p>
-<h3 id="①PE文件分节"><a href="#①PE文件分节" class="headerlink" title="①PE文件分节"></a>①PE文件分节</h3><h6 id="分节含义"><a href="#分节含义" class="headerlink" title="分节含义"></a>分节含义</h6><p>在内存和硬盘中pe文件被分为了一节一节的存放，节间空隙以0来填充</p>
-<h6 id="PE结构是分节的原因"><a href="#PE结构是分节的原因" class="headerlink" title="PE结构是分节的原因"></a>PE结构是分节的原因</h6><ol>
-<li>节省硬盘空间（<strong>老的编译器</strong>）</li>
-</ol>
-<img src="https://user-images.githubusercontent.com/116374553/230732307-6db32ddb-fc75-49fd-b3d1-97f5133d6ed7.png" style="zoom: 67%;" />
-
-<ul>
-<li>硬盘对齐：200h</li>
-<li>内存对齐：1000h</li>
-</ul>
-<p>​                                          ——硬盘对齐为了增加读写的速度</p>
-<p>由前两点即可得知，当exe在内存中加载时会有一个拉伸的效果</p>
-<p>即pe文件存在这两种不同的形态：磁盘文件和内存映像</p>
-<p><strong>新的编译器（新的硬盘）</strong></p>
-<p>对齐一致，减小了运算量</p>
-<img src="https://user-images.githubusercontent.com/116374553/230750819-4bff2c1a-fb04-4694-86be-1e92a420be24.png" style="zoom:67%;" />
-
-<p>2.节省硬盘空间</p>
-<p>由于<strong>多开</strong>的原因</p>
-<img src="https://user-images.githubusercontent.com/116374553/230751229-c53d1692-7780-4771-a88e-6a07b231026b.png" style="zoom: 67%;" />
-
-<h3 id="②PE磁盘文件与内存映像的结构图"><a href="#②PE磁盘文件与内存映像的结构图" class="headerlink" title="②PE磁盘文件与内存映像的结构图"></a>②PE磁盘文件与内存映像的结构图</h3><img src="https://user-images.githubusercontent.com/116374553/230751953-02de5621-8e35-4a3a-ba56-d0b00fd2dc80.png" style="zoom: 67%;" />
-
-<h3 id="③PE文件结构图"><a href="#③PE文件结构图" class="headerlink" title="③PE文件结构图"></a>③PE文件结构图</h3><p><img src="https://user-images.githubusercontent.com/116374553/230752214-03d33392-2206-4ae3-85b2-93ddc4b6fe7c.jpg"></p>
-<h2 id="Ⅱ-PE文件头解析"><a href="#Ⅱ-PE文件头解析" class="headerlink" title="Ⅱ.PE文件头解析"></a>Ⅱ.PE文件头解析</h2><h3 id="①DOS头-MZ文件头和DOS-Stub"><a href="#①DOS头-MZ文件头和DOS-Stub" class="headerlink" title="①DOS头(MZ文件头和DOS Stub)"></a>①DOS头(MZ文件头和DOS Stub)</h3><p>​        ——&gt;40(确定大小)</p>
-<p>​        ——16位系统中使用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">0x00 WORD e_magic;                *//5A4D  判断PE文件的标识符（MZ） </span><br><span class="line">0x02 WORD e_cblp;                 //</span><br><span class="line">0x04 WORD e_cp;                   //0090</span><br><span class="line">0x06 WORD e_crlc;                 //0003</span><br><span class="line">0x08 WORD e_cparhdr;              //0000</span><br><span class="line">0x0a WORD e_minalloc;             //0004</span><br><span class="line">0x0c WORD e_maxalloc;             //0000</span><br><span class="line">0x0e WORD e_ss;                   //FFFF</span><br><span class="line">0x10 WORD e_sp;                   //0000</span><br><span class="line">0x12 WORD e_csum;                 //00B8</span><br><span class="line">0x14 WORD e_ip;                   //0000</span><br><span class="line">0x16 WORD e_cs;                   //0000</span><br><span class="line">0x18 WORD e_lfarlc;               //0040</span><br><span class="line">0x1a WORD e_ovno;                 //0000 </span><br><span class="line">0x1c WORD e_res[4];               //0000 * 4</span><br><span class="line">0x24 WORD e_oemid;                //0000</span><br><span class="line">0x26 WORD e_oeminfo;              //0000</span><br><span class="line">0x28 WORD e_res2[10];             //0000*10</span><br><span class="line">0x3c DWORD e_lfanew;              *//000000E8(不尽相同)  pe文件的偏移量(从起始位置开始算)，寻找pe头的位置</span><br></pre></td></tr></table></figure>
-
-<p><strong>重点</strong>：e_magic/e_lfanew</p>
-<h3 id="②NT头"><a href="#②NT头" class="headerlink" title="②NT头"></a>②NT头</h3><p>NT头——&gt;标准PE头/<strong>可选PE头</strong></p>
-<p>通过e_lfanew即可找到PE头</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/230752930-64b41565-ecea-42f5-a8fb-5495b629ee54.png"></p>
-<p>在DOS头和PE头之间的数据为垃圾数据（由编译器决定）</p>
-<h5 id="●NT头"><a href="#●NT头" class="headerlink" title="●NT头"></a>●<strong>NT头</strong></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0x00 DWORD Signature;                          //00005045 PE的标记</span><br><span class="line">0x04 _IMAGE_FILE_HEADER FileHeader;            //标准PE头</span><br><span class="line">0x18 _IMAGE_OPTIONAL_HEADRE Optional Header;   //可选PE头</span><br></pre></td></tr></table></figure>
-
-<h5 id="●标准PE头"><a href="#●标准PE头" class="headerlink" title="●标准PE头"></a>●标准PE头</h5><p> ——&gt;20(确定大小)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">0x00 WORD Machine;           **//014C 程序运行的CPU型号:0x0任何处理器/0x14C Intel 386及后续处理器</span><br><span class="line">0x02 WORD NumberOfSections;  **//0005 文件中存在的节的总数，除了头，还有几节数据，如果要新增节或者合并节就要修改这个值</span><br><span class="line">0x04 DWORD TimeDateStamp;   *//535883B8 时间日期戳(文件创建的时间)，和操作系统无关，编译器填写</span><br><span class="line">0x08 DWORD PointerToSymbolTable;            </span><br><span class="line">0x0c DWORD NumberOfSymbols;                 </span><br><span class="line">0x10 WORD SizeOfOptionalHeader;  **//00E0 可选PE头的大小，32位PE文件默认E0h 64位PE文件默认为F0h  大小可以自定义</span><br><span class="line">0x12 WORD Characteristics;       *//0102 pe文件属性 每一位含义不同 </span><br></pre></td></tr></table></figure>
-
-<h6 id="NumberOfSections"><a href="#NumberOfSections" class="headerlink" title="NumberOfSections"></a>NumberOfSections</h6><p>——除了头还有几节数据</p>
-<img src="https://user-images.githubusercontent.com/116374553/230756605-29cb568f-a7ae-4ee3-9e79-bceb09c4e934.png" style="zoom:50%;" />
-
-<h6 id="Characteristics"><a href="#Characteristics" class="headerlink" title="Characteristics"></a>Characteristics</h6><p>将WORD的数据拆成一个二进制数，代表勾选的内容</p>
-<p>例如现在我打开的程序Characteristics为0102，即：0000 0001 0000 0010（1即设置标志勾选的内容）</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/230757079-317f17c0-c18c-4ab0-823a-50640adb939b.png"></p>
-<p><strong>重点</strong>：Machine / NumberOfSections / TimeDateStamp / SizeOfOptionalHeader / Characteristics</p>
-<p>特别是带“**”</p>
-<h5 id="●可选PE头-大小不确定32-64位不同"><a href="#●可选PE头-大小不确定32-64位不同" class="headerlink" title="●可选PE头(大小不确定32/64位不同)"></a>●可选PE头(大小不确定32/64位不同)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">0x00 WORD Magic; **//说明文件类型：010B-&gt;32位下的PE文件 020B-&gt;64位下的PE文件</span><br><span class="line">0x02 BYTE MajorLinkerVersion;</span><br><span class="line">0x03 BYTE MinorLinkerVersion;</span><br><span class="line">0x04 DWORD SizeOfCode; *//代码大小/所有代码节的和，必须是FileAlignment的整数倍 编译器填的 没用</span><br><span class="line">0x08 DWORD SizeOfInitializedData; *//已初始化数据大小的和，必须是 FileAlignment的整数倍 编译器填的 没用</span><br><span class="line">0x0c DWORD SizeOfUninitializedData; *//未初始化数据大小的和，必须是 FileAlignment的整数倍 编译器填的 没用 </span><br><span class="line">0x10 DWORD AddressOfEntryPoint; **//程序入口（OEP)</span><br><span class="line">0x14 DWORD BaseOfCode; *//代码开始的基址，编译器填的 没用</span><br><span class="line">0x18 DWORD BaseOfData; *//数据开始的基址，编译器填的 没用</span><br><span class="line">0x1c DWORD ImageBase; **//内存镜像基址</span><br><span class="line">0x20 DWORD SectionAlignment; **//内存对齐，区段对齐</span><br><span class="line">0x24 DWORD FileAlignment; **//文件对齐</span><br><span class="line">0x28 WORD MajorOperatingSystemVersion;</span><br><span class="line">0x2a WORD MinorOperatingSystemVersion;</span><br><span class="line">0x2c WORD MajorImageVersion;</span><br><span class="line">0x2e WORD MinorImageVersion;</span><br><span class="line">0x30 WORD MajorSubsystemVersion;</span><br><span class="line">0x32 WORD MinorSubsystemVersion;</span><br><span class="line">0x34 DWORD Win32VersionValue;</span><br><span class="line">0x38 DWORD SizeOfImage ; **//镜像大小/内存中整个PE文件的映射的尺寸，可以比实际的值大，但必须是SectionAlignment的整数倍（拉伸之后的大小）</span><br><span class="line">0x3c DWORD SizeOfHeaders; **// 所有头+节表，按照‘文件对齐 FileAlignment’后的大小（即如果现在加起来为1800h，要求1000h对齐，则认为大小为2000h），否则加载会出错</span><br><span class="line">0x40 DWORD CheckSum; *//校验和，一些系统文件有要求，用来判断文件是否被修改</span><br><span class="line">0x44 WORD Subsystem;</span><br><span class="line">0x46 WORD DllCharacteristics;</span><br><span class="line">0x48 DWORD SizeOfStackReserve; *//初始化时保留的堆栈大小</span><br><span class="line">0x4c DWORD SizeOfStackCommit; *//初始化时实际提交的大小</span><br><span class="line">0x50 DWORD SizeOfHeapReserve; *//初始化时保留的堆大小</span><br><span class="line">0x54 DWORD SizeOfHeapCommit; *//初始化时实际提交的大小</span><br><span class="line">0x58 DWORD LoaderFlags;</span><br><span class="line">0x5c DWORD NumberOfRvaAndSizes; *//目录项数目，RVA数目和大小</span><br><span class="line">0x60 _IMAGE_DATA_DIRECTORY DataDirectory[16]; 16个结构体，每个结构体是8个字节</span><br></pre></td></tr></table></figure>
-
-<p>程序在内存中真正的地址：内存镜像基地址+OEP</p>
-<p>​                                   原因：ImageBase的地址可能被抢占，为了保证被抢占了之后依旧可以运行</p>
-<h6 id="CheckSum"><a href="#CheckSum" class="headerlink" title="CheckSum"></a>CheckSum</h6><p>用于检查PE文件的完整性,一般exe文件可以使其值为0，在一些内核模式驱动文件及DLL文件中,该值必须是存在且正确的</p>
-<p>校验值的计算很简单:<br>将PE文件两个两个数据进行累加，如果存不下就自然溢出（剩多少就存多少），将计算结果与CheckSum进行比较,不相等则说明文件被修改过或不完整</p>
-<p><strong>重点</strong>：带‘**’就是</p>
-<p>一个exe不是一个PE文件，而是由多个PE文件构成的</p>
-<p>一个exe有一个虚拟的独立的4G空间</p>
-<h3 id="③PE加载过程"><a href="#③PE加载过程" class="headerlink" title="③PE加载过程"></a>③PE加载过程</h3><img src="https://user-images.githubusercontent.com/116374553/230759788-677dfd48-b69d-4eef-abf8-3dffdc28102a.png" style="zoom:67%;" />
-
-<h2 id="Ⅲ-节表"><a href="#Ⅲ-节表" class="headerlink" title="Ⅲ.节表"></a>Ⅲ.节表</h2><p>——存储节区的信息（相当于节区的目录）</p>
-<h3 id="①PE整体解析"><a href="#①PE整体解析" class="headerlink" title="①PE整体解析"></a>①PE整体解析</h3><img src="https://user-images.githubusercontent.com/116374553/232229404-9b41444e-1cca-499b-829b-4ecc5a70ac6b.png" style="zoom: 60%;" />
-
-<p>节表的大小存储在标准pe头中——NumberOfSections</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_SECTION_HEADER</span><br><span class="line">&#123;</span><br><span class="line">        0x00 BYTE Name[IMAGE_SIZEOF_SHORT_NAME];//此处被宏定义为8个字节（#define IMAGE_SIZEOF_SHORT_NAME 8），储存了节表的名字（编译器会自动给出，也可自行修改），该处的数据为ASCII字符，需要以&#x27;\0&#x27;结尾，但如果是将8个字节全部占满，就会造成数组越界，如果直接用指针指向该处读取数据，会出现错误（由于一直没找到结束的标志&#x27;\0&#x27;,会出现乱码）—— 一般形式为.xxx,也可以没有&#x27;.&#x27;</span><br><span class="line">             union &#123;</span><br><span class="line">        0x08          DWORD PhysicalAddress;</span><br><span class="line">        0x08          DWORD VirtualSize;</span><br><span class="line">             &#125; Misc;//匿名的联合体，变量为Misc，该节没有对齐前的真实尺寸（这个值可以被修改，同时不影响程序的运行）</span><br><span class="line">        0x0c DWORD VirtualAddress; //内存中的偏移地址（相对于ImageBase的偏移），加上ImageBase之后为内存中的真实地址</span><br><span class="line">        0x10 DWORD SizeOfRawData; //节在文件中对齐后的尺寸</span><br><span class="line">        0x14 DWORD PointerToRawData; //节区在文件中的偏移，即每一个节区离头(文件中起始为0)有多远(其值是文件对齐的整数倍)</span><br><span class="line">        0x18 DWORD PointerToRelocations;</span><br><span class="line">        0x1c DWORD PointerToLinenumbers;</span><br><span class="line">        0x20 WORD NumberOfRelocations;</span><br><span class="line">        0x22 WORD NumberOfLinenumbers;</span><br><span class="line">        0x24 DWORD Characteristics; //当前节的属性（便于分析每一个节区的功能——特别是被加壳后修改名称的文件）</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="Misc-VirtualAdress"><a href="#Misc-VirtualAdress" class="headerlink" title="Misc/VirtualAdress"></a>Misc/VirtualAdress</h5><img src="https://user-images.githubusercontent.com/116374553/232231029-38afd01d-0c42-4737-ad18-6bcc6a0e33ad.png" style="zoom: 60%;" />
-
-<h5 id="Characteristics-1"><a href="#Characteristics-1" class="headerlink" title="Characteristics"></a>Characteristics</h5><p>将该处的数据对应着以下相应的属性（将对应拥有的属性的值相加即可获取该处的值）</p>
-<img src="https://user-images.githubusercontent.com/116374553/232231154-3dfc22d2-7daa-4e2b-8565-80ce98109393.png" style="zoom:55%;" />
-
-<h3 id="②单一节表解析"><a href="#②单一节表解析" class="headerlink" title="②单一节表解析"></a>②单一节表解析</h3><img src="https://user-images.githubusercontent.com/116374553/232231796-c40a06c5-e31b-4437-9385-45913aa715d5.png" style="zoom:55%;" />
-
-<h2 id="Ⅳ-FileBuffer-ImageBuffer"><a href="#Ⅳ-FileBuffer-ImageBuffer" class="headerlink" title="Ⅳ.FileBuffer/ImageBuffer"></a>Ⅳ.FileBuffer/ImageBuffer</h2><h3 id="①FileBuffer-——-gt-ImageBuffer"><a href="#①FileBuffer-——-gt-ImageBuffer" class="headerlink" title="①FileBuffer ——&gt; ImageBuffer"></a>①FileBuffer ——&gt; ImageBuffer</h3><p><img src="https://user-images.githubusercontent.com/116374553/232238119-2f3c79ee-10b6-45a1-abcb-52df62526b2b.png"></p>
-<h3 id="②计算ImageBuffer中某一节表的位置到FileBuffer中的位置"><a href="#②计算ImageBuffer中某一节表的位置到FileBuffer中的位置" class="headerlink" title="②计算ImageBuffer中某一节表的位置到FileBuffer中的位置"></a>②计算ImageBuffer中某一节表的位置到FileBuffer中的位置</h3><p>计算在ImageBuffer中某一节表中地址对应FileBuffer中的地址</p>
-<p>ImageBuffer中的地址为501234，PE文件初位置为50000</p>
-<p>其中节表的大致分布如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">节1：PointerToRawData 400</span><br><span class="line">    VirtualAdress 1000</span><br><span class="line">节2：PointerToRawData 600</span><br><span class="line">    VirtualAdress 2000</span><br><span class="line">节3：PointerToRawData 800</span><br><span class="line">    VirtualAdress 3000</span><br></pre></td></tr></table></figure>
-
-<p>第一步：501234 - 500000 = 1234 //得出现下的偏移地址</p>
-<p>第二步：VirtualAdress &lt; 1234 &lt; Misc.VirtualSize //判断目前处于哪一个节区 ——&gt;  得出在第一个节区</p>
-<p>第三步：1234 - VirtualAdress = 234 //关于第一个节区的偏移</p>
-<p>第四步：PointerToRawData + 234 = 634</p>
-<h2 id="Ⅴ-代码节空白区插入代码"><a href="#Ⅴ-代码节空白区插入代码" class="headerlink" title="Ⅴ.代码节空白区插入代码"></a>Ⅴ.代码节空白区插入代码</h2><p><strong>以向某一个程序中插入MessageBox这个函数为例</strong></p>
-<h3 id="①程序插入MessageBox"><a href="#①程序插入MessageBox" class="headerlink" title="①程序插入MessageBox"></a>①程序插入MessageBox</h3><h5 id="MessageBox函数"><a href="#MessageBox函数" class="headerlink" title="MessageBox函数"></a>MessageBox函数</h5><p><strong>MessageBox</strong>一个<strong>Win32API</strong>函数</p>
-<p>MessageBox指的是显示一个模态对话框，其中包含一个系统图标、 一组按钮和一个简短的<em>特定于应用程序消息，如状态或错误的信息</em>。</p>
-<h5 id="在OD中利用指令对函数下断点"><a href="#在OD中利用指令对函数下断点" class="headerlink" title="在OD中利用指令对函数下断点"></a>在OD中利用指令对函数下断点</h5><p>在OD中对MessageBox下断点的时候可以直接在OD下方的Command直接输入bp MessageBoxA，同时按Enter键。在断点清单中即可看到该函数。</p>
-<img src="https://user-images.githubusercontent.com/116374553/234433867-6b5950ed-8cf4-4f09-9621-bbf3833999e2.png" style="zoom:67%;" />
-
-<img src="https://user-images.githubusercontent.com/116374553/234622569-dfa6e7a5-0344-400a-aa04-adf931579d59.png" style="zoom: 80%;" />
-
-<img src="https://user-images.githubusercontent.com/116374553/234621943-f59dca17-0ada-4656-925e-6f542b8bb7de.png" style="zoom:67%;" />
-
-<p>此时可以知道我电脑上的MessageBox函数的地址为779CA7D0</p>
-<h5 id="在vs中查看反汇编"><a href="#在vs中查看反汇编" class="headerlink" title="在vs中查看反汇编"></a>在vs中查看反汇编</h5><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/avrdpy/article/details/128682835">https://blog.csdn.net/avrdpy/article/details/128682835</a></p>
-<p>同时可以在上方的查看选项中调出需要的部分</p>
-<img src="https://user-images.githubusercontent.com/116374553/234439394-6075ceb6-12f2-4355-8344-bb19d4bb5b63.png" style="zoom:67%;" />
-
-<h5 id="E8、E9计算公式"><a href="#E8、E9计算公式" class="headerlink" title="E8、E9计算公式"></a>E8、E9计算公式</h5><h6 id="E8："><a href="#E8：" class="headerlink" title="E8："></a>E8：</h6><p>call指令对应的硬编码，后接上4个字节的地址跳转（此跳转地址并不是我们想要的跳转的地方）</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/234441719-8eb69102-db55-4161-babd-26bea268c30a.png"></p>
-<p>此处的硬编码E8后的地址并不是函数Function后的跳转地址</p>
-<p>真正要跳转的地址 = E8这条指令的下一条指令 + X</p>
-<p>于是通过该方程式<strong>求取X</strong>的值：</p>
-<p>E8下一条指令的地址为A918D6</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/234442340-9542e174-bfd9-4c16-bc98-676873067ab9.png"></p>
-<p>实际跳转的地址0A91023</p>
-<p>①<strong>X = 真正要跳转的地址 - E8这条指令的下一条指令</strong></p>
-<p>即：X = 0xA91023 - 0xA918D6 = 0xFFFF F74D</p>
-<img src="https://user-images.githubusercontent.com/116374553/234443202-214c83c9-5d6b-44be-b1a2-046320210816.png" style="zoom:50%;" />
-
-<p>此值恰好是E8后面的地址</p>
-<p><strong>注意</strong>：由于存储地址的地方都是四个字节，是双字，所以在利用计算器计算的时候需要选中DWORD</p>
-<p>②<strong>X = 真正要跳转的地址 -（E8当前的地址（拉伸后的地址） + 5）（E8的下一条指令的地址 = E8 + 硬编码所占的字节数）</strong></p>
-<h6 id="E9："><a href="#E9：" class="headerlink" title="E9："></a>E9：</h6><p>与E8同理</p>
-<p>jmp指令对应的硬编码，后接上4个字节的地址跳转</p>
-<h4 id="●构造shellcode-调用MessageBox"><a href="#●构造shellcode-调用MessageBox" class="headerlink" title="●构造shellcode(调用MessageBox)"></a>●构造shellcode(调用MessageBox)</h4><img src="https://user-images.githubusercontent.com/116374553/234475466-f619e567-2827-4a06-80fb-21e10890b02d.png" style="zoom: 67%;" />
-
-<p>调用MessageBox函数先是将参数push入栈，其硬编码为6A 00；然后是call指令调用函数(求取X = 值)；最后是jmp跳转到原来程序的OEP(求取jmp的X)。</p>
-<h5 id="Shellcode"><a href="#Shellcode" class="headerlink" title="Shellcode"></a>Shellcode</h5><p><em><strong>6A 00 6A 00 6A 00 6A 00 E8 00 00 00 00 E9 00 00 00 00</strong></em></p>
-<h5 id="求取E8后X"><a href="#求取E8后X" class="headerlink" title="求取E8后X"></a>求取E8后X</h5><p>此时需要填写E8和E9后的X</p>
-<p>首先利用PETool工具打开我想要加入shellcode的程序，去到第一个节表中（判断空白的区域是否足够我插入代码（文件对齐后的大小 - 内存中的大小））</p>
-<img src="https://user-images.githubusercontent.com/116374553/234625644-1f6df591-5bd9-47f6-874c-caea19abcda6.png" style="zoom: 67%;" />
-
-<p>在winhex中以文件模式打开该程序，先找到文件偏移的位置（即第一个节表的起始位置），加上文件中的偏移等于第二个节表开始的位置。在其中的空白区域填写我们的shellcode</p>
-<img src="https://user-images.githubusercontent.com/116374553/234627090-53900013-28bd-4a54-9333-31da01a40541.png" style="zoom:50%;" />
-
-<p>由之前可知此时电脑中的MessageBox函数的地址为<em><strong>0x7544A7D0</strong></em>（真正要跳转的地址）</p>
-<p>此时<em><strong>X = 7544A7D0 - E8下一条指令的地址</strong></em>（<strong>运行时</strong>的地址此时是拉伸之后的（Image Buffer））</p>
-<p>其中：<em><strong>E8地址 = ImageBase + 偏移地址 = 400000 + 拉伸后E8下一条指令的地址 = 400000 + （244d - 400 + 1000）= 40304D</strong></em></p>
-<p>注：244d - 400 + 1000  此时在file文件中e8下条指令的地址-文件中偏移+内存偏移</p>
-<p>ImageBase：<img src="https://user-images.githubusercontent.com/116374553/234630622-445e36df-adec-45dc-853a-add9569d3969.png"></p>
-<p>最终解得<em><strong>X = 7544A7D0 - 40304D = 75047783</strong></em>  </p>
-<p>则<em><strong>E8 83 77 04 75</strong></em></p>
-<p><img src="https://user-images.githubusercontent.com/116374553/234633620-92ea411d-57ab-48c3-8670-fb9f7d30d42d.png"></p>
-<h5 id="求取E9后X"><a href="#求取E9后X" class="headerlink" title="求取E9后X"></a>求取E9后X</h5><p>跳转到真正的程序OEP处（入口地点）</p>
-<p><img src="https://user-images.githubusercontent.com/116374553/234634266-9cb0421f-9b03-4bce-b882-2d15d84f1e6e.png"></p>
-<p><em><strong>真正地址 = ImageBase + AddressOfEntryPoint = 4021A8</strong></em></p>
-<p><em><strong>X = 真正地址 - E9下一条指令 = 4021A8 - （400000 + 2452 - 400 + 1000）= FFFFF156</strong></em></p>
-<p>则<em><strong>E9 56 F1 FF FF</strong></em></p>
-<p><img src="https://user-images.githubusercontent.com/116374553/234639802-d10db288-cbad-4295-aadd-f3d2f326af60.png"></p>
-<h4 id="●修改OEP"><a href="#●修改OEP" class="headerlink" title="●修改OEP"></a>●修改OEP</h4><p>现在oep = 现在构造的shellcode的起始位置 = 2440 - 400 + 1000 = 3040</p>
-<p><strong>原来</strong>：<img src="https://user-images.githubusercontent.com/116374553/234640243-411c5fb3-888c-444f-8947-b67efac2da8e.png" style="zoom:50%;" /></p>
-<p><strong>修改</strong>后：<img src="https://user-images.githubusercontent.com/116374553/234640925-7588306e-1349-42e2-b38b-a46ab24e5269.png" style="zoom:50%;" /></p>
-<h4 id="●运行结果"><a href="#●运行结果" class="headerlink" title="●运行结果"></a>●运行结果</h4><p><strong>原来</strong>：<img src="https://user-images.githubusercontent.com/116374553/234641315-168e0f3b-937c-4fde-82cc-d872b9a87802.png" style="zoom:50%;" /></p>
-<p><strong>现在</strong>：<img src="https://user-images.githubusercontent.com/116374553/234641613-0c78e699-9f8c-48d4-8214-7f2407472ec9.png" style="zoom:50%;" /></p>
-<p>点击确定后<img src="https://user-images.githubusercontent.com/116374553/234641740-50ebd33c-dfd6-44ec-b165-5c481f80d790.png" style="zoom:50%;" /></p>
-<h6 id="FF15和E8"><a href="#FF15和E8" class="headerlink" title="FF15和E8"></a>FF15和E8</h6><p><strong>注意</strong>：①00A018EB FF 15 98 B0 A0 00    call        dword ptr [__imp__MessageBoxW@16 (0A0B098h)]  </p>
-<p>当call指令的硬编码为FF15时，后跟的地址是绝对地址</p>
-<p>②00A018F3 E8 51 F9 FF FF       call        __RTC_CheckEsp (0A01249h) </p>
-<p>当call指令的硬编码为E8时，后跟的地址是相对偏移地址</p>
-<h2 id="Ⅵ-在任意空白处添加代码"><a href="#Ⅵ-在任意空白处添加代码" class="headerlink" title="Ⅵ.在任意空白处添加代码"></a>Ⅵ.在任意空白处添加代码</h2><p><img src="https://user-images.githubusercontent.com/116374553/235347608-18d37579-e134-42eb-b635-3f8176e51983.png" alt="00"></p>
-<p>相应代码在另一篇博客中(此处由于一些原因并未采取file-&gt;image-&gt;new这一过程)</p>
-<h2 id="Ⅶ-新增节-添加代码"><a href="#Ⅶ-新增节-添加代码" class="headerlink" title="Ⅶ.新增节-添加代码"></a>Ⅶ.新增节-添加代码</h2><img src="https://github.com/WhiteIsBlank/Picture/assets/116374553/d4b83554-e998-42fe-8b3d-458e4ea70c7c" style="zoom: 67%;" />
-
-<p>每一个节表是40个字节</p>
-<h5 id="目标："><a href="#目标：" class="headerlink" title="目标："></a><em><strong>目标：</strong></em></h5><p><em>新增一个节，并且它的大小为1000字节。</em></p>
-<h5 id="初始运行程序："><a href="#初始运行程序：" class="headerlink" title="初始运行程序："></a><em><strong>初始运行程序</strong></em>：<img src="https://github.com/WhiteIsBlank/Picture/assets/116374553/4d16f9ef-aae9-43a1-ac0a-9a93dd189df9" style="zoom:50%;" /></h5><h5 id="增加节表："><a href="#增加节表：" class="headerlink" title="增加节表："></a><em><strong>增加节表</strong></em>：</h5><h6 id="①修改节的数量"><a href="#①修改节的数量" class="headerlink" title="①修改节的数量"></a>①修改节的数量</h6><p>修改标准pe头中NumberOfSections的值</p>
-<p>示例程序原来有5个节表，将5修改为6</p>
-<h6 id="②修改pe文件的大小（sizeofimage）"><a href="#②修改pe文件的大小（sizeofimage）" class="headerlink" title="②修改pe文件的大小（sizeofimage）"></a>②修改pe文件的大小（sizeofimage）</h6><p>将新增节表的区域映射到内存中去</p>
-<p>此时可以直接用petool打开pe文件，然后先找到pe标识，然后标准pe头20字节，到可选pe头后，直接根据petool中查到的sizeofimage，找到它的位置并进行修改。</p>
-<p>示例程序原来的sizeofimage大小为38000h，此处由于新增节的大小为1000h，则将该数据修改为39000h</p>
-<h6 id="③为新节开辟内存"><a href="#③为新节开辟内存" class="headerlink" title="③为新节开辟内存"></a>③为新节开辟内存</h6><p>在pe文件的最后一个字节，右键选择粘贴字节，此处插入字符应该填写十进制数（4096）</p>
-<h6 id="④修改节表的信息"><a href="#④修改节表的信息" class="headerlink" title="④修改节表的信息"></a>④修改节表的信息</h6><p>此时可以对照petool中的其他节表去修改新增节表的信息（此处需要自己随便选择某一个节表，直接复制到新增节表的位置）</p>
-<ul>
-<li>修改VirtualSize的值的时候，直接将其修改为对齐后的值即可</li>
-<li>PointerToRawData：<strong>PointerToRawData</strong> = PointerToRawData(上) + SizeOfRawData(上) 文件地址+文件中的大小</li>
-<li>VirtualAddress：此时的<strong>VirtualAddress</strong> = VirtualAddress(上) + SizeOfRawData修改为内存对齐时的值   最后一个节表的偏移+文件中大小(或内存中大小（谁大加谁))之后按照对齐原则进行修改即可</li>
-<li>Characteristics：由于复制的是代码节，则此处属性可以不用修改，如果有属性的改变可以对照相应的表格修改此处的数据</li>
-</ul>
-<p><strong>修改后的节表：</strong><img src="https://github.com/WhiteIsBlank/Picture/assets/116374553/f63b9931-bf10-4330-a298-703c43c11142"></p>
-<h5 id="修改后运行："><a href="#修改后运行：" class="headerlink" title="修改后运行："></a><strong>修改后运行</strong>：<img src="https://github.com/WhiteIsBlank/Picture/assets/116374553/4fe8c5ec-b608-4541-8353-7cbd5ce1fa1a" style="zoom:50%;" /></h5><h5 id="增加节的条件"><a href="#增加节的条件" class="headerlink" title="增加节的条件"></a>增加节的条件</h5><p>①节表后的空白空间足够大</p>
-<p>②一些程序在节表之后节区之前自带有一些数据(不清楚用处)，此时可以将我们的NT头以及节表信息直接向上提，提到DOS与NT头之间的垃圾数据上去，同时修改e_lfanew的值。此后在多出来的区域直接填充0即可，在此填写新增的节表数据</p>
-<p><img src="https://github.com/WhiteIsBlank/Picture/assets/116374553/b507da8f-6e4a-4dbb-a467-aab8adec9aa2"></p>
-<p><em><strong>注意</strong></em>：节表结束后一定要留有一个节表的空白区域（40个0）</p>
-<p>由于windows判断结构体数组结束的机制是，当出现一个结构体大小的空白区域时结构体数组结束（不一定会是如此）</p>
-<p>③当DOS头NT头间的数据依旧不够用，则扩大最后一个节（因为不会影响其他节区的偏移）</p>
-<p>相应代码在另一篇博客中</p>
-
-      
-    </div><!-- .entry-content -->
-    
-    <footer class="entry-meta">
-    <a href="/2023/04/30/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">
-    <time datetime="2023-04-29T16:00:00.000Z" class="entry-date">
-        2023-04-30
     </time>
 </a>
     
@@ -1232,6 +1232,10 @@
       <ul>
         
           <li>
+            <a href="/2023/05/17/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a>
+          </li>
+        
+          <li>
             <a href="/2023/05/17/PE%E6%96%87%E4%BB%B6%E6%B7%BB%E5%8A%A0%E8%8A%82%E8%A1%A8%E4%BB%A3%E7%A0%81/">PE文件添加节表代码</a>
           </li>
         
@@ -1245,10 +1249,6 @@
         
           <li>
             <a href="/2023/05/01/%E6%89%93%E5%8D%B0PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%EF%BC%88C%E8%AF%AD%E8%A8%80%EF%BC%89/">打印PE文件结构（C语言）</a>
-          </li>
-        
-          <li>
-            <a href="/2023/04/30/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a>
           </li>
         
       </ul>

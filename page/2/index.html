@@ -364,7 +364,9 @@
     <!--目录-文章开头-->
     
     </br>   
-        <h1 id="脱壳"><a href="#脱壳" class="headerlink" title="脱壳"></a>脱壳</h1><h3 id="1-ESP脱壳定律（大多压缩壳和少数加密壳）"><a href="#1-ESP脱壳定律（大多压缩壳和少数加密壳）" class="headerlink" title="1.ESP脱壳定律（大多压缩壳和少数加密壳）"></a>1.ESP脱壳定律（大多压缩壳和少数加密壳）</h3><h6 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h6><p>1.将32位PE文件载入OD，64位PE文件载入x64dbg</p>
+        <h1 id="脱壳"><a href="#脱壳" class="headerlink" title="脱壳"></a>脱壳</h1><h3 id="1-ESP脱壳定律（大多压缩壳和少数加密壳）"><a href="#1-ESP脱壳定律（大多压缩壳和少数加密壳）" class="headerlink" title="1.ESP脱壳定律（大多压缩壳和少数加密壳）"></a>1.ESP脱壳定律（大多压缩壳和少数加密壳）</h3><p>64位pe脱壳，直接载入，在断点处寻找入口，然后运行至此，发现满足esp定律，然后按照3步骤开始一直往下，可以发现一个大的跳转，进去之后就是oep。直接插件。</p>
+<p>详细参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/CHUNJIUJUN/article/details/120938000">https://blog.csdn.net/CHUNJIUJUN/article/details/120938000</a></p>
+<h6 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h6><p>1.将32位PE文件载入OD，64位PE文件载入x64dbg</p>
 <p>2.载入程序的第一条指令为pushad/pushfd，使用F8单步一次，如果只有ESP寄存器发生变化，即可使用ESP定律（如果程序载入时不是pushad/pushfd，则可以查看断点清单中是否有pushad/pushfd）</p>
 <p>3.右键ESP处，选择在寄存器窗口跟随，然后在相应的地址窗口处设置一个硬件访问的四字节断点</p>
 <p>4.F9再次运行</p>
@@ -542,7 +544,7 @@
   <aside class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/">python逆向</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/python%E9%80%86%E5%90%91%E7%BB%83%E4%B9%A0/">python逆向练习</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Z3%E6%B1%82%E8%A7%A3%E5%99%A8/">Z3求解器</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/">python逆向</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/python%E9%80%86%E5%90%91%E7%BB%83%E4%B9%A0/">python逆向练习</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">3</span></li></ul>
     </div>
   </aside>
 
@@ -552,6 +554,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget-content">
       <ul>
+        
+          <li>
+            <a href="/2023/05/28/Z3%E6%B1%82%E8%A7%A3%E5%99%A8/">Z3求解器</a>
+          </li>
         
           <li>
             <a href="/2023/05/17/PE%E6%96%87%E4%BB%B6%E6%B7%BB%E5%8A%A0%E8%8A%82%E8%A1%A8%E4%BB%A3%E7%A0%81/">PE文件添加节表代码</a>
@@ -567,10 +573,6 @@
         
           <li>
             <a href="/2023/05/14/%E5%9C%A8%E7%A9%BA%E7%99%BD%E5%A4%84%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81/">在空白处添加代码</a>
-          </li>
-        
-          <li>
-            <a href="/2023/05/01/%E6%89%93%E5%8D%B0PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%EF%BC%88C%E8%AF%AD%E8%A8%80%EF%BC%89/">打印PE文件结构（C语言）</a>
           </li>
         
       </ul>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="Welcome to my world" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>Z3求解器 | Blank Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Z3求解器安装1pip install z3-solver  使用Z3求解器是一个强大的自动定理证明器，可用于数学问题、软件和硬件验证、安全分析等领域。以下是Z3求解器的基本用法：  引入z3库： 1from z3 import * 创建变量 Z3支持整数、实数、布尔值和位向量类型的变量。可以使用 Int(), Real(), Bool() 和 BitVec() 分别创建这些类型的变量。 1234">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Z3求解器">
+<meta property="og:url" content="http://example.com/2023/05/28/Z3%E6%B1%82%E8%A7%A3%E5%99%A8/index.html">
+<meta property="og:site_name" content="Blank Blog">
+<meta property="og:description" content="Z3求解器安装1pip install z3-solver  使用Z3求解器是一个强大的自动定理证明器，可用于数学问题、软件和硬件验证、安全分析等领域。以下是Z3求解器的基本用法：  引入z3库： 1from z3 import * 创建变量 Z3支持整数、实数、布尔值和位向量类型的变量。可以使用 Int(), Real(), Bool() 和 BitVec() 分别创建这些类型的变量。 1234">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/WhiteIsBlank/Picture/assets/116374553/bc83d21f-f510-4fe9-a50e-49050304ba5f">
+<meta property="article:published_time" content="2023-05-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-28T06:16:42.231Z">
+<meta property="article:author" content="Blank">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/WhiteIsBlank/Picture/assets/116374553/bc83d21f-f510-4fe9-a50e-49050304ba5f">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Blank Blog" rel="home">Blank Blog</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-Z3求解器" class="post-Z3求解器 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      Z3求解器
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://example.com/2023/05/28/Z3%E6%B1%82%E8%A7%A3%E5%99%A8/" data-id="cli742jpv00003sl06gtkbngx" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+    
+    <div class="entry-content">
+      
+      <!-- Table of Contents -->
+    <!--目录-侧边栏-->
+    
+    <!--目录-文章开头-->
+    
+    </br>   
+        <h1 id="Z3求解器"><a href="#Z3求解器" class="headerlink" title="Z3求解器"></a>Z3求解器</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install z3-solver</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>Z3求解器是一个强大的自动定理证明器，可用于数学问题、软件和硬件验证、安全分析等领域。以下是Z3求解器的基本用法：</p>
+<ol>
+<li><p>引入z3库：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> z3 <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure></li>
+<li><p>创建变量</p>
+<p>Z3支持整数、实数、布尔值和位向量类型的变量。可以使用 <code>Int()</code>, <code>Real()</code>, <code>Bool()</code> 和 <code>BitVec()</code> 分别创建这些类型的变量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1. 创建一个整型变量 x 和 y</span></span><br><span class="line">x, y = Ints(<span class="string">&#x27;x y&#x27;</span>)</span><br><span class="line"><span class="comment">#2. 创建在列表中</span></span><br><span class="line">a = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(x):  <span class="comment">#其中x为列表的长度</span></span><br><span class="line">    a.append(Int(<span class="built_in">str</span>(i))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建两个位向量变量 a 和 b，长度为四位</span></span><br><span class="line">a, b = BitVecs(<span class="string">&#x27;a b&#x27;</span>, <span class="number">4</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>建立逻辑约束</p>
+<p>在建立约束之前，通常需要使用所有已知的情况来定义变量。可以使用 <code>And()</code> 建立这个约束:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">constraints = And(x &gt;= <span class="number">1</span>, x &lt; <span class="number">2</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>建立求解器并添加约束</p>
+<p>创建一个求解器对象，然后将约束添加进去。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 实例化一个求解器对象</span></span><br><span class="line">solver = Solver()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将约束加入求解器中</span></span><br><span class="line">solver.add(constraints)</span><br></pre></td></tr></table></figure></li>
+<li><p>检查是否有解</p>
+<p>使用 solver.check() 来检查约束是否有解，并返回 SOLVER 状态的结果。如果约束有解，则继续下一步；否则，说明不存在任何满足条件的变量数值状态。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对模型求解并处理结果</span></span><br><span class="line"><span class="keyword">if</span> solver.check() == sat:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;有解&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;无解&quot;</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>获取符合约束条件的模型解</p>
+<p>如果存在解，则可以使用 <code>solver.model()</code>方法来获取满足条件的变量取值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取符合约束条件的解</span></span><br><span class="line">ans = solver.model()</span><br><span class="line"></span><br><span class="line"><span class="comment"># x 变量的取值以及将其转换为Python int</span></span><br><span class="line">solution_x = model[x].as_long()</span><br><span class="line"><span class="comment">#也可以，可以达到同样的效果</span></span><br><span class="line">solution_x = <span class="built_in">int</span>(<span class="built_in">str</span>(model[x]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># a 变量的取值以及将其转换为Python int</span></span><br><span class="line">solution_a = model[a].as_long()</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>这是Z3求解器基本的使用方法，但实际上，Z3还提供了功能强大的API，包括自定义优化目标、非线性算法和增加插件等。</p>
+<h2 id="解题："><a href="#解题：" class="headerlink" title="解题："></a>解题：</h2><h3 id="Zzzzz3333"><a href="#Zzzzz3333" class="headerlink" title="Zzzzz3333"></a>Zzzzz3333</h3><p>32位PE文件无可</p>
+<p>IDA打开程序分析</p>
+<p><img src="https://github.com/WhiteIsBlank/Picture/assets/116374553/bc83d21f-f510-4fe9-a50e-49050304ba5f"></p>
+<p>编写脚本求取key的值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> z3 <span class="keyword">import</span> *</span><br><span class="line">Arglist = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>):</span><br><span class="line">    Arglist.append(Int(<span class="built_in">str</span>(i)))<span class="comment">#循环将数组中的每一个数据作为求解器的未知数</span></span><br><span class="line">v13 = Arglist[<span class="number">5</span>]</span><br><span class="line">v11 = Arglist[<span class="number">4</span>]</span><br><span class="line">v9 = Arglist[<span class="number">1</span>]</span><br><span class="line">v12 = Arglist[<span class="number">3</span>]</span><br><span class="line">v8 = Arglist[<span class="number">7</span>]</span><br><span class="line">v10 = Arglist[<span class="number">0</span>]</span><br><span class="line">solver = Solver()</span><br><span class="line">solver.add(Arglist[<span class="number">3</span>]</span><br><span class="line">     + <span class="number">4</span> * Arglist[<span class="number">2</span>]</span><br><span class="line">     + Arglist[<span class="number">7</span>]</span><br><span class="line">     + <span class="number">4</span> * (Arglist[<span class="number">3</span>] + <span class="number">4</span> * Arglist[<span class="number">2</span>])</span><br><span class="line">     + <span class="number">3</span> * (Arglist[<span class="number">4</span>] + <span class="number">4</span> * Arglist[<span class="number">0</span>])</span><br><span class="line">     + <span class="number">2</span> * (Arglist[<span class="number">5</span>] + <span class="number">4</span> * Arglist[<span class="number">6</span>])</span><br><span class="line">     + <span class="number">11</span> * Arglist[<span class="number">1</span>] == <span class="number">6426</span>)</span><br><span class="line">solver.add(<span class="number">11</span> * (v10 + v8 + v12) + <span class="number">4</span> * (v13 + <span class="number">2</span> * v11) + Arglist[<span class="number">2</span>] + <span class="number">45</span> * v9 + <span class="number">7</span> * Arglist[<span class="number">6</span>] == <span class="number">9801</span>)</span><br><span class="line">solver.add(<span class="number">5</span> * v9</span><br><span class="line">     + <span class="number">2</span> * (v11 + Arglist[<span class="number">6</span>] + v13 + <span class="number">2</span> * (v8 + v12) + Arglist[<span class="number">2</span>] + <span class="number">2</span> * (Arglist[<span class="number">6</span>] + v13 + <span class="number">2</span> * (v8 + v12)) + <span class="number">8</span> * v10) == <span class="number">6021</span>)</span><br><span class="line">solver.add(<span class="number">19</span> * v10 + <span class="number">9</span> * v9 + <span class="number">67</span> * v8 + <span class="number">5</span> * (Arglist[<span class="number">2</span>] + Arglist[<span class="number">6</span>]) + <span class="number">7</span> * (v13 + <span class="number">4</span> * v12) + <span class="number">4</span> * v11 == <span class="number">14444</span>)</span><br><span class="line">solver.add(<span class="number">22</span> * v13 + <span class="number">5</span> * (v11 + <span class="number">2</span> * (v12 + v9 + <span class="number">2</span> * v10)) + <span class="number">4</span> * (v8 + Arglist[<span class="number">6</span>]) + <span class="number">6</span> * Arglist[<span class="number">2</span>] == <span class="number">7251</span>)</span><br><span class="line">solver.add(<span class="number">19</span> * v12</span><br><span class="line">     + <span class="number">3</span> * (v8 + Arglist[<span class="number">2</span>] + <span class="number">4</span> * v8 + Arglist[<span class="number">6</span>] + <span class="number">2</span> * (v8 + Arglist[<span class="number">2</span>] + <span class="number">4</span> * v8))</span><br><span class="line">     + <span class="number">4</span> * (v10 + v13 + v9 + <span class="number">2</span> * (v10 + v13)) == <span class="number">10054</span>)</span><br><span class="line">m = And(<span class="number">7</span> * v10 + <span class="number">17</span> * (v12 + v9 * <span class="number">2</span>) + <span class="number">11</span> * (v11 + <span class="number">2</span> * v13) + <span class="number">2</span> * (Arglist[<span class="number">2</span>] + Arglist[<span class="number">6</span>] + <span class="number">4</span> * Arglist[<span class="number">2</span>] + <span class="number">6</span> * v8) == <span class="number">10735</span>,Arglist[<span class="number">6</span>] + v11 + <span class="number">11</span> * Arglist[<span class="number">2</span>] + <span class="number">15</span> * (v12 + <span class="number">2</span> * v8) + v9*<span class="number">2</span> + <span class="number">43</span> * v10 + <span class="number">21</span> * v13 == <span class="number">11646</span>)</span><br><span class="line">solver.add(m)</span><br><span class="line"><span class="keyword">if</span> solver.check() == sat:</span><br><span class="line">    ans = solver.model()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="built_in">chr</span>(ans[Arglist[i]].as_long()),end = <span class="string">&quot;&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;无解&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>最后将脚本得出的key输入程序得到flag</p>
+<p><strong>flag{Zzzz333_Is_Cool!!!}</strong></p>
+
+      
+    </div><!-- .entry-content -->
+    
+    <footer class="entry-meta">
+    <a href="/2023/05/28/Z3%E6%B1%82%E8%A7%A3%E5%99%A8/">
+    <time datetime="2023-05-27T16:00:00.000Z" class="entry-date">
+        2023-05-28
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/Z3%E6%B1%82%E8%A7%A3%E5%99%A8/">Z3求解器</a>
+  </div>
+
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2023/05/17/PE%E6%96%87%E4%BB%B6%E6%B7%BB%E5%8A%A0%E8%8A%82%E8%A1%A8%E4%BB%A3%E7%A0%81/" rel="next">PE文件添加节表代码 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDA%E8%BF%9C%E7%A8%8B%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/">IDA远程动态调试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Z3%E6%B1%82%E8%A7%A3%E5%99%A8/">Z3求解器</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/">python逆向</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python%E9%80%86%E5%90%91/python%E9%80%86%E5%90%91%E7%BB%83%E4%B9%A0/">python逆向练习</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%84%B1%E5%A3%B3/">脱壳</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">迷宫问题</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2023/05/28/Z3%E6%B1%82%E8%A7%A3%E5%99%A8/">Z3求解器</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/17/PE%E6%96%87%E4%BB%B6%E6%B7%BB%E5%8A%A0%E8%8A%82%E8%A1%A8%E4%BB%A3%E7%A0%81/">PE文件添加节表代码</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/17/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/14/easyRE/">easyRE</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/14/%E5%9C%A8%E7%A9%BA%E7%99%BD%E5%A4%84%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81/">在空白处添加代码</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2023 Blank
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+
+<script src="../../source/js/top.js" type="text/javascript"></script>
+<!--返回顶部开始-->
+
+<div id="full" style="width:0px; height:0px; position:fixed; right:8%; bottom:100px; z-index:100; text-align:center; background-color:transparent; cursor:pointer;">
+  <a href="#" onclick="goTop();return false;">
+    <img src="/css/images/top.png" border=0 alt="返回顶部">
+  </a>
+</div>
+<!--返回顶部结束-->
+
+<!--底部添加运行时间-->
+
+<div class="run_time" style=" text-align:center;">
+    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("03/07/2023 00:00:00");  // 此处修改为你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+      setInterval("createtime()",250);
+    </script>
+    </br>
+    </br>
+    <!--添加不蒜子统计-->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"> </script>
+    <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+    </span>
+    <span id="busuanzi_container_site_uv">
+        ฅʕ•͡-•ʔ 访问人数：<span id="busuanzi_value_site_uv"></span>人
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+    </span> 
+    <span id="busuanzi_container_site_pv">
+        👀访问量：<span id="busuanzi_value_site_pv"></span>次
+    </span>
+    </br>
+    </br>
+</div>
+<script src="../../source/js/top.js" type="text/javascript"></script>
+<!--返回顶部开始-->
+<div id="full" style="width:0px; height:0px; position:fixed; right:8%; bottom:100px; z-index:100; text-align:center; background-color:transparent; cursor:pointer;">
+  <a href="#" onclick="goTop();return false;">
+    <img src="/css/images/top.png" border=0 alt="返回顶部">
+  </a>
+</div>
+<!--返回顶部结束-->
+
+  
+
+
+
+
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

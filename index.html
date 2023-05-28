@@ -118,7 +118,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取符合约束条件的解</span></span><br><span class="line">ans = solver.model()</span><br><span class="line"></span><br><span class="line"><span class="comment"># x 变量的取值以及将其转换为Python int</span></span><br><span class="line">solution_x = model[x].as_long()</span><br><span class="line"><span class="comment">#也可以，可以达到同样的效果</span></span><br><span class="line">solution_x = <span class="built_in">int</span>(<span class="built_in">str</span>(model[x]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># a 变量的取值以及将其转换为Python int</span></span><br><span class="line">solution_a = model[a].as_long()</span><br></pre></td></tr></table></figure></li>
 </ol>
 <p>这是Z3求解器基本的使用方法，但实际上，Z3还提供了功能强大的API，包括自定义优化目标、非线性算法和增加插件等。</p>
-<h2 id="解题："><a href="#解题：" class="headerlink" title="解题："></a>解题：</h2><h3 id="Zzzzz3333"><a href="#Zzzzz3333" class="headerlink" title="Zzzzz3333"></a>Zzzzz3333</h3><p>32位PE文件无可</p>
+<h2 id="解题："><a href="#解题：" class="headerlink" title="解题："></a>解题：</h2><h3 id="Zzzzz3333"><a href="#Zzzzz3333" class="headerlink" title="Zzzzz3333"></a>Zzzzz3333</h3><p>32位PE文件无壳</p>
 <p>IDA打开程序分析</p>
 <p><img src="https://github.com/WhiteIsBlank/Picture/assets/116374553/bc83d21f-f510-4fe9-a50e-49050304ba5f"></p>
 <p>编写脚本求取key的值</p>
